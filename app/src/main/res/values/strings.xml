@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">iSFC-倉庫管理</string>
+
     <!-- Login View -->
     <string name="label_username">用户名：</string>
     <string name="hint_username">Please Enter Your Username</string>
@@ -10,9 +11,25 @@
     <string name="label_fgPassword">忘记密码</string>
     <string name="btn_confirm">登录</string>
 
+    <!--Title Bar View-->
+    <string name="btn_prep">&lt; 返回</string>
+    <!--<string name="btn_title">iSFC-倉庫管理</string>-->
+    <string name="btn_user">张三</string>
+
     <!-- Home View -->
     <string name="btn_inStorage">入库</string>
     <string name="btn_asnRelated">ASN 码关联</string>
     <string name="btn_outStorage">出库</string>
 
+    <!--InStorage View-->
+    <string name="hint_search">请输入单号/料号/缴库部门</string>
+    <string name="btn_search">查询</string>
+    <string name="btn_addInStorage">扫码新增入库单</string>
+
+    <!--ASNRelated View-->
+    <string name="label_addRelated">请先扫描箱码再扫描 ASN 标签码</string>
+    <string name="btn_commit">提交</string>
+
+    <!--OutStorage View-->
+    <string name="btn_addOutStorage">扫码新增出库单</string>
 </resources>
