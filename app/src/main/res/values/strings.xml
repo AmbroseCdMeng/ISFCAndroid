@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">ISFCAndroid</string>
+    <string name="app_name">iSFC-倉庫管理</string>
+    <string name="cb_rbPassword">true</string>
 </resources>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Login">
+
+    <TextView
+        android:id="@+id/tv_login_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:text="@string/app_name"/>
+
+    <EditText
+        android:id="@+id/ed_login_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:hint="@string/app_name"
+        android:inputType="text"
+        android:textColorHint="@color/colorAccent"
+        android:textColor="@color/colorAccent"/>
+
+    <EditText
+        android:id="@+id/ed_login_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lines="1"
+        android:hint="@string/app_name"
+        android:inputType="textPassword"
+        android:textColorHint="@color/colorAccent"
+        android:textColor="@color/colorAccent"/>
+
+    <CheckBox
+        android:id="@+id/cb_login_rememberPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cb_rbPassword"
+        android:textColor="@android:color/white"/>
+
+    <TextView
+        android:id="@+id/tv_login_forgetPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textColor="@color/colorAccent"
+        android:textSize="14sp"/>
+
+    <Button
+        android:id="@+id/btn_login_confirm"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:text="@string/app_name"
+        android:textSize="15sp"
+        android:textColor="@color/colorAccent"/>
+
+
+
+
+</android.support.constraint.ConstraintLayout>
