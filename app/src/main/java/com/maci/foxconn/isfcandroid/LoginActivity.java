@@ -20,9 +20,8 @@ import com.maci.foxconn.utils.Utils;
 
  * @time 2020/3/27 下午 04:00
  ***/
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends TitleBarActivity {
 
-//    private Boolean mloginState = false;
     private EditText musername;
     private EditText mpassword;
     private CheckBox msPwd;
@@ -54,7 +53,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-//                Utils.toast(LoginActivity.this, "登陆成功" );
                 login();
             }
         });

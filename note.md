@@ -65,22 +65,61 @@
 5. 自定义 Button 样式
 	
 	- 定义 button 样式 (drawable/button_style.xml)
-	```xml
-	<?xml version="1.0" encoding="utf-8"?>
-	<shape xmlns:android="http://schemas.android.com/apk/res/android"
-		android:shape="rectangle">
-		<solid android:color="@color/colorLakeGreen" />
-		<corners android:radius="6.67dp" />
-		<padding
-			android:bottom="10dp"
-			android:left="10dp"
-			android:right="10dp"
-			android:top="10dp" />
-	</shape>
-	```
+		```xml
+		<?xml version="1.0" encoding="utf-8"?>
+		<shape xmlns:android="http://schemas.android.com/apk/res/android"
+			android:shape="rectangle">
+			<solid android:color="@color/colorLakeGreen" />
+			<corners android:radius="6.67dp" />
+			<padding
+				android:bottom="10dp"
+				android:left="10dp"
+				android:right="10dp"
+				android:top="10dp" />
+		</shape>
+		```
 	- 引用 button 样式 (layout/login.xml)
-	```xml
-	<Button
-        android:background="@drawable/button_style" />
-	```
+		```xml
+		<Button
+			android:background="@drawable/button_style" />
+		```
+	
+6. 自定义 Button 样式(圆角 + 阴影 + 图片 + 文字)
+
+	- 定义 button 圆角 + 阴影样式(drawable/menu_button_style)
+		```xml
+		<?xml version="1.0" encoding="utf-8"?>
+		<shape android:shape="rectangle"
+			xmlns:android="http://schemas.android.com/apk/res/android">
+			<solid android:color="#ffffffff" />
+			<item android:name="android:shadowDx">0</item>
+			<item android:name="android:shadowDy">8</item>
+			<item android:name="android:shadowColor">#3d969696</item>
+			<corners android:radius="10dp" />
+		</shape>
+		```
+	- 使用 Button 组件的 background 属性引用自定义样式
+		```xml
+		<Button
+			android:background="@drawable/menu_button_style" />
+		```
+	- 使用 Button 组件的 drawableTop/drawableBottom/drawableLeft/drawableRight 引用图片，text 属性设置文字
+		```xml
+		<Button
+			android:background="@drawable/menu_button_style"
+			android:paddingTop="12dp" />
+		```
+	- 使用 Button 组件的 paddingTop/paddingBottom/paddingLeft/paddingRight 和 drawablePadding 属性调整图片和文字的位置
+		```xml
+		<Button
+			android:layout_marginStart="26dp"
+			android:layout_marginTop="40dp"
+			android:background="@drawable/menu_button_style"
+			android:drawableTop="@mipmap/asn"
+			android:drawablePadding="-10dp"
+			android:paddingTop="12dp" />
+		```
+		
+
+	
 	
