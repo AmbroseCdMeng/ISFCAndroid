@@ -20,7 +20,7 @@ import com.maci.foxconn.utils.Utils;
 
  * @time 2020/3/27 下午 04:00
  ***/
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends TitleBarActivity {
 
     private EditText musername;
     private EditText mpassword;
@@ -39,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
 
         musername.setText("Admin");
         mpassword.setText("Administrator");
+
     }
 
 

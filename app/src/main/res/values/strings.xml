@@ -12,9 +12,9 @@
     <string name="btn_login">登陆</string>
 
     <!--Title Bar View-->
-    <string name="btn_prep"></string>
-    <!--<string name="btn_title">iSFC-倉庫管理</string>-->
-    <string name="btn_user"></string>
+    <string name="label_left"></string>
+    <string name="label_title">@string/app_name</string>
+    <string name="label_right"></string>
 
     <!-- Home View -->
     <string name="btn_inStorage">入库</string>

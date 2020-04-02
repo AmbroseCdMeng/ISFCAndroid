@@ -4,41 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="320dp"
     android:layout_height="37.33dp"
-    tools:context=".TitleBarActivity"
-    android:background="@color/colorLakeGreen">
+    android:background="@color/colorLakeGreen"
+    tools:context=".TitleBarActivity">
 
-    <TextView
-        android:id="@+id/tv_prev"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cl_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/btn_prep"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_left"
+            android:layout_width="59dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="11dp"
+            android:text="@string/label_left"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
 
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="107dp"
         android:layout_height="17dp"
         android:layout_marginTop="11dp"
-        android:text="@string/app_name"
+        android:includeFontPadding="false"
+        android:text="@string/label_title"
         android:textAlignment="center"
         android:textColor="#ff000000"
         android:textSize="16sp"
-        android:includeFontPadding="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tv_user"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/cl_right"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/btn_user"
+        android:layout_marginEnd="0dp"
+        android:layout_marginTop="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/tv_right"
+            android:layout_width="59dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="4dp"
+            android:text="@string/label_right"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>

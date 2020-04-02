@@ -120,6 +120,18 @@
 			android:paddingTop="12dp" />
 		```
 		
-
+7. 动态修改自定义标题栏的内容
+	
+	疑问点：
+		- setText 方法无效果
+	
+	调试：	
+		- 断点调试，setText 方法生效。但页面中 title_bar 的文字未刷新
+		- 设置 title_bar 为启动页，setText 方法生效。
+		
+	初步判断：
+		- 线程原因，setText 修改值成功后，title_bar 未刷新
+		- 缓存原因，setText 修改值成功后，title_bar 未刷新
+	
 	
 	
