@@ -9,12 +9,12 @@ public class TitleBarActivity extends AppCompatActivity {
     public TextView mprev;
     public TextView mtitle;
     public TextView muser;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.title_bar);
-        
+
         initView();
     }
 

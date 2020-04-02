@@ -20,7 +20,7 @@ import com.maci.foxconn.utils.Utils;
 
  * @time 2020/3/27 下午 04:00
  ***/
-public class LoginActivity extends TitleBarActivity {
+public class LoginActivity extends AppCompatActivity {
 
     private EditText musername;
     private EditText mpassword;
@@ -30,12 +30,15 @@ public class LoginActivity extends TitleBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
         initView();
         initEvent();
 
+        musername.setText("Admin");
+        mpassword.setText("Administrator");
     }
 
 
@@ -52,42 +55,26 @@ public class LoginActivity extends TitleBarActivity {
         mlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                 login();
             }
         });
     }
 
-    private void initLogin() {
-        //首次登录
-        if (false) {
-//            mremembrePassword.setChecked(false);
-        }
-        //记住密码
-//        if (mremembrePassword.isChecked()) {
-//            musername.setText(getLocalName());
-//            mpassword.setText(getLocalPassword());
-//        }
-
-    }
 
     private void login()  {
-//        if (getUsername().isEmpty()) {
-//            Utils.toast(LoginActivity.this, "用户名不能为空");
-//            return;
-//        }
-
-        //显示加载 Loading
-
+        if(musername.getText().toString().trim().isEmpty() || mpassword.getText().toString().trim().isEmpty())
+        {
+            Utils.toast(LoginActivity.this,"用户名密码不能为空" );
+            return ;
+        }
         new Thread() {
             @Override
             public void run() {
                 super.run();
                 mlogin.setClickable(false);
-                // 登录判断
                 if ("Admin".equals(musername.getText().toString().trim())) {
                     try {
-                        sleep(1000);
+                        sleep(500);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -100,32 +87,4 @@ public class LoginActivity extends TitleBarActivity {
             }
         }.start();
     }
-
-    /**
-     * 设置登录按钮可点击状态
-     *
-     * @param b
-     */
-//    private void setBtnConfirmClickable(boolean b) {
-//        mconfirm.setClickable(b);
-//    }
-//
-//    private String getUsername() {
-//        return musername.getText().toString().trim();
-//    }
-//
-//    private String getPassword() {
-//        return mpassword.getText().toString().trim();
-//    }
-//
-//    private String getLocalName() {
-//        SharedPreferencesUtils utils = new SharedPreferencesUtils(this, "setting");
-//        return utils.getString("username");
-//    }
-//
-//    private String getLocalPassword() {
-//        SharedPreferencesUtils utils = new SharedPreferencesUtils(this, "setting");
-//        //省略加密解密
-//        return utils.getString("password");
-//    }
 }
