@@ -38,3 +38,49 @@
 		
 	> 以上只是一种方法，自定义标题栏的方法有很多，其他待研究
 	
+
+4. 自定义 CheckBox 样式
+
+	- 定义 checkbox 图标 (drawable/checkbox_style.xml)
+		```xml
+		<?xml version="1.0" encoding="utf-8"?>
+		<selector xmlns:android="http://schemas.android.com/apk/res/android">
+			<item android:drawable="@mipmap/spwd_1" android:state_checked="true"/>
+			<item android:drawable="@mipmap/spwd_2" android:state_checked="false"/>
+			<item android:drawable="@mipmap/spwd_2"/>
+		</selector>
+		```
+	- 定义 checkbox 主题 (values/styles.xml)
+		```xml
+		<style name="CheckBoxForRememberPasswordTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
+			<item name="android:button">@drawable/checkbox_style</item>
+		</style>
+		```
+	- 引用自定义主题 (layout - login.xml)
+		```xml
+		<CheckBox
+			style="@style/CheckBoxForRememberPasswordTheme"/>
+		```
+		
+5. 自定义 Button 样式
+	
+	- 定义 button 样式 (drawable/button_style.xml)
+	```xml
+	<?xml version="1.0" encoding="utf-8"?>
+	<shape xmlns:android="http://schemas.android.com/apk/res/android"
+		android:shape="rectangle">
+		<solid android:color="@color/colorLakeGreen" />
+		<corners android:radius="6.67dp" />
+		<padding
+			android:bottom="10dp"
+			android:left="10dp"
+			android:right="10dp"
+			android:top="10dp" />
+	</shape>
+	```
+	- 引用 button 样式 (layout/login.xml)
+	```xml
+	<Button
+        android:background="@drawable/button_style" />
+	```
+	

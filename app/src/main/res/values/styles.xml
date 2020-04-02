@@ -8,4 +8,10 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
+
+    <!-- Customize application theme. CheckBox For Login -->
+    <style name="CheckBoxForRememberPasswordTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/checkbox_style</item>
+    </style>
+
 </resources>

@@ -3,4 +3,16 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <!-- Customize Color For Login View -->
+
+    <!--TitleBar & LoginButton-->
+    <color name="colorLakeGreen">#00A98F</color>
+
+    <!-- TextBox TextHint & ShowPassword & ForgetPassword -->
+    <color name="colorHintGray">#6A6A6A</color>
+
+    <!-- TextBox Text -->
+    <color name="colorTextBlue">#1E90FF</color>
+
 </resources>

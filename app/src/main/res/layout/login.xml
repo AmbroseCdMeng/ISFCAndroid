@@ -8,27 +8,27 @@
 
     <include
         android:id="@+id/title"
-        layout="@layout/title_bar"/>
+        layout="@layout/title_bar" />
 
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/iv_logo"
         android:layout_width="85dp"
         android:layout_height="80dp"
         android:layout_marginTop="49dp"
-        android:src="@mipmap/登陸頁_漸變圖標130x130"
+        android:src="@mipmap/logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/iv_user"
         android:layout_width="14.6dp"
         android:layout_height="17.3dp"
         android:layout_marginStart="64dp"
         android:layout_marginTop="204dp"
-        android:src="@mipmap/登陸頁_帳戶圖標"
+        android:src="@mipmap/user"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
@@ -41,29 +41,24 @@
         android:hint="@string/hint_username"
         android:inputType="text"
         android:lines="1"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorAccent"
+        android:textColor="@color/colorTextBlue"
+        android:textColorHint="@color/colorHintGray"
         android:textSize="11.11sp"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/iv_user"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
-    <item android:width="213dp" android:height="1dp">
-        <shape android:shape="rectangle">
-        </shape>
-    </item>
-
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/iv_pwd"
         android:layout_width="14.6dp"
         android:layout_height="17.3dp"
         android:layout_marginStart="64dp"
         android:layout_marginTop="239.3dp"
-        android:src="@mipmap/登陸頁_密碼圖標"
+        android:src="@mipmap/pwd"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <EditText
-        android:id="@+id/ed_login_password"
+        android:id="@+id/ed_pwd"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
@@ -71,21 +66,24 @@
         android:hint="@string/hint_password"
         android:inputType="textPassword"
         android:lines="1"
-        android:textColor="@color/colorAccent"
-        android:textColorHint="@color/colorAccent"
+        android:textColor="@color/colorTextBlue"
+        android:textColorHint="@color/colorHintGray"
         android:textSize="11.11sp"
-        app:layout_constraintStart_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toEndOf="@+id/iv_pwd"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <Button
-        android:id="@+id/btn_login_confirm"
+        android:id="@+id/btn_login"
         android:layout_width="213dp"
-        android:layout_height="wrap_content"
+        android:layout_height="32dp"
+        android:padding="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="292dp"
         android:layout_marginEnd="8dp"
-        android:background="#00A98F"
-        android:text="@string/btn_confirm"
+        android:background="@drawable/button_style"
+        android:includeFontPadding="false"
+        android:text="@string/btn_login"
+        android:textAlignment="center"
         android:textColor="#FFFFFFFF"
         android:textSize="16.67sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -93,12 +91,14 @@
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <CheckBox
-        android:id="@+id/cb_login_showPassword"
+        android:id="@+id/cb_s_pwd"
+        style="@style/CheckBoxForRememberPasswordTheme"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="12dp"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="340dp"
-        android:checked="@string/cb_rbPassword"
+        android:layout_marginTop="343dp"
+        android:checked="@string/cb_showPassword"
+        android:includeFontPadding="false"
         android:text="@string/label_showPassword"
         android:textColor="#FF6A6A6A"
         android:textSize="11sp"
@@ -106,18 +106,17 @@
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
-        android:id="@+id/tv_login_forgetPassword"
+        android:id="@+id/tv_f_pwd"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="340dp"
+        android:layout_height="12dp"
+        android:layout_marginTop="343dp"
         android:layout_marginEnd="52dp"
+        android:includeFontPadding="false"
         android:text="@string/label_fgPassword"
         android:textColor="#FF6A6A6A"
         android:textSize="11sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
-
-
 
 
 </android.support.constraint.ConstraintLayout>

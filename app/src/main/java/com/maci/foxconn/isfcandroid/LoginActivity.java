@@ -23,45 +23,41 @@ import com.maci.foxconn.utils.Utils;
 public class LoginActivity extends AppCompatActivity {
 
 //    private Boolean mloginState = false;
-//    private TextView mtitle;
-//    private EditText musername;
-//    private EditText mpassword;
-//    private CheckBox mshowPassword;
-//    private TextView mforgetPassword;
-//    private Button mconfirm;
+    private EditText musername;
+    private EditText mpassword;
+    private CheckBox msPwd;
+    private TextView mfPwd;
+    private Button mlogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-//
-//        initView();
-//        initEvent();
-//        initLogin();
-//
-//        mconfirm.setOnClickListener(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View v) {
-//                login();
-////                Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+
+        initView();
+        initEvent();
+
     }
 
 
     private void initView() {
-//        mtitle = findViewById(R.id.tv_login_title);
-//        musername = findViewById(R.id.ed_login_username);
-//        mpassword = findViewById(R.id.ed_login_password);
-//        mshowPassword = findViewById(R.id.cb_login_showPassword);
-//        mforgetPassword = findViewById(R.id.tv_login_forgetPassword);
-//        mconfirm = findViewById(R.id.btn_login_confirm);
+        musername = findViewById(R.id.ed_username);
+        mpassword = findViewById(R.id.ed_pwd);
+        msPwd = findViewById(R.id.cb_s_pwd);
+        mfPwd = findViewById(R.id.tv_f_pwd);
+        mlogin = findViewById(R.id.btn_login);
 
     }
 
     private void initEvent() {
-
+        mlogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+//                Utils.toast(LoginActivity.this, "登陆成功" );
+                login();
+            }
+        });
     }
 
     private void initLogin() {
@@ -77,34 +73,35 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-//    private void login() {
+    private void login()  {
 //        if (getUsername().isEmpty()) {
 //            Utils.toast(LoginActivity.this, "用户名不能为空");
 //            return;
 //        }
-//
-//        //显示加载 Loading
-//
-//        new Thread() {
-//            @Override
-//            public void run() {
-//                super.run();
-//                setBtnConfirmClickable(false);
-//
-//                // 登录判断
-//
-//                if (true) {
-//                    Utils.toast(LoginActivity.this, "登录成功");
-//                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-//                    finish();
-//                } else
-//                    Utils.toast(LoginActivity.this, "登录失败");
-//                Utils.toast(LoginActivity.this, "登录失败");
-//                setBtnConfirmClickable(true);
-//
-//            }
-//        }.start();
-//    }
+
+        //显示加载 Loading
+
+        new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                mlogin.setClickable(false);
+                // 登录判断
+                if ("Admin".equals(musername.getText().toString().trim())) {
+                    try {
+                        sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    Utils.toast(LoginActivity.this, "登录成功");
+                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                    finish();
+                } else
+                    Utils.toast(LoginActivity.this, "登录失败");
+                mlogin.setClickable(true);
+            }
+        }.start();
+    }
 
     /**
      * 设置登录按钮可点击状态
