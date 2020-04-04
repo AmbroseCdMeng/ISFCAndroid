@@ -19,14 +19,10 @@ public class TitleBarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.title_bar);
-
-        initView();
-
-        showLeft(true, "上一步", null);
-        showRight(true, "下一步", null);
+//        initTitleView();
     }
 
-    private void initView() {
+    protected void initTitleView() {
         mleftLayout = findViewById(R.id.cl_left);
         mrightLayou = findViewById(R.id.cl_right);
 
@@ -35,7 +31,7 @@ public class TitleBarActivity extends AppCompatActivity {
         mright = findViewById(R.id.tv_right);
     }
 
-    public void showLeft(boolean isShow, String text, View.OnClickListener onClickListener) {
+    protected void showLeft(boolean isShow, String text, View.OnClickListener onClickListener) {
         if (mleftLayout != null) {
             if (isShow) {
                 mleftLayout.setVisibility(View.VISIBLE);
@@ -52,7 +48,7 @@ public class TitleBarActivity extends AppCompatActivity {
         }
     }
 
-    public void showRight(boolean isShow, String text, View.OnClickListener onClickListener) {
+    protected void showRight(boolean isShow, String text, View.OnClickListener onClickListener) {
         if (mrightLayou != null) {
             if (isShow) {
                 mrightLayou.setVisibility(View.VISIBLE);
@@ -68,5 +64,4 @@ public class TitleBarActivity extends AppCompatActivity {
             }
         }
     }
-
 }

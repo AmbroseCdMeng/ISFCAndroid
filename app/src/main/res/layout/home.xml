@@ -7,7 +7,7 @@
     tools:context=".HomeActivity">
 
     <include
-        android:id="@+id/include2"
+        android:id="@+id/title"
         layout="@layout/title_bar" />
 
     <Button
@@ -22,7 +22,7 @@
         android:paddingTop="12dp"
         android:text="@string/btn_inStorage"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include2" />
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
 
     <Button
@@ -37,7 +37,7 @@
         android:paddingTop="12dp"
         android:text="@string/btn_outStorage"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include2" />
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
 
     <Button

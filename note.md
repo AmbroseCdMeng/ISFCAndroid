@@ -132,6 +132,43 @@
 	初步判断：
 		- 线程原因，setText 修改值成功后，title_bar 未刷新
 		- 缓存原因，setText 修改值成功后，title_bar 未刷新
+		
+	测试结果(2020年4月4日12:27:47)：
+		- 并非以上两种原因。
+		- 问题原因：
+			> 因 TitleBarActivity 界面的组件初始化写在 onCreate 方法中；
+			> HomeActivity 继承了 TitleBarActivity 类，在 onCreate 方法中先执行了 super.onCreate 方法，此时 TitleBarActivity 的组件已经初始化完毕，然后 HomeActivity 才 setContentView(R.layout.home)；
+			> 此时 TitleBarActivity 中组件的 setText 虽然成功修改了 TitleBarActivity 界面中的值，但 HomeActivity 界面并未刷新。
+			
+		- 解决方法：
+			> 在 HomeActivity setContentView(R.layout.home) 方法之后再对 TitleBarActivity 界面的组件初始化
+		```xml
+		public class HomeActivity extends TitleBarActivity {
+			@Override
+			protected void onCreate(Bundle savedInstanceState) {
+				super.onCreate(savedInstanceState);
+				setContentView(R.layout.home);
+				initTitleView();
+			}
+		}
+		
+		public class TitleBarActivity extends AppCompatActivity {
+			private TextView mleft;
+			private TextView mtitle;
+			private TextView mright;
+			
+			protected void onCreate(Bundle savedInstanceState) {
+				super.onCreate(savedInstanceState);
+				setContentView(R.layout.title_bar);
+				//initTitleView();
+			}
+			protected void initTitleView() {
+				mleft = findViewById(R.id.tv_left);
+				mtitle = findViewById(R.id.tv_title);
+				mright = findViewById(R.id.tv_right);
+			}
+		}
+		```
 	
 	
 	
