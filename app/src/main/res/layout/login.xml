@@ -84,7 +84,7 @@
         android:includeFontPadding="false"
         android:text="@string/btn_login"
         android:textAlignment="center"
-        android:textColor="#FFFFFFFF"
+        android:textColor="@android:color/white"
         android:textSize="16.67sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

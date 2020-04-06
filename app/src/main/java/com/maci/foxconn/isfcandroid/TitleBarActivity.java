@@ -6,6 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+/***
+ * 自定义标题栏
+ * 
+ * @author AmbroseCdMeng
+
+ * @time 2020/4/6 下午 01:44
+ ***/
 public class TitleBarActivity extends AppCompatActivity {
 
     private TextView mleft;

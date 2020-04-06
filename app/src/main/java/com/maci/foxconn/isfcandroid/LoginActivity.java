@@ -53,12 +53,7 @@ public class LoginActivity extends TitleBarActivity {
     }
 
     private void initEvent() {
-        mlogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                login();
-            }
-        });
+        mlogin.setOnClickListener(v -> login());
     }
 
 

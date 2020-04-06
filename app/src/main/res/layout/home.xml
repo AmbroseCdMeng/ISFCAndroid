@@ -56,7 +56,7 @@
 
 
     <Button
-        android:id="@+id/btn_Others"
+        android:id="@+id/btn_More"
         android:layout_width="121dp"
         android:layout_height="77dp"
         android:padding="15dp"

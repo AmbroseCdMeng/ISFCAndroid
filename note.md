@@ -170,5 +170,20 @@
 		}
 		```
 	
+8. 页面崩溃程序退出
+
+	- 检查页面 context 属性的值是否与 Activity 名称对应
+		```xml
+		tools:context=".InStorageWorkOrderActivity"
+		```
 	
+	- 检查 AndroidMainifest 文件是否添加 activity 属性
+		```xml
+		<activity android:name=".InStorageWorkOrderActivity"/>
+		```
+		
+	- 检查页面代码是否报错
 	
+9. Button 内文字的边距(Button 内边距)
+
+	- 

@@ -11,7 +11,7 @@
     <string name="label_fgPassword">忘记密码</string>
     <string name="btn_login">登陆</string>
 
-    <!--Title Bar View-->
+    <!-- Title Bar View -->
     <string name="label_left"></string>
     <string name="label_title">@string/app_name</string>
     <string name="label_right"></string>
@@ -21,15 +21,28 @@
     <string name="btn_asnRelated">ASN 码关联</string>
     <string name="btn_outStorage">出库</string>
 
-    <!--InStorage View-->
+    <!-- InStorage View-->
     <string name="hint_search">请输入单号/料号/缴库部门</string>
     <string name="btn_search">查询</string>
     <string name="btn_addInStorage">扫码新增入库单</string>
 
-    <!--ASNRelated View-->
+    <string name="label_workOrder">工令单号：</string>
+    <string name="label_payDepartment">缴库部门：</string>
+
+    <string name="label_inStorage_no">未入库</string>
+    <string name="label_inStorage_part">部分入库</string>
+    <string name="label_inStorage_full">已入库</string>
+
+    <string name="label_materialNum">料号：</string>
+    <string name="label_materialName">物料名称：</string>
+    <string name="label_inStorageCount">实际/计划入库数量</string>
+
+
+    <!-- ASNRelated View-->
     <string name="label_addRelated">请先扫描箱码再扫描 ASN 标签码</string>
     <string name="btn_commit">提交</string>
 
-    <!--OutStorage View-->
+    <!-- OutStorage View-->
     <string name="btn_addOutStorage">扫码新增出库单</string>
+
 </resources>

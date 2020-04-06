@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".InStorageWorkOrderActivity">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/title_bar" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="229dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="11dp"
+        android:background="@drawable/textview_border"
+        android:drawableRight="@mipmap/clear"
+        android:hint="@string/hint_search"
+        android:textColor="@color/colorTextBlue"
+        android:textColorHint="@color/colorHintGray"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <Button
+        android:layout_width="52dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorLakeGreen"
+        android:includeFontPadding="false"
+        android:padding="0dp"
+        android:text="@string/btn_search"
+        android:textColor="@android:color/white"
+        android:textSize="11sp"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="393dp"
+        android:layout_marginTop="61dp"
+        android:background="@color/colorBackGroundWhite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@drawable/divider_line"
+            android:dividerPadding="20dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:showDividers="middle">
+
+            <ListView
+                android:id="@+id/lv_in_storage_work_order"
+                android:layout_width="245dp"
+                android:layout_height="97dp"
+                android:cacheColorHint="#00000000"
+                android:divider="@drawable/divider_line"
+                android:dividerHeight="1dp" >
+            </ListView>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@color/colorBackGroundGray"
+        android:drawableLeft="@mipmap/scan"
+        android:drawablePadding="-70dp"
+        android:paddingLeft="102dp"
+        android:text="@string/btn_addInStorage"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

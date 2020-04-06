@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+        android:layout_width="match_parent"
+        android:layout_height="97dp"
+        android:background="@color/colorBackGroundGray">
+
+        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@color/colorBackGroundYellow">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="51dp"
+                android:layout_height="11dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="4dp"
+                android:includeFontPadding="false"
+                android:text="@string/label_workOrder"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/workOrder"
+                android:layout_width="77dp"
+                android:layout_height="9dp"
+                android:layout_marginStart="72dp"
+                android:layout_marginTop="5dp"
+                android:includeFontPadding="false"
+                android:text="123465798100"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="51dp"
+                android:layout_height="11dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="21dp"
+                android:includeFontPadding="false"
+                android:text="@string/label_payDepartment"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/payDepartment"
+                android:layout_width="77dp"
+                android:layout_height="11dp"
+                android:layout_marginStart="72dp"
+                android:layout_marginTop="21dp"
+                android:includeFontPadding="false"
+                android:text="XXX 部门"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/storageState"
+                android:layout_width="45dp"
+                android:layout_height="11dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="9dp"
+                android:includeFontPadding="false"
+                android:text="@string/label_inStorage_part"
+                android:textColor="@color/colorTextBlack"
+                android:textSize="11sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <TextView
+            android:layout_width="51dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="10dp"
+            android:includeFontPadding="false"
+            android:text="@string/label_materialNum"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+        <TextView
+            android:id="@+id/materialNum"
+            android:layout_width="78dp"
+            android:layout_height="9dp"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="11dp"
+            android:includeFontPadding="false"
+            android:text="1234564399125"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+        <TextView
+            android:layout_width="51dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="26dp"
+            android:includeFontPadding="false"
+            android:text="@string/label_materialName"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+        <TextView
+            android:id="@+id/materialName"
+            android:layout_width="78dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="26dp"
+            android:includeFontPadding="false"
+            android:text="支架"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="43dp"
+            android:includeFontPadding="false"
+            android:text="@string/label_inStorageCount"
+            android:textColor="@color/colorTextBlack"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+        <TextView
+            android:id="@+id/inStorageCount"
+            android:layout_width="78dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="113dp"
+            android:layout_marginTop="44dp"
+            android:includeFontPadding="false"
+            android:text="0/200 PCS"
+            android:textColor="@color/colorTextGreen"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+
+        <ImageButton
+            android:layout_width="16dp"
+            android:layout_height="10dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="12dp"
+            android:src="@mipmap/go"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>
