@@ -1,22 +1,13 @@
 package com.maci.foxconn.isfcandroid;
 
-import android.content.Context;
 import android.content.Intent;
-import android.database.DataSetObserver;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
-import android.support.annotation.LayoutRes;
-import android.support.annotation.Nullable;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import com.maci.foxconn.utils.DrawableUtil;
 import com.maci.foxconn.utils.Utils;
@@ -50,6 +41,8 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
     private String[] materialNum = {"MTN032111423", "ORD124528996", "XYY48847811", "GRF14523697"};
     private String[] materialName = {"破铜", "烂铁", "塑料", "收破烂~"};
     private String[] inStorageCount = {"0/200 PCS", "50/2000 PCS", "0/0 PCS", "1000/1000 PCS"};
+
+    List<Map<String, Object>> data = new ArrayList<>();
     /* 示例数据 end */
 
 
@@ -106,14 +99,20 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
                 {
                     Utils.toast(this, position + " - - - " + id);
                     Intent intent = new Intent(getApplicationContext(), InStorageDetailInfoActivity.class);
-                    intent.putExtra(InStorageDetailInfoActivity.RETURN_INFO, "10528852059");
+
+                    intent.putExtra(InStorageDetailInfoActivity.RETURN_INFO_WORKORDER, data.get(position).get("workOrder").toString().trim());
+                    intent.putExtra(InStorageDetailInfoActivity.RETURN_INFO_PAYDEPARTMENT, data.get(position).get("payDepartment").toString().trim());
+                    intent.putExtra(InStorageDetailInfoActivity.RETURN_INFO_STORAGESTATE, data.get(position).get("storageState").toString().trim());
+                    intent.putExtra(InStorageDetailInfoActivity.RETURN_INFO_MATERIALNUM, data.get(position).get("materialNum").toString().trim());
+                    intent.putExtra(InStorageDetailInfoActivity.RETURN_INFO_MATERIALNAME, data.get(position).get("materialName").toString().trim());
+                    intent.putExtra(InStorageDetailInfoActivity.RETURN_INFO_INSTORAGECOUNT, data.get(position).get("inStorageCount").toString().trim());
+
                     startActivity(intent);
                 }
         );
     }
 
     private void initData() {
-        List<Map<String, Object>> data = new ArrayList<>();
 
         for (int i = 0; i < workOrder.length; i++) {
             Map<String, Object> item = new HashMap<>();

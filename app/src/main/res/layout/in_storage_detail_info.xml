@@ -1,14 +1,229 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/title_bar" />
+    <include
+        android:id="@+id/title"
+        layout="@layout/title_bar" />
 
-    <TextView
-        android:id="@+id/test"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
-        android:text="123"
-        android:layout_height="match_parent" />
+        android:layout_height="99dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+        <TextView
+        android:layout_width="51dp"
+        android:layout_height="11dp"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="15dp"
+        android:includeFontPadding="false"
+        android:text="@string/label_workOrder"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="78dp"
+            android:layout_height="9dp"
+            android:layout_marginStart="87dp"
+            android:layout_marginTop="16dp"
+            android:includeFontPadding="false"
+            android:text="4399"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="51dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="193dp"
+            android:layout_marginTop="15dp"
+            android:includeFontPadding="false"
+            android:text="@string/label_payDepartment"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="51dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="247dp"
+            android:layout_marginTop="15dp"
+            android:includeFontPadding="false"
+            android:text="XXX 部门"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="51dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="32dp"
+            android:includeFontPadding="false"
+            android:text="@string/label_materialNum"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="78dp"
+            android:layout_height="9dp"
+            android:layout_marginStart="87dp"
+            android:layout_marginTop="33dp"
+            android:includeFontPadding="false"
+            android:text="4399"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="51dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="193dp"
+            android:layout_marginTop="32dp"
+            android:includeFontPadding="false"
+            android:text="@string/label_materialName"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:layout_width="51dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="256dp"
+            android:layout_marginTop="32dp"
+            android:includeFontPadding="false"
+            android:text="支架"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="48dp"
+            android:includeFontPadding="false"
+            android:text="@string/label_materialNum"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="77dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="129dp"
+            android:layout_marginTop="49dp"
+            android:includeFontPadding="false"
+            android:text="4399"
+            android:textSize="11sp"
+            android:textColor="@color/colorLakeGreen"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="51dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="65dp"
+            android:includeFontPadding="false"
+            android:text="@string/label_materialNum"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="51dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="81dp"
+            android:includeFontPadding="false"
+            android:text="@string/label_materialNum"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="53dp"
+            android:layout_marginTop="82dp"
+            android:includeFontPadding="false"
+            android:text="9"
+            android:textSize="11sp"
+            android:textColor="@color/colorLakeGreen"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="51dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="86dp"
+            android:layout_marginTop="81dp"
+            android:includeFontPadding="false"
+            android:text="@string/label_materialNum"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="82dp"
+            android:includeFontPadding="false"
+            android:text="29"
+            android:textSize="11sp"
+            android:textColor="@color/colorLakeGreen"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="51dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="161dp"
+            android:layout_marginTop="81dp"
+            android:includeFontPadding="false"
+            android:text="@string/label_materialNum"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="194dp"
+            android:layout_marginTop="82dp"
+            android:includeFontPadding="false"
+            android:text="109"
+            android:textSize="11sp"
+            android:textColor="@color/colorLakeGreen"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="397dp"
+        android:layout_marginTop="0dp"
+        android:background="@color/colorBackGroundLightGray"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+        
+    </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>
