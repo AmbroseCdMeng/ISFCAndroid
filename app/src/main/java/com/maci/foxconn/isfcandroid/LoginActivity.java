@@ -2,16 +2,13 @@ package com.maci.foxconn.isfcandroid;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.maci.foxconn.utils.SharedPreferencesUtils;
 import com.maci.foxconn.utils.Utils;
+
 
 /***
  * 登录界面
@@ -53,6 +50,7 @@ public class LoginActivity extends TitleBarActivity {
     }
 
     private void initEvent() {
+
         mlogin.setOnClickListener(v -> login());
     }
 
@@ -63,24 +61,40 @@ public class LoginActivity extends TitleBarActivity {
             Utils.toast(LoginActivity.this,"用户名密码不能为空" );
             return ;
         }
-        new Thread() {
-            @Override
-            public void run() {
-                super.run();
-                mlogin.setClickable(false);
-                if ("Admin".equals(musername.getText().toString().trim())) {
-                    try {
-                        sleep(500);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    Utils.toast(LoginActivity.this, "登录成功");
-                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-                    finish();
-                } else
-                    Utils.toast(LoginActivity.this, "登录失败");
-                mlogin.setClickable(true);
-            }
-        }.start();
+//        new Thread() {
+//            @Override
+//            public void run() {
+//                super.run();
+//                mlogin.setClickable(false);
+//                if ("Admin".equals(musername.getText().toString().trim())) {
+//                    try {
+//                        sleep(500);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                    Utils.toast(LoginActivity.this, "登录成功");
+//                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+//                    finish();
+//                } else
+//                    Utils.toast(LoginActivity.this, "登录失败");
+//                mlogin.setClickable(true);
+//            }
+//        }.start();
+
+        new Thread(() -> {
+            mlogin.setClickable(false);
+            if ("Admin".equals(musername.getText().toString().trim())) {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                Utils.toast(LoginActivity.this, "登录成功");
+                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                finish();
+            } else
+                Utils.toast(LoginActivity.this, "登录失败");
+            mlogin.setClickable(true);
+        }).start();
     }
 }

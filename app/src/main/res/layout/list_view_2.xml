@@ -21,7 +21,7 @@
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="36dp"
-            android:background="@color/colorBackGroundDark">
+            android:background="@color/colorBackGroundGreen">
 
             <TextView
                 android:id="@+id/textView2"
@@ -81,7 +81,7 @@
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="9dp"
                 android:includeFontPadding="false"
-                android:text="@string/label_inStorage_full"
+                android:text="@string/label_inStorage_no"
                 android:textColor="@color/colorTextBlack"
                 android:textSize="11sp"
                 app:layout_constraintEnd_toEndOf="parent"

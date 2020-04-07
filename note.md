@@ -191,3 +191,7 @@
 	- 动态绑定数据
 	- 自定义分割线样式文件
 	- 调整 ListView 的间距，并引用分割线样式
+	
+10. TextView 和 EditView 中 drawableRight 图标的点击事件
+
+	

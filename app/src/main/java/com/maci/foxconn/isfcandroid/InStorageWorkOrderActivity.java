@@ -1,8 +1,25 @@
 package com.maci.foxconn.isfcandroid;
 
+import android.content.Context;
+import android.content.Intent;
+import android.database.DataSetObserver;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
+import android.support.annotation.LayoutRes;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
+
+import com.maci.foxconn.utils.DrawableUtil;
+import com.maci.foxconn.utils.Utils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,6 +36,8 @@ import java.util.Map;
 public class InStorageWorkOrderActivity extends TitleBarActivity {
 
     private ListView mInStorageWorkOrder;
+    private EditText mEtSearch;
+    private Button mBtnSearch;
 
     /* list item id */
     private String[] mapKeys = {"workOrder", "payDepartment", "storageState", "materialNum", "materialName", "inStorageCount"};
@@ -43,7 +62,54 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
 
         initData();
 
+        initEvent();
 
+
+    }
+
+    private void initEvent() {
+
+        mBtnSearch.setOnClickListener(v -> Utils.toast(this, "查询成功"));
+
+        new DrawableUtil(mEtSearch, new DrawableUtil.OnDrawableListener() {
+            @Override
+            public void onLeft(View view, Drawable left) {
+
+            }
+
+            @Override
+            public void onRight(View view, Drawable right) {
+//                Toast.makeText(InStorageWorkOrderActivity.this, "RIGHT ICON TOUCHED", Toast.LENGTH_LONG).show();
+                mEtSearch.setText("");
+            }
+
+            @Override
+            public void onTop(View view, Drawable top) {
+
+            }
+
+            @Override
+            public void onBottom(View view, Drawable bottom) {
+
+            }
+        });
+
+//        mInStorageWorkOrder.setOnItemClickListener( new AdapterView.OnItemClickListener(){
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Utils.toast(InStorageWorkOrderActivity.this, position + " - - - " + id);
+//            }
+//        });
+
+
+        mInStorageWorkOrder.setOnItemClickListener((parent, view, position, id) ->
+                {
+                    Utils.toast(this, position + " - - - " + id);
+                    Intent intent = new Intent(getApplicationContext(), InStorageDetailInfoActivity.class);
+                    intent.putExtra(InStorageDetailInfoActivity.RETURN_INFO, "10528852059");
+                    startActivity(intent);
+                }
+        );
     }
 
     private void initData() {
@@ -57,10 +123,18 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
             item.put("materialNum", materialNum[i]);
             item.put("materialName", materialName[i]);
             item.put("inStorageCount", inStorageCount[i]);
+
+            String temp = storageState[i];
+            item.put("layoutId", "已入库".equals(temp) ? R.layout.list_view_0 : ("部分入库".equals(temp) ? R.layout.list_view_1 : R.layout.list_view_2));
+
             data.add(item);
         }
 
-        mInStorageWorkOrder.setAdapter(new SimpleAdapter(InStorageWorkOrderActivity.this, data, R.layout.list_view_0,
+        /**
+         * 后续修改为加载自定义布局
+         */
+        mInStorageWorkOrder.setAdapter(new SimpleAdapter(InStorageWorkOrderActivity.this, data,
+                R.layout.list_view_1,
                 mapKeys,
                 ids
         ));
@@ -68,5 +142,8 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
 
     private void initView() {
         mInStorageWorkOrder = findViewById(R.id.lv_in_storage_work_order);
+        mEtSearch = findViewById(R.id.et_search);
+        mBtnSearch = findViewById(R.id.btn_search);
     }
+
 }
