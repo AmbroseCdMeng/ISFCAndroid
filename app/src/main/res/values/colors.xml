@@ -30,5 +30,8 @@
     <!-- DividerColor -->
     <color name="dividerColorGray">#FFBFBFBF</color>
 
+    <!-- ShapeColor -->
+    <color name="shapeColorGray">#FFDBDBDB</color>
+
 
 </resources>

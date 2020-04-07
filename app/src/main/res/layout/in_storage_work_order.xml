@@ -27,7 +27,7 @@
     <Button
         android:layout_width="52dp"
         android:layout_height="26dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="11dp"
         android:background="@color/colorLakeGreen"
         android:includeFontPadding="false"
         android:padding="0dp"
@@ -37,37 +37,18 @@
         app:layout_constraintStart_toEndOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
-    <ScrollView
-        android:layout_width="match_parent"
+    <ListView
+        android:id="@+id/lv_in_storage_work_order"
+        android:layout_width="245dp"
         android:layout_height="393dp"
         android:layout_marginTop="61dp"
-        android:background="@color/colorBackGroundWhite"
+        android:cacheColorHint="#00000000"
+        android:divider="@drawable/divider_line"
+        android:dividerHeight="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:divider="@drawable/divider_line"
-            android:dividerPadding="20dp"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:showDividers="middle">
-
-            <ListView
-                android:id="@+id/lv_in_storage_work_order"
-                android:layout_width="245dp"
-                android:layout_height="97dp"
-                android:cacheColorHint="#00000000"
-                android:divider="@drawable/divider_line"
-                android:dividerHeight="1dp" >
-            </ListView>
-
-        </LinearLayout>
-
-
-    </ScrollView>
+    </ListView>
 
     <Button
         android:layout_width="match_parent"

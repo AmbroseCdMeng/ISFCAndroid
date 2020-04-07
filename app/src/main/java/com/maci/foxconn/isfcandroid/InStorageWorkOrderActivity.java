@@ -25,7 +25,7 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
     private int[] ids = {R.id.workOrder, R.id.payDepartment, R.id.storageState, R.id.materialNum, R.id.materialName, R.id.inStorageCount};
 
     /* 示例数据 start */
-    private String[] workOrder = {"93109073368", "490250992", "1096868926", "4399xyx"};
+    private String[] workOrder = {"93109073362", "490250992", "1096868926", "4399xyx"};
     private String[] payDepartment = {"关务物流部", "机电总务部", "产品开发部", "工程技术部"};
     private String[] storageState = {"已入库", "部分入库", "未入库", "未入库", "未入库"};
     private String[] materialNum = {"MTN032111423", "ORD124528996", "XYY48847811", "GRF14523697"};
