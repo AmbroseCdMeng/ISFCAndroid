@@ -27,8 +27,6 @@ public class InStorageDetailInfoActivity extends TitleBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.in_storage_detail_info);
 
-        TextView textView = findViewById(R.id.test);
-//        textView.setText(getParamsInfo(RETURN_INFO));
     }
 
     /**

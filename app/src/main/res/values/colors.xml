@@ -1,39 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FF008577</color>
-    <color name="colorPrimaryDark">#FF00574B</color>
-    <color name="colorAccent">#FFD81B60</color>
 
-    <!-- Customize Color For Login View -->
+    <color name="colorLakeGreenDark">#FF00A98F</color>
+    <color name="colorLakeGreen">#FF1DD8BB</color>
+    <color name="colorLakeGreenLight">#FFCDE5DF</color>
 
-    <!--TitleBar & LoginButton-->
-    <color name="colorLakeGreen">#FF00A98F</color>
+    <color name="colorAquaGreen">#FFD0E5E0</color>
 
-    <!-- TextBox TextHint & ShowPassword & ForgetPassword -->
-    <color name="colorHintGray">#FF6A6A6A</color>
+    <color name="colorGrayDark">#FF6A6A6A</color>
+    <color name="colorGray" >#FFD4D9DE</color>
+    <color name="colorGrayLight">#FFF6F8FA</color>
+    <color name="colorGrayPale">#FFFFFEFF</color>
 
-    <!-- TextBox Text -->
-    <color name="colorTextBlue">#FF1E90FF</color>
-    <color name="colorTextGreen">#FF00A98F</color>
-    <color name="colorTextBlack">#FF000000</color>
+    <color name="colorShadowDark">#FF969696</color>
+    <color name="colorShadowLight">#FFDBDBDB</color>
+    <color name="colorShadow">#FFBFBFBF</color>
 
-    <!-- BackGroundColor -->
-    <color name="colorBackGroundWhite">#FFFFFFFF</color>
-    <color name="colorBackGroundYellow">#FFF9BB4F</color>
-    <color name="colorBackGroundGreen">#FF1DD8BB</color>
-    <color name="colorBackGroundGray">#FFF7F8F9</color>
-    <color name="colorBackGroundLightGray">#FFF7F4F8</color>
-    <color name="colorBackGroundDarkGray">#FFD4D9DE</color>
-
-    <!-- BorderColor -->
-    <color name="colorBorderGray">#FFBFBFBF</color>
-    <color name="colorTextBorderGreen">#FF00A98F</color>
-
-    <!-- DividerColor -->
-    <color name="dividerColorGray">#FFBFBFBF</color>
-
-    <!-- ShapeColor -->
-    <color name="shapeColorGray">#FFDBDBDB</color>
-
+    <color name="colorBlack">#FF000000</color>
+    <color name="colorWhite">#FFFFFFFF</color>
+    
+    <color name="colorYellowDark">#FFF9BB4F</color>
 
 </resources>

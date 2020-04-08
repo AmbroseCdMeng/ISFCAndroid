@@ -12,7 +12,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/listview_selector"
+        android:background="@drawable/style_lv_instorage_selector"
         android:paddingTop="0dp"
         android:paddingBottom="5dp">
 
@@ -21,7 +21,7 @@
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="36dp"
-            android:background="@color/colorBackGroundDark">
+            android:background="@color/colorGray">
 
             <TextView
                 android:id="@+id/textView2"
@@ -31,7 +31,7 @@
                 android:layout_marginTop="4dp"
                 android:includeFontPadding="false"
                 android:text="@string/label_workOrder"
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorBlack"
                 android:textSize="10sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -44,7 +44,7 @@
                 android:layout_marginTop="5dp"
                 android:includeFontPadding="false"
                 android:text="123465798100"
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorBlack"
                 android:textSize="10sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -56,7 +56,7 @@
                 android:layout_marginTop="21dp"
                 android:includeFontPadding="false"
                 android:text="@string/label_payDepartment"
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorBlack"
                 android:textSize="10sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -69,7 +69,7 @@
                 android:layout_marginTop="21dp"
                 android:includeFontPadding="false"
                 android:text="XXX 部门"
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorBlack"
                 android:textSize="10sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -82,7 +82,7 @@
                 android:layout_marginEnd="9dp"
                 android:includeFontPadding="false"
                 android:text="@string/label_inStorage_full"
-                android:textColor="@color/colorTextBlack"
+                android:textColor="@color/colorBlack"
                 android:textSize="11sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -96,7 +96,7 @@
             android:layout_marginTop="10dp"
             android:includeFontPadding="false"
             android:text="@string/label_materialNum"
-            android:textColor="@color/colorTextBlack"
+            android:textColor="@color/colorBlack"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
@@ -109,7 +109,7 @@
             android:layout_marginTop="11dp"
             android:includeFontPadding="false"
             android:text="1234564399125"
-            android:textColor="@color/colorTextBlack"
+            android:textColor="@color/colorBlack"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
@@ -121,7 +121,7 @@
             android:layout_marginTop="26dp"
             android:includeFontPadding="false"
             android:text="@string/label_materialName"
-            android:textColor="@color/colorTextBlack"
+            android:textColor="@color/colorBlack"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
@@ -134,7 +134,7 @@
             android:layout_marginTop="26dp"
             android:includeFontPadding="false"
             android:text="支架"
-            android:textColor="@color/colorTextBlack"
+            android:textColor="@color/colorBlack"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
@@ -146,7 +146,7 @@
             android:layout_marginTop="43dp"
             android:includeFontPadding="false"
             android:text="@string/label_inStorageCount"
-            android:textColor="@color/colorTextBlack"
+            android:textColor="@color/colorBlack"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
@@ -159,7 +159,7 @@
             android:layout_marginTop="44dp"
             android:includeFontPadding="false"
             android:text="0/200 PCS"
-            android:textColor="@color/colorTextGreen"
+            android:textColor="@color/colorLakeGreenDark"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />

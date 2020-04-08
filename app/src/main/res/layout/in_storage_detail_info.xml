@@ -18,15 +18,15 @@
         app:layout_constraintTop_toBottomOf="@+id/title">
 
         <TextView
-        android:layout_width="51dp"
-        android:layout_height="11dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginTop="15dp"
-        android:includeFontPadding="false"
-        android:text="@string/label_workOrder"
-        android:textSize="10sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:layout_width="51dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="15dp"
+            android:includeFontPadding="false"
+            android:text="@string/label_workOrder"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:layout_width="78dp"
@@ -112,7 +112,7 @@
             android:layout_marginStart="19dp"
             android:layout_marginTop="48dp"
             android:includeFontPadding="false"
-            android:text="@string/label_materialNum"
+            android:text="@string/label_inStorageCount"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -124,8 +124,8 @@
             android:layout_marginTop="49dp"
             android:includeFontPadding="false"
             android:text="4399"
-            android:textSize="11sp"
             android:textColor="@color/colorLakeGreen"
+            android:textSize="11sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -135,7 +135,7 @@
             android:layout_marginStart="19dp"
             android:layout_marginTop="65dp"
             android:includeFontPadding="false"
-            android:text="@string/label_materialNum"
+            android:text="@string/label_thisInStorage"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -146,7 +146,7 @@
             android:layout_marginStart="19dp"
             android:layout_marginTop="81dp"
             android:includeFontPadding="false"
-            android:text="@string/label_materialNum"
+            android:text="@string/label_pallet"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -158,8 +158,8 @@
             android:layout_marginTop="82dp"
             android:includeFontPadding="false"
             android:text="9"
-            android:textSize="11sp"
             android:textColor="@color/colorLakeGreen"
+            android:textSize="11sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -169,7 +169,7 @@
             android:layout_marginStart="86dp"
             android:layout_marginTop="81dp"
             android:includeFontPadding="false"
-            android:text="@string/label_materialNum"
+            android:text="@string/label_package"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -181,8 +181,8 @@
             android:layout_marginTop="82dp"
             android:includeFontPadding="false"
             android:text="29"
-            android:textSize="11sp"
             android:textColor="@color/colorLakeGreen"
+            android:textSize="11sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -192,7 +192,7 @@
             android:layout_marginStart="161dp"
             android:layout_marginTop="81dp"
             android:includeFontPadding="false"
-            android:text="@string/label_materialNum"
+            android:text="@string/label_material"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -204,8 +204,8 @@
             android:layout_marginTop="82dp"
             android:includeFontPadding="false"
             android:text="109"
+            android:textColor="@color/colorLakeGreenDark"
             android:textSize="11sp"
-            android:textColor="@color/colorLakeGreen"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -217,13 +217,161 @@
         android:layout_width="match_parent"
         android:layout_height="397dp"
         android:layout_marginTop="0dp"
-        android:background="@color/colorBackGroundLightGray"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
-        
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="13dp"
+            android:src="@mipmap/barcode"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="63dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorGrayPale"
+            android:includeFontPadding="false"
+            android:text="@string/label_scan"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TableLayout
+            android:layout_width="280dp"
+            android:layout_height="160dp"
+            android:layout_marginTop="56dp"
+            android:background="@color/colorGrayPale"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:background="@drawable/style_tv_border_black_2"
+                    android:text="@string/tHead_number"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/style_tv_border_black_2"
+                    android:gravity="center"
+                    android:text="@string/tHead_code"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/style_tv_border_black_2"
+                    android:gravity="center"
+                    android:text="@string/tHead_count_package"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/style_tv_border_black_2"
+                    android:gravity="center"
+                    android:text="@string/tHead_count_material"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:padding="1dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/style_tv_border_black_1"
+                    android:gravity="center"
+                    android:text="@string/tHead_number"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/style_tv_border_black_1"
+                    android:gravity="center"
+                    android:text="@string/tHead_code"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/style_tv_border_black_1"
+                    android:gravity="center"
+                    android:text="@string/tHead_count_package"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="11sp"/>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/style_tv_border_black_1"
+                    android:gravity="center"
+                    android:text="@string/tHead_count_material"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="11sp" />
+
+            </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:layout_width="49dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="27dp"
+            android:layout_marginTop="302dp"
+            android:includeFontPadding="false"
+            android:text="@string/label_location_code"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="211dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="87dp"
+            android:layout_marginTop="297dp"
+            android:background="@drawable/style_tv_border_green"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </android.support.constraint.ConstraintLayout>
 
 </android.support.constraint.ConstraintLayout>

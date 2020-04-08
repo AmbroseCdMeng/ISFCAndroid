@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="37.33dp"
-    android:background="@color/colorLakeGreen"
+    android:background="@color/colorLakeGreenDark"
     tools:context=".TitleBarActivity">
 
     <android.support.constraint.ConstraintLayout
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"
         android:layout_marginTop="0dp"
-        android:background="@color/colorLakeGreen"
+        android:background="@color/colorLakeGreenDark"
         android:visibility="invisible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -24,7 +24,7 @@
             android:layout_height="20dp"
             android:layout_marginStart="4dp"
             android:layout_marginTop="11dp"
-            android:background="@color/colorLakeGreen"
+            android:background="@color/colorLakeGreenDark"
             android:text="@string/label_left"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +35,7 @@
         android:layout_width="107dp"
         android:layout_height="17dp"
         android:layout_marginTop="11dp"
-        android:background="@color/colorLakeGreen"
+        android:background="@color/colorLakeGreenDark"
         android:includeFontPadding="false"
         android:text="@string/label_title"
         android:textAlignment="center"
@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="0dp"
-        android:background="@color/colorLakeGreen"
+        android:background="@color/colorLakeGreenDark"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -62,7 +62,7 @@
             android:layout_height="20dp"
             android:layout_marginTop="11dp"
             android:layout_marginEnd="4dp"
-            android:background="@color/colorLakeGreen"
+            android:background="@color/colorLakeGreenDark"
             android:text="@string/label_right"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

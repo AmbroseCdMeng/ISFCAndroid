@@ -37,6 +37,23 @@
     <string name="label_materialName">物料名称：</string>
     <string name="label_inStorageCount">实际/计划入库数量</string>
 
+    <string name="label_thisInStorage">本次入库</string>
+    <string name="label_pallet">栈板</string>
+    <string name="label_package">包箱</string>
+    <string name="label_material">物料</string>
+
+    <string name="label_scan">请扫描栈板码/箱码</string>
+
+    <string name="label_location_code">储位码</string>
+    <string name="btn_commit_storage">提交入库</string>
+
+    <string name="tHead_number">序号</string>
+    <string name="tHead_code">栈板码/箱码</string>
+    <string name="tHead_count_package">包箱数量</string>
+    <string name="tHead_count_material">物料数量</string>
+
+
+
 
     <!-- ASNRelated View-->
     <string name="label_addRelated">请先扫描箱码再扫描 ASN 标签码</string>
@@ -44,5 +61,6 @@
 
     <!-- OutStorage View-->
     <string name="btn_addOutStorage">扫码新增出库单</string>
+
 
 </resources>
