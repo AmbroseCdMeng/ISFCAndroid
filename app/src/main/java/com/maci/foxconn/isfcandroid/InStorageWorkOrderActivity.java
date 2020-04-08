@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-import com.maci.foxconn.utils.DrawableUtil;
+import com.maci.foxconn.utils.DrawableUtils;
 import com.maci.foxconn.utils.Utils;
 
 import java.util.ArrayList;
@@ -68,7 +68,7 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
 
         mBtnSearch.setOnClickListener(v -> Utils.toast(this, "查询成功"));
 
-        new DrawableUtil(mEtSearch, new DrawableUtil.OnDrawableListener() {
+        new DrawableUtils(mEtSearch, new DrawableUtils.OnDrawableListener() {
             @Override
             public void onLeft(View view, Drawable left) {
 
