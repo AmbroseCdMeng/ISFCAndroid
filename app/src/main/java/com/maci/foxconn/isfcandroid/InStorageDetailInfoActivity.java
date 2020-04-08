@@ -36,7 +36,7 @@ public class InStorageDetailInfoActivity extends TitleBarActivity {
     }
 
     private void initView() {
-
+        super.initTitleView();
         showLeft(true, "<入库信息", v -> finish());
         showRight(true, "用户名", v -> startActivity(new Intent(getApplicationContext(), UserActivity.class)));
     }

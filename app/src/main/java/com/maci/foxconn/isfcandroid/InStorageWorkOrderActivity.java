@@ -144,6 +144,7 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
     }
 
     private void initView() {
+        super.initTitleView();
         mInStorageWorkOrder = findViewById(R.id.lv_in_storage_work_order);
         mEtSearch = findViewById(R.id.et_search);
         mBtnSearch = findViewById(R.id.btn_search);
