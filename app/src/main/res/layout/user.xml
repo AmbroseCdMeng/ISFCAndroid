@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/title_bar" />
+
+    <TextView
+        android:layout_width="28dp"
+        android:layout_height="13dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="26dp"
+        android:includeFontPadding="false"
+        android:text="账号:"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="13dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="47dp"
+        android:includeFontPadding="false"
+        android:text="F1680502"
+        android:textColor="@color/colorBlack"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="13dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="73dp"
+        android:includeFontPadding="false"
+        android:text="姓名:"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="13dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="94dp"
+        android:includeFontPadding="false"
+        android:text="收破烂~捡垃圾"
+        android:textColor="@color/colorBlack"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="13dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="119dp"
+        android:includeFontPadding="false"
+        android:text="旧密码:"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="13dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="135dp"
+        android:hint="请输入旧密码"
+        android:includeFontPadding="false"
+        android:inputType="textPassword"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="13dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="163dp"
+        android:includeFontPadding="false"
+        android:text="新密码:"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="13dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="181dp"
+        android:hint="请输入新密码"
+        android:includeFontPadding="false"
+        android:inputType="textPassword"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="13dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="210dp"
+        android:includeFontPadding="false"
+        android:text="确认密码:"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <TextView
+        android:layout_width="100dp"
+        android:layout_height="13dp"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="228dp"
+        android:hint="请再次输入新密码"
+        android:includeFontPadding="false"
+        android:inputType="textPassword"
+        android:textSize="11sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="42dp"
+        android:background="@color/colorWhite"
+        android:text="修改密码"
+        android:drawableLeft="@mipmap/cpwd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingLeft="36dp"
+        android:drawablePadding="-36dp"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="42dp"
+        android:background="@color/colorWhite"
+        android:text="注销"
+        android:paddingLeft="36dp"
+        android:drawablePadding="-36dp"
+        android:drawableLeft="@mipmap/logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+</android.support.constraint.ConstraintLayout>

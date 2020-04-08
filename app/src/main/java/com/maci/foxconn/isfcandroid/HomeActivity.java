@@ -32,7 +32,7 @@ public class HomeActivity extends TitleBarActivity {
     private void initView() {
         super.initTitleView();
         showLeft(false, null, null);
-        showRight(true, "用户名", (v) -> Utils.toast(HomeActivity.this, "User Details"));
+        showRight(true, "用户名", v -> startActivity(new Intent(getApplicationContext(), UserActivity.class)));
 
         minStorage = findViewById(R.id.btn_InStorage);
         moutStorage = findViewById(R.id.btn_OutStorage);

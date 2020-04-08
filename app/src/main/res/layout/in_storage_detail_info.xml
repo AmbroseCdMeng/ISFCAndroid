@@ -915,6 +915,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
+            android:id="@+id/btn_commit_inStorage"
             android:layout_width="match_parent"
             android:layout_height="43dp"
             app:layout_constraintBottom_toBottomOf="parent"

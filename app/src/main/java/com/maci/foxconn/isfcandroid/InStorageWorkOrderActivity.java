@@ -53,6 +53,10 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
 
         initView();
 
+        showLeft(true, "<入库工令单", v -> finish());
+        showRight(true, "用户名", v -> startActivity(new Intent(getApplicationContext(), UserActivity.class)));
+
+
         initData();
 
         initEvent();
