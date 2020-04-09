@@ -14,7 +14,7 @@ public class UserActivity extends TitleBarActivity {
     }
 
     private void intiEvent() {
-         // 
+         //
     }
 
     private void initView() {
@@ -22,6 +22,6 @@ public class UserActivity extends TitleBarActivity {
         showTitle(false, null, null);
 
         showLeft(true, "<首页", v -> finish());
-        showRight(true, "用户名", null );
+        showRight(true, "用户名", v -> {return;} );
     }
 }

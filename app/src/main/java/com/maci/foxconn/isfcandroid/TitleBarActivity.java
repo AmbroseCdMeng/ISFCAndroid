@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 /***
  * 自定义标题栏
- * 
+ *
  * @author AmbroseCdMeng
 
  * @time 2020/4/6 下午 01:44
@@ -19,9 +19,6 @@ public class TitleBarActivity extends AppCompatActivity {
     private TextView mtitle;
     private TextView mright;
 
-    private ConstraintLayout mleftLayout;
-    private ConstraintLayout mrightLayou;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,58 +27,49 @@ public class TitleBarActivity extends AppCompatActivity {
     }
 
     protected void initTitleView() {
-        mleftLayout = findViewById(R.id.cl_left);
-        mrightLayou = findViewById(R.id.cl_right);
-
         mleft = findViewById(R.id.tv_left);
         mtitle = findViewById(R.id.tv_title);
         mright = findViewById(R.id.tv_right);
     }
 
-    protected  void showTitle(boolean isShow, String text, View.OnClickListener onClickListener){
-        if (isShow){
+    protected void showTitle(boolean isShow, String text, View.OnClickListener onClickListener) {
+        if (isShow) {
             mtitle.setVisibility(View.VISIBLE);
             mtitle.setText(text);
             if (onClickListener != null)
                 mtitle.setOnClickListener(onClickListener);
             else
                 mtitle.setOnClickListener(v -> finish());
-        }else {
+        } else {
             mtitle.setVisibility(View.INVISIBLE);
         }
     }
 
     protected void showLeft(boolean isShow, String text, View.OnClickListener onClickListener) {
-        if (mleftLayout != null) {
-            if (isShow) {
-                mleftLayout.setVisibility(View.VISIBLE);
-                mleft.setVisibility(View.VISIBLE);
-                mleft.setText(text);
-                if (onClickListener != null)
-                    mleftLayout.setOnClickListener(onClickListener);
-                else
-                    mleftLayout.setOnClickListener((v) -> finish());
-            } else {
-                mleftLayout.setVisibility(View.INVISIBLE);
-                mleft.setVisibility(View.INVISIBLE);
-            }
+        if (isShow) {
+            mleft.setVisibility(View.VISIBLE);
+            mleft.setText(text);
+            if (onClickListener != null)
+                mleft.setOnClickListener(onClickListener);
+            else
+                mleft.setOnClickListener((v) -> finish());
+        } else {
+            mleft.setVisibility(View.INVISIBLE);
+            mleft.setVisibility(View.INVISIBLE);
         }
     }
 
     protected void showRight(boolean isShow, String text, View.OnClickListener onClickListener) {
-        if (mrightLayou != null) {
-            if (isShow) {
-                mrightLayou.setVisibility(View.VISIBLE);
-                mright.setVisibility(View.VISIBLE);
-                mright.setText(text);
-                if (onClickListener != null)
-                    mrightLayou.setOnClickListener(onClickListener);
-                else
-                    mrightLayou.setOnClickListener((v -> finish()));
-            } else {
-                mrightLayou.setVisibility(View.INVISIBLE);
-                mright.setVisibility(View.INVISIBLE);
-            }
+        if (isShow) {
+            mright.setVisibility(View.VISIBLE);
+            mright.setText(text);
+            if (onClickListener != null)
+                mright.setOnClickListener(onClickListener);
+            else
+                mright.setOnClickListener((v -> finish()));
+        } else {
+            mright.setVisibility(View.INVISIBLE);
+            mright.setVisibility(View.INVISIBLE);
         }
     }
 }

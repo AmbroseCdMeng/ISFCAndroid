@@ -194,4 +194,25 @@
 	
 10. TextView 和 EditView 中 drawableRight 图标的点击事件
 
+11. 自动获取焦点问题
+
+	- 在外层布局加入如下代码，防止界面内 TextView EditView 等元素自动获取焦点产生黑色阴影
+	
+		```xml
+		android:focusable="true"
+		android:focusableInTouchMode="true"
+		```
+		
+12. TextView 对齐方式
+	- gravity
+		内容对齐方式
+			* left	左对齐
+			* center  垂直水平居中
+			* center_horizontal	水平居中
+			* center_vertical 	垂直居中
+			* center_vertical|left	垂直居中且左对齐
+	
+	- layout_gravity
+		组件相对于父组件的对齐方式
+	
 	
