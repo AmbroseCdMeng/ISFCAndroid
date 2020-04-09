@@ -10,7 +10,7 @@
         layout="@layout/title_bar" />
 
     <TextView
-        android:id="@+id/tv_l_no"
+        android:id="@+id/tv_l_userno"
         android:layout_width="28dp"
         android:layout_height="13dp"
         android:layout_marginStart="43dp"
@@ -22,7 +22,7 @@
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
-        android:id="@+id/tv_no"
+        android:id="@+id/tv_userno"
         android:layout_width="100dp"
         android:layout_height="13dp"
         android:layout_marginStart="43dp"
@@ -32,10 +32,10 @@
         android:textColor="@color/colorBlack"
         android:textSize="11sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_l_no" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_l_userno" />
 
     <TextView
-        android:id="@+id/tv_l_name"
+        android:id="@+id/tv_l_username"
         android:layout_width="100dp"
         android:layout_height="13dp"
         android:layout_marginStart="43dp"
@@ -47,7 +47,7 @@
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
-        android:id="@+id/tv_name"
+        android:id="@+id/tv_username"
         android:layout_width="100dp"
         android:layout_height="13dp"
         android:layout_marginStart="43dp"
@@ -57,7 +57,7 @@
         android:textColor="@color/colorBlack"
         android:textSize="11sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_l_name" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_l_username" />
 
     <TextView
         android:id="@+id/tv_l_oldPwd"
@@ -142,6 +142,7 @@
 
 
     <Button
+        android:id="@+id/btn_cPwd"
         android:layout_width="160dp"
         android:layout_height="42dp"
         android:background="@color/colorWhite"
@@ -153,6 +154,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
+        android:id="@+id/btn_logout"
         android:layout_width="160dp"
         android:layout_height="42dp"
         android:background="@color/colorWhite"

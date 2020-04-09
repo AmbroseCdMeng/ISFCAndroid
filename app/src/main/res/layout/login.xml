@@ -33,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <EditText
-        android:id="@+id/ed_username"
+        android:id="@+id/ed_userno"
         android:layout_width="170dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"

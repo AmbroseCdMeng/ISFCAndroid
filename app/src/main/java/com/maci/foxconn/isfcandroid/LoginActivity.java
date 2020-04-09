@@ -22,7 +22,7 @@ import com.maci.foxconn.utils.Utils;
  ***/
 public class LoginActivity extends TitleBarActivity {
 
-    private EditText musername;
+    private EditText muserno;
     private EditText mpassword;
     private CheckBox msPwd;
     private TextView mfPwd;
@@ -37,14 +37,14 @@ public class LoginActivity extends TitleBarActivity {
         initView();
         initEvent();
 
-        musername.setText("Admin");
+        muserno.setText("Admin");
         mpassword.setText("Administrator");
 
     }
 
 
     private void initView() {
-        musername = findViewById(R.id.ed_username);
+        muserno = findViewById(R.id.ed_userno);
         mpassword = findViewById(R.id.ed_pwd);
         msPwd = findViewById(R.id.cb_s_pwd);
         mfPwd = findViewById(R.id.tv_f_pwd);
@@ -75,15 +75,15 @@ public class LoginActivity extends TitleBarActivity {
 
 
     private void login()  {
-        if(musername.getText().toString().trim().isEmpty() || mpassword.getText().toString().trim().isEmpty())
+        if(muserno.getText().toString().trim().isEmpty() || mpassword.getText().toString().trim().isEmpty())
         {
-            Utils.toast(LoginActivity.this,"用户名密码不能为空" );
+            Utils.toast(LoginActivity.this,"账号密码不能为空" );
             return ;
         }
 
         new Thread(() -> {
             mlogin.setClickable(false);
-            if ("Admin".equals(musername.getText().toString().trim())) {
+            if ("Admin".equals(muserno.getText().toString().trim())) {
                 try {
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
@@ -96,5 +96,18 @@ public class LoginActivity extends TitleBarActivity {
                 Utils.toast(LoginActivity.this, "登录失败");
             mlogin.setClickable(true);
         }).start();
+    }
+
+    private String getUserNo(){
+        return muserno.getText().toString().trim();
+    }
+
+    private String getPwd(){
+        //省略加密过程
+        return mpassword.getText().toString().trim();
+    }
+
+    private boolean getSPwdStatus(){
+        return msPwd.isChecked();
     }
 }
