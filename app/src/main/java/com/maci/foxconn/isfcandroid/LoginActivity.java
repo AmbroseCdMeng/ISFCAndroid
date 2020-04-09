@@ -2,10 +2,13 @@ package com.maci.foxconn.isfcandroid;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.maci.foxconn.utils.Utils;
 
@@ -52,6 +55,22 @@ public class LoginActivity extends TitleBarActivity {
     private void initEvent() {
 
         mlogin.setOnClickListener(v -> login());
+        msPwd.setOnCheckedChangeListener((v, isChecked) -> {
+            changePwdStatus(isChecked);
+        });
+        mfPwd.setOnClickListener(v -> forgetPwd());
+    }
+
+    private void forgetPwd() {
+        Toast.makeText(LoginActivity.this, "忘记密码", Toast.LENGTH_LONG).show();
+    }
+
+    private void changePwdStatus(boolean isChecked){
+        if (isChecked)
+            mpassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+        else
+            mpassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        mpassword.setSelection(mpassword.getText().length());
     }
 
 
@@ -61,25 +80,6 @@ public class LoginActivity extends TitleBarActivity {
             Utils.toast(LoginActivity.this,"用户名密码不能为空" );
             return ;
         }
-//        new Thread() {
-//            @Override
-//            public void run() {
-//                super.run();
-//                mlogin.setClickable(false);
-//                if ("Admin".equals(musername.getText().toString().trim())) {
-//                    try {
-//                        sleep(500);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                    Utils.toast(LoginActivity.this, "登录成功");
-//                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-//                    finish();
-//                } else
-//                    Utils.toast(LoginActivity.this, "登录失败");
-//                mlogin.setClickable(true);
-//            }
-//        }.start();
 
         new Thread(() -> {
             mlogin.setClickable(false);
@@ -90,7 +90,7 @@ public class LoginActivity extends TitleBarActivity {
                     e.printStackTrace();
                 }
                 Utils.toast(LoginActivity.this, "登录成功");
-                startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                 finish();
             } else
                 Utils.toast(LoginActivity.this, "登录失败");

@@ -10,6 +10,7 @@
         layout="@layout/title_bar" />
 
     <TextView
+        android:id="@+id/tv_l_no"
         android:layout_width="28dp"
         android:layout_height="13dp"
         android:layout_marginStart="43dp"
@@ -21,22 +22,24 @@
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
+        android:id="@+id/tv_no"
         android:layout_width="100dp"
         android:layout_height="13dp"
         android:layout_marginStart="43dp"
-        android:layout_marginTop="47dp"
+        android:layout_marginTop="10dp"
         android:includeFontPadding="false"
         android:text="F1680502"
         android:textColor="@color/colorBlack"
         android:textSize="11sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_l_no" />
 
     <TextView
+        android:id="@+id/tv_l_name"
         android:layout_width="100dp"
         android:layout_height="13dp"
         android:layout_marginStart="43dp"
-        android:layout_marginTop="73dp"
+        android:layout_marginTop="76dp"
         android:includeFontPadding="false"
         android:text="姓名:"
         android:textSize="11sp"
@@ -44,106 +47,119 @@
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
+        android:id="@+id/tv_name"
         android:layout_width="100dp"
         android:layout_height="13dp"
         android:layout_marginStart="43dp"
-        android:layout_marginTop="94dp"
+        android:layout_marginTop="10dp"
         android:includeFontPadding="false"
         android:text="收破烂~捡垃圾"
         android:textColor="@color/colorBlack"
         android:textSize="11sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_l_name" />
 
     <TextView
+        android:id="@+id/tv_l_oldPwd"
         android:layout_width="100dp"
         android:layout_height="13dp"
         android:layout_marginStart="43dp"
-        android:layout_marginTop="119dp"
+        android:layout_marginTop="126dp"
         android:includeFontPadding="false"
         android:text="旧密码:"
+        android:textColor="@color/colorBlack"
         android:textSize="11sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
-    <TextView
+    <EditText
+        android:id="@+id/et_oldPwd"
         android:layout_width="100dp"
         android:layout_height="13dp"
         android:layout_marginStart="43dp"
-        android:layout_marginTop="135dp"
+        android:layout_marginTop="10dp"
         android:hint="请输入旧密码"
         android:includeFontPadding="false"
         android:inputType="textPassword"
+        android:background="@drawable/style_tv_border_green"
         android:textSize="11sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_l_oldPwd" />
 
     <TextView
+        android:id="@+id/tv_l_newPwd"
         android:layout_width="100dp"
         android:layout_height="13dp"
         android:layout_marginStart="43dp"
-        android:layout_marginTop="163dp"
+        android:layout_marginTop="176dp"
         android:includeFontPadding="false"
         android:text="新密码:"
+        android:textColor="@color/colorBlack"
         android:textSize="11sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
-    <TextView
+    <EditText
+        android:id="@+id/et_newPwd"
         android:layout_width="100dp"
         android:layout_height="13dp"
         android:layout_marginStart="43dp"
-        android:layout_marginTop="181dp"
+        android:layout_marginTop="10dp"
         android:hint="请输入新密码"
         android:includeFontPadding="false"
         android:inputType="textPassword"
         android:textSize="11sp"
+        android:background="@drawable/style_tv_border_green"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_l_newPwd" />
 
     <TextView
+        android:id="@+id/tv_l_rePwd"
         android:layout_width="100dp"
         android:layout_height="13dp"
         android:layout_marginStart="43dp"
-        android:layout_marginTop="210dp"
+        android:layout_marginTop="226dp"
         android:includeFontPadding="false"
         android:text="确认密码:"
+        android:textColor="@color/colorBlack"
         android:textSize="11sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
-    <TextView
+    <EditText
+        android:id="@+id/et_rePwd"
         android:layout_width="100dp"
         android:layout_height="13dp"
         android:layout_marginStart="43dp"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="10dp"
         android:hint="请再次输入新密码"
         android:includeFontPadding="false"
+        android:background="@drawable/style_tv_border_green"
         android:inputType="textPassword"
         android:textSize="11sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_l_rePwd" />
 
 
     <Button
         android:layout_width="160dp"
         android:layout_height="42dp"
         android:background="@color/colorWhite"
-        android:text="修改密码"
         android:drawableLeft="@mipmap/cpwd"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:paddingLeft="36dp"
         android:drawablePadding="-36dp"
+        android:paddingLeft="36dp"
+        android:text="修改密码"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:layout_width="160dp"
         android:layout_height="42dp"
         android:background="@color/colorWhite"
-        android:text="注销"
-        android:paddingLeft="36dp"
-        android:drawablePadding="-36dp"
         android:drawableLeft="@mipmap/logout"
+        android:drawablePadding="-36dp"
+        android:paddingLeft="36dp"
+        android:text="注销"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

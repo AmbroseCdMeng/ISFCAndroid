@@ -215,4 +215,11 @@
 	- layout_gravity
 		组件相对于父组件的对齐方式
 	
-	
+13. EditView 的 textType 类型转换（密码的明文密文切换）
+	```
+	if (isChecked)
+            mpassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+	else
+		mpassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+	mpassword.setSelection(mpassword.getText().length());//光标位置默认置尾
+	```

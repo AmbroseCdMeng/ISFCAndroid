@@ -1,6 +1,7 @@
 package com.maci.foxconn.utils;
 
 import android.app.Activity;
+import android.content.Context;
 import android.widget.Toast;
 
 import java.util.UUID;
@@ -20,12 +21,13 @@ public class Utils {
      * @param msg
      */
     public static void toast(final Activity activity, final String msg){
-        activity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(activity, msg, Toast.LENGTH_LONG).show();
-            }
-        });
+//        activity.runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//                Toast.makeText(activity, msg, Toast.LENGTH_LONG).show();
+//            }
+//        });
+        activity.runOnUiThread(() -> Toast.makeText(activity, msg, Toast.LENGTH_LONG).show());
     }
 
     /**
