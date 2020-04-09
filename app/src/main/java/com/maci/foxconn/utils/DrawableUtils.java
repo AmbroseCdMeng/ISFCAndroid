@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class DrawableUtil {
+public class DrawableUtils {
     /**
      * 0 LEFT
      * 1 TOP
@@ -21,7 +21,7 @@ public class DrawableUtil {
     private OnDrawableListener listener;
     private View mView;
 
-    public DrawableUtil(View view, OnDrawableListener listener) {
+    public DrawableUtils(View view, OnDrawableListener listener) {
         mView = view;
         mView.setOnTouchListener(mOnTouchListener);
         this.listener = listener;
