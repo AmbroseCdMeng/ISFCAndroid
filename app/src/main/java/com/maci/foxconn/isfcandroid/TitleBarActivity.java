@@ -38,6 +38,19 @@ public class TitleBarActivity extends AppCompatActivity {
         mright = findViewById(R.id.tv_right);
     }
 
+    protected  void showTitle(boolean isShow, String text, View.OnClickListener onClickListener){
+        if (isShow){
+            mtitle.setVisibility(View.VISIBLE);
+            mtitle.setText(text);
+            if (onClickListener != null)
+                mtitle.setOnClickListener(onClickListener);
+            else
+                mtitle.setOnClickListener(v -> finish());
+        }else {
+            mtitle.setVisibility(View.INVISIBLE);
+        }
+    }
+
     protected void showLeft(boolean isShow, String text, View.OnClickListener onClickListener) {
         if (mleftLayout != null) {
             if (isShow) {
