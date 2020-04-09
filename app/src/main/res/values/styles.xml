@@ -11,7 +11,15 @@
 
     <!-- Customize application theme. CheckBox For Login -->
     <style name="CheckBoxForRememberPasswordTheme" parent="@android:style/Widget.CompoundButton.CheckBox">
-        <item name="android:button">@drawable/style_cbox_rmbpwd</item>
+        <item name="android:button">@drawable/selector_cbox</item>
+    </style>
+
+    <style name="ConfirmDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:backgroundDimAmount">0.6</item>
     </style>
 
 </resources>

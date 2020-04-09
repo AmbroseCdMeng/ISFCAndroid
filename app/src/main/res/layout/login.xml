@@ -80,7 +80,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="292dp"
         android:layout_marginEnd="8dp"
-        android:background="@drawable/style_btn_login"
+        android:background="@drawable/shape_corner_shadow_2"
         android:includeFontPadding="false"
         android:text="@string/btn_login"
         android:textAlignment="center"

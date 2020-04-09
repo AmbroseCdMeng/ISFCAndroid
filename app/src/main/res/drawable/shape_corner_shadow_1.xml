@@ -7,3 +7,5 @@
     <item android:name="android:shadowColor">@color/colorShadowDark</item>
     <corners android:radius="10dp" />
 </shape>
+
+<!-- 菜单按钮样式 圆角 + 阴影 + 背景 -->

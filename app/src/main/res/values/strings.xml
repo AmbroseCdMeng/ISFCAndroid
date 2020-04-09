@@ -35,7 +35,7 @@
 
     <string name="label_materialNum">料号：</string>
     <string name="label_materialName">物料名称：</string>
-    <string name="label_inStorageCount">实际/计划入库数量</string>
+    <string name="label_inStorageCount">实际/计划入库数量：</string>
 
     <string name="label_thisInStorage">本次入库</string>
     <string name="label_pallet">栈板</string>
@@ -52,7 +52,7 @@
     <string name="tHead_count_package">包箱数量</string>
     <string name="tHead_count_material">物料数量</string>
 
-
+    <string name="label_inStorageInfo">入库信息</string>
 
 
     <!-- ASNRelated View-->
@@ -63,4 +63,6 @@
     <string name="btn_addOutStorage">扫码新增出库单</string>
 
 
+    <string name="btn_confirm">确认</string>
+    <string name="btn_cancel">取消</string>
 </resources>

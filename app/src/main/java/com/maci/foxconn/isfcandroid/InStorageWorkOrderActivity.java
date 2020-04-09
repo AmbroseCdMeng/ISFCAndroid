@@ -101,7 +101,6 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
 
         mInStorageWorkOrder.setOnItemClickListener((parent, view, position, id) ->
                 {
-                    Utils.toast(this, position + " - - - " + id);
                     Intent intent = new Intent(getApplicationContext(), InStorageDetailInfoActivity.class);
 
                     intent.putExtra(InStorageDetailInfoActivity.RETURN_INFO_WORKORDER, data.get(position).get("workOrder").toString().trim());
