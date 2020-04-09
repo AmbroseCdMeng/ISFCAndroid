@@ -14,7 +14,7 @@ public class UserActivity extends TitleBarActivity {
     }
 
     private void intiEvent() {
-         //
+         // 
     }
 
     private void initView() {
