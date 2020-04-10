@@ -1,5 +1,6 @@
 package com.maci.foxconn.isfcandroid;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 public class AsnRelatedActivity extends TitleBarActivity {
@@ -16,5 +17,7 @@ public class AsnRelatedActivity extends TitleBarActivity {
 
     private void initView() {
         super.initTitleView();
+        showLeft(true, "<ASN 关联", null);
+        showRight(true, "用户名", v -> startActivity(new Intent(getApplicationContext(), UserActivity.class)));
     }
 }

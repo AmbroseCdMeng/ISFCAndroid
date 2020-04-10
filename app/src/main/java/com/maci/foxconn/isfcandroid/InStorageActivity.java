@@ -1,5 +1,6 @@
 package com.maci.foxconn.isfcandroid;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 /***
@@ -24,5 +25,7 @@ public class InStorageActivity extends TitleBarActivity {
 
     private void initView() {
         super.initTitleView();
+        showLeft(true, "<入库信息查询", null);
+        showRight(true, "用户名", v -> startActivity(new Intent(getApplicationContext(), UserActivity.class)));
     }
 }
