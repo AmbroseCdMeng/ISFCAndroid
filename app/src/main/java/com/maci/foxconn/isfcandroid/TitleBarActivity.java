@@ -32,6 +32,14 @@ public class TitleBarActivity extends AppCompatActivity {
         mright = findViewById(R.id.tv_right);
     }
 
+    protected void showTitle(boolean isShow) {
+        showTitle(isShow, null, null);
+    }
+
+    protected void showTitle(boolean isShow, String text) {
+        showTitle(isShow, text, null);
+    }
+
     protected void showTitle(boolean isShow, String text, View.OnClickListener onClickListener) {
         if (isShow) {
             mtitle.setVisibility(View.VISIBLE);
@@ -43,6 +51,14 @@ public class TitleBarActivity extends AppCompatActivity {
         } else {
             mtitle.setVisibility(View.INVISIBLE);
         }
+    }
+
+    protected void showLeft(boolean isShow) {
+        showLeft(isShow, null, null);
+    }
+
+    protected void showLeft(boolean isShow, String text) {
+        showLeft(isShow, text, null);
     }
 
     protected void showLeft(boolean isShow, String text, View.OnClickListener onClickListener) {
@@ -57,6 +73,14 @@ public class TitleBarActivity extends AppCompatActivity {
             mleft.setVisibility(View.INVISIBLE);
             mleft.setVisibility(View.INVISIBLE);
         }
+    }
+
+    protected void showRight(boolean isShow) {
+        showRight(isShow, null, null);
+    }
+
+    protected void showRight(boolean isShow, String text) {
+        showRight(isShow, text, null);
     }
 
     protected void showRight(boolean isShow, String text, View.OnClickListener onClickListener) {

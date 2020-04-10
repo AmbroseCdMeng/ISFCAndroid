@@ -144,8 +144,8 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
 
     private void initView() {
         super.initTitleView();
-        showTitle(false, null, null);
-        showLeft(true, "<入库工令单", null);
+        showTitle(false);
+        showLeft(true, "<入库工令单");
         showRight(true, "用户名", v->startActivity(new Intent(getApplicationContext(), UserActivity.class)));
         mInStorageWorkOrder = findViewById(R.id.lv_in_storage_work_order);
         mEtSearch = findViewById(R.id.et_search);

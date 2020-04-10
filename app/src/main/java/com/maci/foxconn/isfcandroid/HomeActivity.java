@@ -31,7 +31,7 @@ public class HomeActivity extends TitleBarActivity {
 
     private void initView() {
         super.initTitleView();
-        showLeft(false, null, null);
+        showLeft(false);
         showRight(true, "用户名", v -> startActivity(new Intent(getApplicationContext(), UserActivity.class)));
 
         minStorage = findViewById(R.id.btn_InStorage);
@@ -68,14 +68,14 @@ public class HomeActivity extends TitleBarActivity {
             @Override
             public void run() {
                 super.run();
-                minStorage.setClickable(false);
+                moutStorage.setClickable(false);
                 try {
                     sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 startActivity(new Intent(HomeActivity.this, OutStorageWordOrderActivity.class));
-                minStorage.setClickable(true);
+                moutStorage.setClickable(true);
             }
         }.start();
     }
@@ -85,14 +85,14 @@ public class HomeActivity extends TitleBarActivity {
             @Override
             public void run() {
                 super.run();
-                minStorage.setClickable(false);
+                masnRelated.setClickable(false);
                 try {
                     sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 startActivity(new Intent(HomeActivity.this, AsnRelatedActivity.class));
-                minStorage.setClickable(true);
+                masnRelated.setClickable(true);
             }
         }.start();
     }

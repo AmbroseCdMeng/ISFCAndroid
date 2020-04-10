@@ -41,10 +41,9 @@ public class UserActivity extends TitleBarActivity {
 
     private void initView() {
         super.initTitleView();
-        showTitle(false, null, null);
-
+        showTitle(false);
         showLeft(true, "<首页", v -> finish());
-        showRight(true, "用户名", v -> {return;} );
+        showRight(false );
 
         muserno = findViewById(R.id.tv_userno);
         musername = findViewById(R.id.tv_username);

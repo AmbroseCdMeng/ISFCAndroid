@@ -24,7 +24,8 @@ public class OutStorageWordOrderActivity extends TitleBarActivity {
 
     private void initView() {
         super.initTitleView();
-        showLeft(true, "<出库工令单", null);
+        showTitle(false);
+        showLeft(true, "<出库工令单");
         showRight(true, "用户名", v -> startActivity(new Intent(getApplicationContext(), UserActivity.class)));
     }
 }

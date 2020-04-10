@@ -17,7 +17,8 @@ public class AsnRelatedActivity extends TitleBarActivity {
 
     private void initView() {
         super.initTitleView();
-        showLeft(true, "<ASN 关联", null);
+        showTitle(false);
+        showLeft(true, "<ASN 关联");
         showRight(true, "用户名", v -> startActivity(new Intent(getApplicationContext(), UserActivity.class)));
     }
 }
