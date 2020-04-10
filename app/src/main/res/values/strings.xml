@@ -51,6 +51,8 @@
     <string name="tHead_code">栈板码/箱码</string>
     <string name="tHead_count_package">包箱数量</string>
     <string name="tHead_count_material">物料数量</string>
+    <string name="tHead_asn_code">ASN 码</string>
+    <string name="tHead_result">判定结果</string>
 
     <string name="lable_inStorage_operator">入库人员：</string>
     <string name="lable_inStorage_date">入库时间：</string>
@@ -59,7 +61,7 @@
 
 
     <!-- ASNRelated View-->
-    <string name="label_addRelated">请先扫描箱码再扫描 ASN 标签码</string>
+    <string name="label_addRelated"> * 请先扫描箱码再扫描 ASN 标签码</string>
     <string name="btn_commit">提交</string>
 
     <!-- OutStorage View-->

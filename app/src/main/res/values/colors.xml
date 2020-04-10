@@ -18,6 +18,7 @@
 
     <color name="colorBlack">#FF000000</color>
     <color name="colorWhite">#FFFFFFFF</color>
+    <color name="colorRed">#FFFF0000</color>
     
     <color name="colorYellowDark">#FFF9BB4F</color>
 
