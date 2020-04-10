@@ -42,6 +42,8 @@ public class HomeActivity extends TitleBarActivity {
 
     private void initEvent() {
         minStorage.setOnClickListener(v -> jumpToInStorageWorkOrderView());
+        moutStorage.setOnClickListener(v -> jumpToOutStorageWorkOrderView());
+        masnRelated.setOnClickListener(v -> jumpToAsnRelatedView());
     }
 
     private void jumpToInStorageWorkOrderView() {
@@ -51,11 +53,45 @@ public class HomeActivity extends TitleBarActivity {
                 super.run();
                 minStorage.setClickable(false);
                 try {
-                    sleep(500);
+                    sleep(100);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 startActivity(new Intent(HomeActivity.this, InStorageWorkOrderActivity.class));
+                minStorage.setClickable(true);
+            }
+        }.start();
+    }
+
+    private void jumpToOutStorageWorkOrderView() {
+        new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                minStorage.setClickable(false);
+                try {
+                    sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                startActivity(new Intent(HomeActivity.this, OutStorageWordOrderActivity.class));
+                minStorage.setClickable(true);
+            }
+        }.start();
+    }
+
+    private void jumpToAsnRelatedView() {
+        new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                minStorage.setClickable(false);
+                try {
+                    sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                startActivity(new Intent(HomeActivity.this, AsnRelatedActivity.class));
                 minStorage.setClickable(true);
             }
         }.start();

@@ -52,6 +52,9 @@
     <string name="tHead_count_package">包箱数量</string>
     <string name="tHead_count_material">物料数量</string>
 
+    <string name="lable_inStorage_operator">入库人员：</string>
+    <string name="lable_inStorage_date">入库时间：</string>
+
     <string name="label_inStorageInfo">入库信息</string>
 
 

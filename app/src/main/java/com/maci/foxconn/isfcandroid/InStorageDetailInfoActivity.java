@@ -52,7 +52,7 @@ public class InStorageDetailInfoActivity extends TitleBarActivity {
 
     private void commitInstorage() {
         final AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
-        View dialogView = View.inflate(this, R.layout.dialog_instorage_confirm, null);
+        View dialogView = View.inflate(this, R.layout.in_storage_confirm_dialog, null);
 
         final AlertDialog alertDialog = alertBuilder.setTitle(null).setIcon(null).setView(dialogView).create();
         alertDialog.show();
@@ -75,7 +75,8 @@ public class InStorageDetailInfoActivity extends TitleBarActivity {
     }
 
     private void commit() {
-        Toast.makeText(this, "Commit", Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, "Commit", Toast.LENGTH_LONG).show();
+        startActivity(new Intent(getApplicationContext(), InStorageActivity.class));
     }
 
     private void initView() {

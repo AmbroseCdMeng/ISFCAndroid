@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -80,8 +79,8 @@
         <TextView
             android:layout_width="78dp"
             android:layout_height="10dp"
-            android:layout_marginStart="87dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginStart="86dp"
+            android:layout_marginTop="33dp"
             android:includeFontPadding="false"
             android:text="4399"
             android:textColor="@color/colorBlack"
@@ -144,11 +143,24 @@
             android:layout_marginStart="19dp"
             android:layout_marginTop="65dp"
             android:includeFontPadding="false"
-            android:text="@string/label_thisInStorage"
+            android:text="@string/lable_inStorage_operator"
             android:textColor="@color/colorBlack"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="51dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="87dp"
+            android:layout_marginTop="65dp"
+            android:includeFontPadding="false"
+            android:text="张三"
+            android:textColor="@color/colorBlack"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <TextView
             android:layout_width="51dp"
@@ -156,69 +168,21 @@
             android:layout_marginStart="19dp"
             android:layout_marginTop="81dp"
             android:includeFontPadding="false"
-            android:text="@string/label_pallet"
+            android:text="@string/lable_inStorage_date"
             android:textColor="@color/colorBlack"
             android:textSize="10sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:layout_width="20dp"
+            android:layout_width="100dp"
             android:layout_height="11dp"
-            android:layout_marginStart="53dp"
-            android:layout_marginTop="80dp"
-            android:includeFontPadding="false"
-            android:text="9"
-            android:textColor="@color/colorLakeGreen"
-            android:textSize="11sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="51dp"
-            android:layout_height="11dp"
-            android:layout_marginStart="86dp"
+            android:layout_marginStart="87dp"
             android:layout_marginTop="81dp"
             android:includeFontPadding="false"
-            android:text="@string/label_package"
+            android:text="2020/03/26 18:00:00"
             android:textColor="@color/colorBlack"
             android:textSize="10sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="30dp"
-            android:layout_height="11dp"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="80dp"
-            android:includeFontPadding="false"
-            android:text="29"
-            android:textColor="@color/colorLakeGreen"
-            android:textSize="11sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="51dp"
-            android:layout_height="11dp"
-            android:layout_marginStart="161dp"
-            android:layout_marginTop="81dp"
-            android:includeFontPadding="false"
-            android:text="@string/label_material"
-            android:textColor="@color/colorBlack"
-            android:textSize="10sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="30dp"
-            android:layout_height="11dp"
-            android:layout_marginStart="194dp"
-            android:layout_marginTop="80dp"
-            android:includeFontPadding="false"
-            android:text="109"
-            android:textColor="@color/colorLakeGreenDark"
-            android:textSize="11sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -259,7 +223,7 @@
 
         <ScrollView
             android:layout_width="280dp"
-            android:layout_height="160dp"
+            android:layout_height="340dp"
             android:layout_marginTop="56dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -911,41 +875,6 @@
 
         </ScrollView>
 
-        <TextView
-            android:layout_width="49dp"
-            android:layout_height="16dp"
-            android:layout_marginStart="27dp"
-            android:layout_marginTop="302dp"
-            android:includeFontPadding="false"
-            android:text="@string/label_location_code"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <EditText
-            android:id="@+id/et_location_code"
-            android:layout_width="211dp"
-            android:layout_height="25dp"
-            android:layout_marginStart="87dp"
-            android:layout_marginTop="297dp"
-            android:background="@drawable/shape_border_green"
-            android:lines="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
     </android.support.constraint.ConstraintLayout>
 
-    <Button
-        android:id="@+id/btn_commit_inStorage"
-        android:layout_width="match_parent"
-        android:layout_height="43dp"
-        android:background="@color/colorWhite"
-        android:drawableLeft="@mipmap/commit"
-        android:drawablePadding="-113dp"
-        android:includeFontPadding="false"
-        android:paddingLeft="113dp"
-        android:text="@string/btn_commit_storage"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>
