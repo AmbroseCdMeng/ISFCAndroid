@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
-import com.maci.foxconn.utils.Utils;
-
 /***
  * 主页（菜单）界面
  * 
@@ -74,7 +72,7 @@ public class HomeActivity extends TitleBarActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                startActivity(new Intent(HomeActivity.this, OutStorageWordOrderActivity.class));
+                startActivity(new Intent(HomeActivity.this, OutStorageWorkOrderActivity.class));
                 moutStorage.setClickable(true);
             }
         }.start();

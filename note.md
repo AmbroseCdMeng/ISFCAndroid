@@ -223,3 +223,28 @@
 		mpassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
 	mpassword.setSelection(mpassword.getText().length());//光标位置默认置尾
 	```
+	
+14. ListView 的嵌套
+
+	参考： www.jianshu.com/p/b805091bd4e5
+	
+	常见的三种解决方案：
+		
+	- 手动遍历子 View， 设置 ListView 的高度。
+		缺点：在 Item 的根布局是 RelativeLayout 时无法测量高度，且在 Android 17 及以下时， RelativeLayou.measure(w, h) 会出现空指针，只能外层再加一层 Layout
+	
+	- 重写 ListView 的 onMeasure() 方法
+		```java
+		protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec){
+			int expandSpec = MeasureSpec.makeMeasureSpec(Integer.MAX_VALUE >> 2, MeasureSpec.AT_MOST);
+			super.onMeasure(widthMeasureSpec, expandSpec);
+		}
+		```		
+		
+		优点：代码量少，逻辑简单
+		缺点：Adapter 的 getView() 会被重复调用多次，如果嵌套两次，调用次数成倍增加，性能伤害大；在每个 Item 的高度不一样时，ListView 的高度计算不准确
+		
+	- LinearLayout 模拟 ListView 
+		
+		优点：复用性强，性能高
+		缺点：代码量大，逻辑复杂

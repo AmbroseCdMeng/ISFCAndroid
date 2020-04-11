@@ -30,21 +30,8 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
     private EditText mEtSearch;
     private Button mBtnSearch;
 
-    /* list item id */
-    private String[] mapKeys = {"workOrder", "payDepartment", "storageState", "materialNum", "materialName", "inStorageCount"};
-    private int[] ids = {R.id.workOrder, R.id.payDepartment, R.id.storageState, R.id.materialNum, R.id.materialName, R.id.inStorageCount};
 
-    /* 示例数据 start */
-    private String[] workOrder = {"93109073362", "490250992", "1096868926", "4399xyx"};
-    private String[] payDepartment = {"关务物流部", "机电总务部", "产品开发部", "工程技术部"};
-    private String[] storageState = {"已入库", "部分入库", "未入库", "未入库", "未入库"};
-    private String[] materialNum = {"MTN032111423", "ORD124528996", "XYY48847811", "GRF14523697"};
-    private String[] materialName = {"破铜", "烂铁", "塑料", "收破烂~"};
-    private String[] inStorageCount = {"0/200 PCS", "50/2000 PCS", "0/0 PCS", "1000/1000 PCS"};
-
-    List<Map<String, Object>> data = new ArrayList<>();
-    /* 示例数据 end */
-
+    private List<Map<String, Object>> data = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle saveInstanceState) {
@@ -91,14 +78,6 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
             }
         });
 
-//        mInStorageWorkOrder.setOnItemClickListener( new AdapterView.OnItemClickListener(){
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Utils.toast(InStorageWorkOrderActivity.this, position + " - - - " + id);
-//            }
-//        });
-
-
         mInStorageWorkOrder.setOnItemClickListener((parent, view, position, id) ->
                 {
                     Intent intent = new Intent(getApplicationContext(), InStorageDetailInfoActivity.class);
@@ -116,6 +95,19 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
     }
 
     private void initData() {
+        /* list item id */
+        String[] mapKeys = {"workOrder", "payDepartment", "storageState", "materialNum", "materialName", "inStorageCount"};
+        int[] ids = {R.id.workOrder, R.id.payDepartment, R.id.storageState, R.id.materialNum, R.id.materialName, R.id.inStorageCount};
+
+        /* 示例数据 start */
+        String[] workOrder = {"93109073362", "490250992", "1096868926", "4399xyx"};
+        String[] payDepartment = {"关务物流部", "机电总务部", "产品开发部", "工程技术部"};
+        String[] storageState = {"已入库", "部分入库", "未入库", "未入库", "未入库"};
+        String[] materialNum = {"MTN032111423", "ORD124528996", "XYY48847811", "GRF14523697"};
+        String[] materialName = {"破铜", "烂铁", "塑料", "收破烂~"};
+        String[] inStorageCount = {"0/200 PCS", "50/2000 PCS", "0/0 PCS", "1000/1000 PCS"};
+
+        /* 示例数据 end */
 
         for (int i = 0; i < workOrder.length; i++) {
             Map<String, Object> item = new HashMap<>();

@@ -35,9 +35,11 @@
 
         <activity android:name=".InStorageActivity"/>
 
-        <activity android:name=".OutStorageWordOrderActivity"/>
+        <activity android:name=".OutStorageWorkOrderActivity"/>
 
         <activity android:name=".AsnRelatedActivity"/>
+
+        <activity android:name=".OutStorageListViewActivity"/>
     </application>
 
 </manifest>

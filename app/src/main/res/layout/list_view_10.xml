@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:paddingTop="0dp"
+    android:paddingBottom="0dp">
+
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/selector"
+        android:paddingTop="0dp"
+        android:paddingBottom="5dp">
+
+        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="@color/colorGray">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="51dp"
+                android:layout_height="11dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="4dp"
+                android:includeFontPadding="false"
+                android:text="@string/label_workOrder"
+                android:textColor="@color/colorBlack"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/materialNum"
+                android:layout_width="77dp"
+                android:layout_height="9dp"
+                android:layout_marginStart="72dp"
+                android:layout_marginTop="5dp"
+                android:includeFontPadding="false"
+                android:text="123465798100"
+                android:textColor="@color/colorBlack"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="51dp"
+                android:layout_height="11dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="21dp"
+                android:includeFontPadding="false"
+                android:text="@string/label_payDepartment"
+                android:textColor="@color/colorBlack"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/payDepartment"
+                android:layout_width="77dp"
+                android:layout_height="11dp"
+                android:layout_marginStart="72dp"
+                android:layout_marginTop="21dp"
+                android:includeFontPadding="false"
+                android:text="XXX 部门"
+                android:textColor="@color/colorBlack"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/storageState"
+                android:layout_width="45dp"
+                android:layout_height="11dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="9dp"
+                android:includeFontPadding="false"
+                android:text="@string/label_inStorage_full"
+                android:textColor="@color/colorBlack"
+                android:textSize="11sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
+        <!--<ListView-->
+            <!--android:id="@+id/lv_out_work_storage_sub"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/constraintLayout">-->
+        <!--</ListView>-->
+
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/constraintLayout">
+
+        </android.support.v7.widget.RecyclerView>
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>
