@@ -2,13 +2,19 @@ package com.maci.foxconn.isfcandroid;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /***
  * 出库工龄单界面
@@ -19,70 +25,90 @@ import java.util.Map;
  ***/
 public class OutStorageWorkOrderActivity extends TitleBarActivity {
 
-    private ListView mOutStorageWorkOrder;
-    private ListView mOutStorageWorkOrderSub;
+    @BindView(R.id.center_reclycleview)
+    RecyclerView c_RecyclerView;
 
-    private List<Map<String, Object>> data = new ArrayList<>();
-    private List<Map<String, Object>> subData = new ArrayList<>();
+    private RvAdapter mRvAdapter;
+    private Bean mBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.out_storage_work_order);
-        initView();
-        
-        initData();
-        initEvent();
+        ButterKnife.bind(this);
+
+        initdata();
     }
 
-    private void initData() {
-        /* list item id */
-        String[] mapKeys = {"workOrder", "payDepartment", "storageState"};
-        String [] mapKeysSub = {"materialNum", "materialName", "inStorageCount"};
-        int[] ids = {R.id.workOrder, R.id.payDepartment, R.id.storageState};
-        int[] idsSub = {R.id.materialNum, R.id.materialName, R.id.inStorageCount};
+    //模拟数据
+    private void initdata() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        c_RecyclerView.setLayoutManager(layoutManager);
+        c_RecyclerView.setFocusableInTouchMode(false);
 
+        mBean = new Bean();
+        List<Bean.DatasBean> datas = new ArrayList<>();
 
-        String[] workOrder = {"93109073362", "490250992", "1096868926", "4399xyx"};
-        String[] payDepartment = {"关务物流部", "机电总务部", "产品开发部", "工程技术部"};
-        String[] storageState = {"已入库", "部分入库", "未入库", "未入库", "未入库"};
+        //模拟一些数据
+        for (int i = 0; i < 20; i++) {
+            Bean.DatasBean datasBean = new Bean.DatasBean();
+            List<Bean.DatasBean.Option> option = new ArrayList<>();
 
+            Bean.DatasBean.Option optionBean = new Bean.DatasBean.Option();
+            optionBean.setDatas("这是选项" + i);
+            option.add(optionBean);
 
-        for (int i = 0; i < workOrder.length; i ++){
-            Map<String, Object> item = new HashMap<>();
-            item.put("workOrder", workOrder[i]);
-            item.put("payDepartment", payDepartment[i]);
-            item.put("storageState", storageState[i]);
+            Bean.DatasBean.Option optionBean1 = new Bean.DatasBean.Option();
+            optionBean1.setDatas("这是选项" + (i + 1));
+            option.add(optionBean1);
 
-//            for ( int j = 0; j < (int) (Math.random() * 5 + 1); j ++){
-//                Map<String, Object> subItem = new HashMap<>();
-//                subItem.put("materialNum", Math.random() * 1000000000);
-//                subItem.put("materialName", Math.random() * 1000000000);
-//                subItem.put("inStorageCount", Math.random() * 1000 + "/" + Math.random() * 10000 + " PCS");
-//                subData.add(subItem);
-//                mOutStorageWorkOrderSub.setAdapter(new SimpleAdapter(OutStorageListViewActivity.this, subData, R.layout.list_view_10_01,
-//                        mapKeysSub,
-//                        idsSub ));
-//
-//            }
+            Bean.DatasBean.Option optionBean2 = new Bean.DatasBean.Option();
+            optionBean2.setDatas("这是选项" + (i + 2));
+            option.add(optionBean2);
 
-            data.add(item);
+            datasBean.setOptions(option);
+            datasBean.setTitle("这是标题哦1");
+            datas.add(datasBean);
         }
 
-        mOutStorageWorkOrder.setAdapter(new SimpleAdapter(OutStorageWorkOrderActivity.this, data, R.layout.list_view_10, mapKeys, ids));
+        mBean.setDatas(datas);
 
+        mRvAdapter = new RvAdapter(this, mBean.getDatas());
+        c_RecyclerView.setAdapter(mRvAdapter);
+        mRvAdapter.notifyDataSetChanged();
     }
 
-    private void initEvent() {
-    }
+    /**
+     * 设置一个public方法,供adapter点击事件调用
+     *
+     * @param position 为第一层recycleview位置
+     * @param tag      为第二层recycleview位置
+     */
+    public void OnClickListener(int position, int tag) {
+        final List<Bean.DatasBean> datasBeans = mBean.getDatas();
+        for (int i = 0; i < datasBeans.size(); i++) {
+            if (i == position) {
+                List<Bean.DatasBean.Option> option = datasBeans.get(i).getOptions();
+                for (int j = 0; j < option.size(); j++) {
+                    if (j == tag) {
+                        option.get(j).setSelect(true);
+                    } else {
+                        option.get(j).setSelect(false);
+                    }
+                }
+                Toast.makeText(getApplicationContext(),
+                        datasBeans.get(position).getTitle() + "-" + option.get(tag).getDatas(),
+                        Toast.LENGTH_SHORT).show();
 
-    private void initView() {
-        super.initTitleView();
-        showTitle(false);
-        showLeft(true, "<出库工令单");
-        showRight(true, "用户名", v -> startActivity(new Intent(getApplicationContext(), UserActivity.class)));
-
-        mOutStorageWorkOrder = findViewById(R.id.lv_out_storage_work_order);
-        mOutStorageWorkOrderSub = findViewById(R.id.lv_out_work_storage_sub);
+            } else {
+                //这里让之前选中的效果还原成未选中
+                List<Bean.DatasBean.Option> option = datasBeans.get(i).getOptions();
+                for (int j = 0; j < option.size(); j++) {
+                    option.get(j).setSelect(false);
+                }
+            }
+        }
+        mRvAdapter.notifyDataSetChanged();
     }
 }
