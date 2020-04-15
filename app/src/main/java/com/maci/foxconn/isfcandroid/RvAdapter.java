@@ -57,9 +57,9 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
         holder.list.addAll(mList.get(position).getOptions());
         if (holder.mRvAdapter == null) {
             holder.mRvAdapter = new RvvAdapter(mContext, holder.list, position);
-            GridLayoutManager layoutManage = new GridLayoutManager(mContext, 2);
+            GridLayoutManager layoutManage = new GridLayoutManager(mContext, 1);
             holder.rvItemItem.setLayoutManager(layoutManage);
-            holder.rvItemItem.addItemDecoration(new GridSpacingItemDecoration(2, 20, false));
+            holder.rvItemItem.addItemDecoration(new GridSpacingItemDecoration(1, 20, false));
             holder.rvItemItem.setAdapter(holder.mRvAdapter);
         } else {
             holder.mRvAdapter.setPosition(position);

@@ -5,7 +5,7 @@
 
     <!-- 设置按钮的四个角为弧形 -->
     <!-- 矩形的圆角弧度 -->
-    <corners android:radius="180dp" />
+    <corners android:radius="3dp" />
     <solid android:color="@color/colorWhite" />
 
     <!-- 矩形的边框的宽度,每段虚线的长度，和两段虚线之间的颜色和颜色 -->

@@ -68,7 +68,7 @@ public class OutStorageWorkOrderActivity extends TitleBarActivity {
             option.add(optionBean2);
 
             datasBean.setOptions(option);
-            datasBean.setTitle("这是标题哦1");
+            datasBean.setTitle("这是标题");
             datas.add(datasBean);
         }
 
