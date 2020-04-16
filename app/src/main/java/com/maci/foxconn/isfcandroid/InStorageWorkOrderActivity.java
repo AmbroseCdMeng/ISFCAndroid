@@ -34,6 +34,11 @@ import java.util.Map;
  ***/
 public class InStorageWorkOrderActivity extends TitleBarActivity {
 
+    private static final int COMPLETED = 0;
+    //final String[] mapKeys1 = {"FORMNO", "DPTNAME", "FORMSTATUSNAME", "MTLNO", "MTLNO", "PLANQTY", "UNIT", "ACTUALQTY", "DPTNO", "PRODNAME", "FORMSTATUS"};
+    private final String[] mapKeys = {"FORMNO", "DPTNAME", "FORMSTATUSNAME", "MTLNO", "MTLNO", "PLANQTY"};
+    private final int[] ids = {R.id.workOrder, R.id.payDepartment, R.id.storageState, R.id.materialNum, R.id.materialName, R.id.inStorageCount};
+
     private ListView mInStorageWorkOrder;
     private EditText mEtSearch;
     private Button mBtnSearch;
@@ -45,22 +50,35 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            Bundle data = msg.getData();
-            String val = data.getString("value");
-            Log.i("httpRequest", val);
+//            Bundle data = msg.getData();
+//            String val = data.getString("value");
+            if (msg.what == COMPLETED) {
+                mInStorageWorkOrder.setAdapter(new SimpleAdapter(InStorageWorkOrderActivity.this, data,
+                        R.layout.list_view_1,
+                        mapKeys,
+                        ids
+                ));
+            }
         }
     };
 
-    Runnable runnable = new Runnable() {
+//    Runnable work = new Thread(){
+//        @Override
+//        public void run() {
+//            super.run();
+//        }
+//    };
+
+    private class WorkThread extends Thread {
         @Override
         public void run() {
+            super.run();
+            data = getDataFromHttp("");
             Message msg = new Message();
-            Bundle data = new Bundle();
-            data.putString("value", "请求结果");
-            msg.setData(data);
+            msg.what = COMPLETED;
             handler.sendMessage(msg);
         }
-    };
+    }
 
     @Override
     protected void onCreate(Bundle saveInstanceState) {
@@ -74,6 +92,7 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
 
 
         /**
+         * 问题 1 ：
          * Google 针对 Android P 应用程序要求默认使用加密链接，否则将在 httpURL Connection 时出现以下异常：
          *
          *  Cleartext HTTP traffic to 10.161.139.45 not permitted
@@ -82,8 +101,21 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
          *  1. 降低 targetSdkVersion 版本到 27 以下
          *  2. APP 改用 HTTPS 加密请求
          *  3. 更改网络配置
+         *
+         * 问题 2 ：
+         * android.os.NetworkOnMainThreadException
+         *
+         *  安卓 `4.0` 及以上版本禁止在主线程中访问 HTTP 请求。
+         *
+         * 问题 3 ：
+         * Only the original thread that created a view hierarchy can touch its views
+         *
+         *  Android系统中的视图组件并不是线程安全的，如果要更新视图，必须在主线程中更新，不可以在子线程中执行更新的操作
+         *  此处需要采用 Handler对象消息分发机制，在子线程中完成获取数据，然后通知主线程更新视图
+         *
          */
-        new Thread(() -> initData()).start();
+//        new Thread(work).start();
+        new WorkThread().start();
 
 
         initEvent();
@@ -132,70 +164,30 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
         );
     }
 
-    private void initData() {
+    private List<Map<String, Object>> getDataFromHttp(String url) {
+        url = "http://10.161.139.45:5088/api/App/QueryInStockForms?formno=20200328";
+        try {
+            String result = HttpUtils.doGet(url);
 
-        //final String[] mapKeys1 = {"FORMNO", "DPTNAME", "FORMSTATUSNAME", "MTLNO", "MTLNO", "PLANQTY", "UNIT", "ACTUALQTY", "DPTNO", "PRODNAME", "FORMSTATUS"};
-//        final String[] mapKeys1 = {"FORMNO", "DPTNAME", "FORMSTATUSNAME", "MTLNO", "MTLNO", "PLANQTY"};
-//        final int[] ids1 = {R.id.workOrder, R.id.payDepartment, R.id.storageState, R.id.materialNum, R.id.materialName, R.id.inStorageCount};
-//
-//        String url = "http://10.161.139.45:5088/api/App/QueryInStockForms?formno=20200328";
-//        String result = HttpUtils.doGet(url);
-//
-//        /* 方便测试，将返回结果直接复制，正式使用时屏蔽该行代码 */
-//        result = "{\"status\":true,\"message\":\"獲取信息成功\",\"result\":[{\"FORMNO\":\"W2K20041101\",\"DPTNO\":\"TOU508\",\"DPTNAME\":\"生產一課\",\"FORMSTATUS\":\"0\",\"FORMSTATUSNAME\":\"未入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"HOUSING\",\"PLANQTY\":\"500\",\"ACTUALQTY\":\"0\",\"UNIT\":\"PC\"},{\"FORMNO\":\"W2K20041202\",\"DPTNO\":\"TOU509\",\"DPTNAME\":\"生產二課\",\"FORMSTATUS\":\"1\",\"FORMSTATUSNAME\":\"部份入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"MIPAD\",\"PLANQTY\":\"300\",\"ACTUALQTY\":\"100\",\"UNIT\":\"PC\"},{\"FORMNO\":\"W2K20041202\",\"DPTNO\":\"TOU509\",\"DPTNAME\":\"生產二課\",\"FORMSTATUS\":\"1\",\"FORMSTATUSNAME\":\"部份入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"MIPAD_TWO\",\"PLANQTY\":\"360\",\"ACTUALQTY\":\"120\",\"UNIT\":\"PC\"},{\"FORMNO\":\"W2K20041302\",\"DPTNO\":\"TOU509\",\"DPTNAME\":\"生產三課\",\"FORMSTATUS\":\"0\",\"FORMSTATUSNAME\":\"未入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"CASE\",\"PLANQTY\":\"600\",\"ACTUALQTY\":\"0\",\"UNIT\":\"PC\"},{\"FORMNO\":\"W2K20041302\",\"DPTNO\":\"TOU509\",\"DPTNAME\":\"生產三課\",\"FORMSTATUS\":\"0\",\"FORMSTATUSNAME\":\"未入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"CASE_TWO\",\"PLANQTY\":\"1900\",\"ACTUALQTY\":\"0\",\"UNIT\":\"PC\"}]}";
-//
-//        JSONObject jsonObject = JSONObject.parseObject(result);
-//        if ((!(boolean) jsonObject.get("status"))) {
-//            Utils.toast(this, jsonObject.get("message").toString());
-//            return;
-//        }
-//        List<Map<String, Object>> list = ((List<Map<String, Object>>) jsonObject.get("result"));
-//
-        /* list item id */
-        String[] mapKeys = {"FORMNO", "DPTNAME", "FORMSTATUSNAME", "MTLNO", "materialName", "inStorageCount"};
-        int[] ids = {R.id.workOrder, R.id.payDepartment, R.id.storageState, R.id.materialNum, R.id.materialName, R.id.inStorageCount};
-
-        /* 示例数据 start */
-        String[] workOrder = {"93109073362", "490250992", "1096868926", "4399xyx"};
-        String[] payDepartment = {"关务物流部", "机电总务部", "产品开发部", "工程技术部"};
-        String[] storageState = {"已入库", "部分入库", "未入库", "未入库", "未入库"};
-        String[] materialNum = {"MTN032111423", "ORD124528996", "XYY48847811", "GRF14523697"};
-        String[] materialName = {"破铜", "烂铁", "塑料", "收破烂~"};
-        String[] inStorageCount = {"0/200 PCS", "50/2000 PCS", "0/0 PCS", "1000/1000 PCS"};
-
-        /* 示例数据 end */
-
-        for (int i = 0; i < workOrder.length; i++) {
-            Map<String, Object> item = new HashMap<>();
-            item.put("FORMNO", workOrder[i]);
-            item.put("DPTNAME", payDepartment[i]);
-            item.put("FORMSTATUSNAME", storageState[i]);
-            item.put("MTLNO", materialNum[i]);
-
-            data.add(item);
+            /* 方便测试，将返回结果直接复制，正式使用时屏蔽该行代码 */
+            result = "{\"status\":true,\"message\":\"獲取信息成功\",\"result\":[{\"FORMNO\":\"W2K20041101\",\"DPTNO\":\"TOU508\",\"DPTNAME\":\"生產一課\",\"FORMSTATUS\":\"0\",\"FORMSTATUSNAME\":\"未入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"HOUSING\",\"PLANQTY\":\"500\",\"ACTUALQTY\":\"0\",\"UNIT\":\"PC\"},{\"FORMNO\":\"W2K20041202\",\"DPTNO\":\"TOU509\",\"DPTNAME\":\"生產二課\",\"FORMSTATUS\":\"1\",\"FORMSTATUSNAME\":\"部份入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"MIPAD\",\"PLANQTY\":\"300\",\"ACTUALQTY\":\"100\",\"UNIT\":\"PC\"},{\"FORMNO\":\"W2K20041202\",\"DPTNO\":\"TOU509\",\"DPTNAME\":\"生產二課\",\"FORMSTATUS\":\"1\",\"FORMSTATUSNAME\":\"部份入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"MIPAD_TWO\",\"PLANQTY\":\"360\",\"ACTUALQTY\":\"120\",\"UNIT\":\"PC\"},{\"FORMNO\":\"W2K20041302\",\"DPTNO\":\"TOU509\",\"DPTNAME\":\"生產三課\",\"FORMSTATUS\":\"0\",\"FORMSTATUSNAME\":\"未入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"CASE\",\"PLANQTY\":\"600\",\"ACTUALQTY\":\"0\",\"UNIT\":\"PC\"},{\"FORMNO\":\"W2K20041302\",\"DPTNO\":\"TOU509\",\"DPTNAME\":\"生產三課\",\"FORMSTATUS\":\"0\",\"FORMSTATUSNAME\":\"未入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"CASE_TWO\",\"PLANQTY\":\"1900\",\"ACTUALQTY\":\"0\",\"UNIT\":\"PC\"}]}";
+            JSONObject jsonObject = JSONObject.parseObject(result);
+            if ((!(boolean) jsonObject.get("status"))) {
+                Utils.toast(this, jsonObject.get("message").toString());
+                return null;
+            }
+            data = ((List<Map<String, Object>>) jsonObject.get("result"));
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        JSONObject jsonObject = JSONObject.parseObject("{\"status\":true,\"message\":\"獲取信息成功\",\"result\":[{\"FORMNO\":\"W2K20041101\",\"DPTNO\":\"TOU508\",\"DPTNAME\":\"生產一課\",\"FORMSTATUS\":\"0\",\"FORMSTATUSNAME\":\"未入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"HOUSING\",\"PLANQTY\":\"500\",\"ACTUALQTY\":\"0\",\"UNIT\":\"PC\"},{\"FORMNO\":\"W2K20041202\",\"DPTNO\":\"TOU509\",\"DPTNAME\":\"生產二課\",\"FORMSTATUS\":\"1\",\"FORMSTATUSNAME\":\"部份入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"MIPAD\",\"PLANQTY\":\"300\",\"ACTUALQTY\":\"100\",\"UNIT\":\"PC\"},{\"FORMNO\":\"W2K20041202\",\"DPTNO\":\"TOU509\",\"DPTNAME\":\"生產二課\",\"FORMSTATUS\":\"1\",\"FORMSTATUSNAME\":\"部份入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"MIPAD_TWO\",\"PLANQTY\":\"360\",\"ACTUALQTY\":\"120\",\"UNIT\":\"PC\"},{\"FORMNO\":\"W2K20041302\",\"DPTNO\":\"TOU509\",\"DPTNAME\":\"生產三課\",\"FORMSTATUS\":\"0\",\"FORMSTATUSNAME\":\"未入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"CASE\",\"PLANQTY\":\"600\",\"ACTUALQTY\":\"0\",\"UNIT\":\"PC\"},{\"FORMNO\":\"W2K20041302\",\"DPTNO\":\"TOU509\",\"DPTNAME\":\"生產三課\",\"FORMSTATUS\":\"0\",\"FORMSTATUSNAME\":\"未入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"CASE_TWO\",\"PLANQTY\":\"1900\",\"ACTUALQTY\":\"0\",\"UNIT\":\"PC\"}]}");
-        if ((!(boolean) jsonObject.get("status"))) {
-            Utils.toast(this, jsonObject.get("message").toString());
-            return;
-        }
-        data = ((List<Map<String, Object>>) jsonObject.get("result"));
-
-        /**
-         * 后续修改为加载自定义布局
-         */
-        mInStorageWorkOrder.setAdapter(new SimpleAdapter(InStorageWorkOrderActivity.this, data,
-                R.layout.list_view_1,
-                mapKeys,
-                ids
-        ));
+        return data;
     }
+
 
     /**
      * 示例数据 已弃用
      */
-    private void initData_() {
+    private void initData() {
 
         /* list item id */
         String[] mapKeys = {"workOrder", "payDepartment", "storageState", "materialNum", "materialName", "inStorageCount"};
