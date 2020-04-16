@@ -248,3 +248,39 @@
 		
 		优点：复用性强，性能高
 		缺点：代码量大，逻辑复杂
+		
+	- RecyclerView 嵌套（推荐）
+		
+15. Cleartext HTTP traffic to 10.161.139.45 not permitted
+	
+	```java
+	/**
+	 * Google 针对 Android P 应用程序要求默认使用加密链接，否则将在 httpURL Connection 时出现以下异常：
+	 *
+	 *  Cleartext HTTP traffic to 10.161.139.45 not permitted
+	 *
+	 * 解决方法：
+	 *  1. 降低 targetSdkVersion 版本到 27 以下
+	 *  2. APP 改用 HTTPS 加密请求
+	 *  3. 更改网络配置
+	 */
+	```
+	
+16. socket failed: EACCES (Permission denied)
+
+	```java
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	```
+	
+17. android.os.NetworkOnMainThreadException
+
+	- 安卓 `4.0` 及以上版本禁止在主线程中访问 HTTP 请求。
+	
+		理由是为了防止应用 ANR（Application Not Response）异常导致的界面假死情况发生
+		
+18. Android AVD 无法访问局域网 
+
+	- 配置 DNS 与主机相同
+		`C:\Users\Administrator>emulator -avd 4_WVGA_Nexus_S_API_28 -dns-server 10.151.7.160,10.151.7.196`

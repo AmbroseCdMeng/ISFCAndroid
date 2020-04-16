@@ -1,5 +1,7 @@
 package com.maci.foxconn.utils;
 
+import com.maci.foxconn.isfcandroid.MainActivity;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;

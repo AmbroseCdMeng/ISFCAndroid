@@ -42,6 +42,9 @@ public class OutStorageWorkOrderActivity extends TitleBarActivity {
 
     //模拟数据
     private void initdata() {
+
+        String url = "http://10.161.139.45:5088/api/App/QueryOutStockForms?formno=20200328";
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         c_RecyclerView.setLayoutManager(layoutManager);
