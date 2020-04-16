@@ -152,12 +152,12 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
                 {
                     Intent intent = new Intent(getApplicationContext(), InStorageDetailInfoActivity.class);
 
-                    intent.putExtra(InStorageDetailInfoActivity.RETURN_INFO_WORKORDER, data.get(position).get("workOrder").toString().trim());
-                    intent.putExtra(InStorageDetailInfoActivity.RETURN_INFO_PAYDEPARTMENT, data.get(position).get("payDepartment").toString().trim());
-                    intent.putExtra(InStorageDetailInfoActivity.RETURN_INFO_STORAGESTATE, data.get(position).get("storageState").toString().trim());
-                    intent.putExtra(InStorageDetailInfoActivity.RETURN_INFO_MATERIALNUM, data.get(position).get("materialNum").toString().trim());
-                    intent.putExtra(InStorageDetailInfoActivity.RETURN_INFO_MATERIALNAME, data.get(position).get("materialName").toString().trim());
-                    intent.putExtra(InStorageDetailInfoActivity.RETURN_INFO_INSTORAGECOUNT, data.get(position).get("inStorageCount").toString().trim());
+                    intent.putExtra(InStorageDetailInfoActivity.RETURN_INFO_WORKORDER, data.get(position).get("FORMNO").toString().trim());
+                    intent.putExtra(InStorageDetailInfoActivity.RETURN_INFO_PAYDEPARTMENT, data.get(position).get("DPTNAME").toString().trim());
+                    intent.putExtra(InStorageDetailInfoActivity.RETURN_INFO_STORAGESTATE, data.get(position).get("FORMSTATUSNAME").toString().trim());
+                    intent.putExtra(InStorageDetailInfoActivity.RETURN_INFO_MATERIALNUM, data.get(position).get("MTLNO").toString().trim());
+                    intent.putExtra(InStorageDetailInfoActivity.RETURN_INFO_MATERIALNAME, data.get(position).get("MTLNO").toString().trim());
+                    intent.putExtra(InStorageDetailInfoActivity.RETURN_INFO_INSTORAGECOUNT, data.get(position).get("PLANQTY").toString().trim());
 
                     startActivity(intent);
                 }

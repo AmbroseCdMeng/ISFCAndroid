@@ -12,7 +12,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.TextView;
 
 
 /***
@@ -32,6 +32,14 @@ public class InStorageDetailInfoActivity extends TitleBarActivity {
     public static final String RETURN_INFO_MATERIALNAME = "COM.MACI.FOXCONN.ISFCANDROID.IN_STORAGE_DETAIL_INFO.RETURN_INFO_MATERIALNAME";
     public static final String RETURN_INFO_INSTORAGECOUNT = "COM.MACI.FOXCONN.ISFCANDROID.IN_STORAGE_DETAIL_INFO.RETURN_INFO_INSTORAGECOUNT";
 
+    private TextView mworkOrder;
+    private TextView mpayDepartment;
+    private TextView mmaterialNum;
+    private TextView mmaterialName;
+    private TextView minStorageCount;
+    private TextView mpalletCount;
+    private TextView mpackageCount;
+    private TextView mmaterialCount;
 
     private ConstraintLayout dialog_confirm;
     private EditText mlocationCode;
@@ -47,7 +55,7 @@ public class InStorageDetailInfoActivity extends TitleBarActivity {
     }
 
     private void initEvent() {
-        mcommit.setOnClickListener( v -> commitInstorage());
+        mcommit.setOnClickListener(v -> commitInstorage());
     }
 
     private void commitInstorage() {
@@ -69,7 +77,7 @@ public class InStorageDetailInfoActivity extends TitleBarActivity {
         window.setAttributes(layoutParams);       //window.getDecorView().setMinimumWidth(getResources().getDisplayMetrics().widthPixels);
         window.getDecorView().setBackgroundColor(Color.TRANSPARENT);
 
-        dialogView.findViewById(R.id.btn_commit).setOnClickListener( v -> commit());
+        dialogView.findViewById(R.id.btn_commit).setOnClickListener(v -> commit());
         dialogView.findViewById(R.id.btn_cancel).setOnClickListener(v -> alertDialog.dismiss());
 
     }
@@ -88,6 +96,26 @@ public class InStorageDetailInfoActivity extends TitleBarActivity {
         dialog_confirm = findViewById(R.id.cl_dialog_confirm);
         mcommit = findViewById(R.id.btn_commit_inStorage);
         mlocationCode = findViewById(R.id.et_location_code);
+
+        mworkOrder = findViewById(R.id.tv_workOrder);
+        mpayDepartment = findViewById(R.id.tv_payDepartment);
+        mmaterialNum = findViewById(R.id.tv_materialNum);
+        mmaterialName = findViewById(R.id.tv_materialName);
+        minStorageCount = findViewById(R.id.tv_inStorageCount);
+        mpalletCount = findViewById(R.id.tv_palletCount);
+        mpackageCount = findViewById(R.id.tv_packageCount);
+        mmaterialCount = findViewById(R.id.tv_materialCount);
+
+
+        mworkOrder.setText(getParamsInfo(RETURN_INFO_WORKORDER));
+        mpayDepartment.setText(getParamsInfo(RETURN_INFO_PAYDEPARTMENT));
+        mmaterialNum.setText(getParamsInfo(RETURN_INFO_MATERIALNUM));
+        mmaterialName.setText(getParamsInfo(RETURN_INFO_MATERIALNAME));
+        minStorageCount.setText(getParamsInfo(RETURN_INFO_INSTORAGECOUNT));
+        mpalletCount.setText(0);
+        mpackageCount.setText(0);
+        mmaterialCount.setText(0);
+
     }
 
     /**

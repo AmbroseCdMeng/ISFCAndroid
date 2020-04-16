@@ -30,6 +30,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/tv_workOrder"
             android:layout_width="78dp"
             android:layout_height="10dp"
             android:layout_marginStart="87dp"
@@ -54,6 +55,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/tv_payDepartment"
             android:layout_width="51dp"
             android:layout_height="11dp"
             android:layout_marginStart="247dp"
@@ -78,6 +80,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/tv_materialNum"
             android:layout_width="78dp"
             android:layout_height="10dp"
             android:layout_marginStart="87dp"
@@ -103,6 +106,7 @@
 
 
         <TextView
+            android:id="@+id/tv_materialName"
             android:layout_width="51dp"
             android:layout_height="11dp"
             android:layout_marginStart="256dp"
@@ -127,6 +131,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/tv_inStorageCount"
             android:layout_width="77dp"
             android:layout_height="11dp"
             android:layout_marginStart="129dp"
@@ -163,6 +168,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/tv_palletCount"
             android:layout_width="20dp"
             android:layout_height="11dp"
             android:layout_marginStart="53dp"
@@ -187,6 +193,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/tv_packageCount"
             android:layout_width="30dp"
             android:layout_height="11dp"
             android:layout_marginStart="120dp"
@@ -211,6 +218,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/tv_materialCount"
             android:layout_width="30dp"
             android:layout_height="11dp"
             android:layout_marginStart="194dp"
