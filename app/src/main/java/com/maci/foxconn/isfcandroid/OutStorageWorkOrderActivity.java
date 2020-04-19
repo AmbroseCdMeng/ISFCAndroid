@@ -8,6 +8,9 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSONObject;
+import com.maci.foxconn.utils.Utils;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +21,7 @@ import butterknife.ButterKnife;
 
 /***
  * 出库工龄单界面
- * 
+ *
  * @author AmbroseCdMeng
 
  * @time 2020/4/10 上午 09:05
@@ -29,7 +32,7 @@ public class OutStorageWorkOrderActivity extends TitleBarActivity {
     RecyclerView c_RecyclerView;
 
     private RvAdapter mRvAdapter;
-    private Bean mBean;
+    private Beans mBean;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,39 +48,93 @@ public class OutStorageWorkOrderActivity extends TitleBarActivity {
 
         String url = "http://10.161.139.45:5088/api/App/QueryOutStockForms?formno=20200328";
 
+        String result = "{\"status\":true,\"message\":\"獲取信息成功\",\"result\":[{\"FORMNO\":\"W2K20041101\",\"DPTNO\":\"TOU508\",\"DPTNAME\":\"生產一課\",\"FORMSTATUS\":\"0\",\"FORMSTATUSNAME\":\"未入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"HOUSING\",\"PLANQTY\":\"500\",\"ACTUALQTY\":\"0\",\"UNIT\":\"PC\"},{\"FORMNO\":\"W2K20041202\",\"DPTNO\":\"TOU509\",\"DPTNAME\":\"生產二課\",\"FORMSTATUS\":\"1\",\"FORMSTATUSNAME\":\"部份入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"MIPAD\",\"PLANQTY\":\"300\",\"ACTUALQTY\":\"100\",\"UNIT\":\"PC\"},{\"FORMNO\":\"W2K20041202\",\"DPTNO\":\"TOU509\",\"DPTNAME\":\"生產二課\",\"FORMSTATUS\":\"1\",\"FORMSTATUSNAME\":\"部份入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"MIPAD_TWO\",\"PLANQTY\":\"360\",\"ACTUALQTY\":\"120\",\"UNIT\":\"PC\"},{\"FORMNO\":\"W2K20041302\",\"DPTNO\":\"TOU509\",\"DPTNAME\":\"生產三課\",\"FORMSTATUS\":\"0\",\"FORMSTATUSNAME\":\"未入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"CASE\",\"PLANQTY\":\"600\",\"ACTUALQTY\":\"0\",\"UNIT\":\"PC\"},{\"FORMNO\":\"W2K20041302\",\"DPTNO\":\"TOU509\",\"DPTNAME\":\"生產三課\",\"FORMSTATUS\":\"0\",\"FORMSTATUSNAME\":\"未入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"CASE_TWO\",\"PLANQTY\":\"1900\",\"ACTUALQTY\":\"0\",\"UNIT\":\"PC\"}]}";
+
+        result = "{\n" +
+                "  \"status\": true,\n" +
+                "  \"message\": \"獲取信息成功\",\n" +
+                "  \"result\": [\n" +
+                "    {\n" +
+                "      \"FORMNO\": \"W2K20041101\",\n" +
+                "      \"DPTNO\": \"TOU508\",\n" +
+                "      \"DPTNAME\": \"生產一課\",\n" +
+                "      \"FORMSTATUS\": \"0\",\n" +
+                "      \"FORMSTATUSNAME\": \"未入庫\",\n" +
+                "      \"children\": [\n" +
+                "        {\n" +
+                "          \"MTLNO\": \"1A52TU000-600-T\",\n" +
+                "          \"PRODNAME\": \"HOUSING\",\n" +
+                "          \"PLANQTY\": \"500\",\n" +
+                "          \"ACTUALQTY\": \"0\",\n" +
+                "          \"UNIT\": \"PC\"\n" +
+                "        }\n" +
+                "      ]\n" +
+                "    },\n" +
+                "    {\n" +
+                "      \"FORMNO\": \"W2K20041202\",\n" +
+                "      \"DPTNO\": \"TOU509\",\n" +
+                "      \"DPTNAME\": \"生產二課\",\n" +
+                "      \"FORMSTATUS\": \"1\",\n" +
+                "      \"FORMSTATUSNAME\": \"部份入庫\",\n" +
+                "      \"children\": [\n" +
+                "        {\n" +
+                "          \"MTLNO\": \"1A52TU000-600-T\",\n" +
+                "          \"PRODNAME\": \"MIPAD\",\n" +
+                "          \"PLANQTY\": \"300\",\n" +
+                "          \"ACTUALQTY\": \"100\",\n" +
+                "          \"UNIT\": \"PC\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "          \"MTLNO\": \"1A52TU000-600-T\",\n" +
+                "          \"PRODNAME\": \"MIPAD_TWO\",\n" +
+                "          \"PLANQTY\": \"360\",\n" +
+                "          \"ACTUALQTY\": \"120\",\n" +
+                "          \"UNIT\": \"PC\"\n" +
+                "        }\n" +
+                "      ]\n" +
+                "    },\n" +
+                "    {\n" +
+                "      \"FORMNO\": \"W2K20041302\",\n" +
+                "      \"DPTNO\": \"TOU509\",\n" +
+                "      \"DPTNAME\": \"生產三課\",\n" +
+                "      \"FORMSTATUS\": \"0\",\n" +
+                "      \"FORMSTATUSNAME\": \"未入庫\",\n" +
+                "      \"children\": [\n" +
+                "        {\n" +
+                "          \"MTLNO\": \"1A52TU000-600-T\",\n" +
+                "          \"PRODNAME\": \"CASE\",\n" +
+                "          \"PLANQTY\": \"600\",\n" +
+                "          \"ACTUALQTY\": \"0\",\n" +
+                "          \"UNIT\": \"PC\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "          \"MTLNO\": \"1A52TU000-600-T\",\n" +
+                "          \"PRODNAME\": \"CASE_TWO\",\n" +
+                "          \"PLANQTY\": \"1900\",\n" +
+                "          \"ACTUALQTY\": \"0\",\n" +
+                "          \"UNIT\": \"PC\"\n" +
+                "        }\n" +
+                "      ]\n" +
+                "    }\n" +
+                "  ]\n" +
+                "}\n";
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         c_RecyclerView.setLayoutManager(layoutManager);
         c_RecyclerView.setFocusableInTouchMode(false);
 
-        mBean = new Bean();
-        List<Bean.DatasBean> datas = new ArrayList<>();
+        mBean = new Beans();
+        List<Beans.StorageForm> datas = new ArrayList<>();
 
-        //模拟一些数据
-        for (int i = 0; i < 20; i++) {
-            Bean.DatasBean datasBean = new Bean.DatasBean();
-            List<Bean.DatasBean.Option> option = new ArrayList<>();
-
-            Bean.DatasBean.Option optionBean = new Bean.DatasBean.Option();
-            optionBean.setDatas("这是选项" + i);
-            option.add(optionBean);
-
-            Bean.DatasBean.Option optionBean1 = new Bean.DatasBean.Option();
-            optionBean1.setDatas("这是选项" + (i + 1));
-            option.add(optionBean1);
-
-            Bean.DatasBean.Option optionBean2 = new Bean.DatasBean.Option();
-            optionBean2.setDatas("这是选项" + (i + 2));
-            option.add(optionBean2);
-
-            datasBean.setOptions(option);
-            datasBean.setTitle("这是标题");
-            datas.add(datasBean);
+        JSONObject jsonObject = JSONObject.parseObject(result);
+        if ((!(boolean) jsonObject.get("status"))) {
+            Utils.toast(this, jsonObject.get("message").toString());
         }
 
-        mBean.setDatas(datas);
-
-        mRvAdapter = new RvAdapter(this, mBean.getDatas());
+        datas = JSONObject.parseArray(jsonObject.getString("result"), Beans.StorageForm.class);
+        mBean.setResult(datas);
+        mRvAdapter = new RvAdapter(this, mBean.getResult());
         c_RecyclerView.setAdapter(mRvAdapter);
         mRvAdapter.notifyDataSetChanged();
     }
@@ -89,10 +146,10 @@ public class OutStorageWorkOrderActivity extends TitleBarActivity {
      * @param tag      为第二层recycleview位置
      */
     public void OnClickListener(int position, int tag) {
-        final List<Bean.DatasBean> datasBeans = mBean.getDatas();
+        final List<Beans.StorageForm> datasBeans = mBean.getResult();
         for (int i = 0; i < datasBeans.size(); i++) {
             if (i == position) {
-                List<Bean.DatasBean.Option> option = datasBeans.get(i).getOptions();
+                List<Beans.StorageForm.StorageDetail> option = datasBeans.get(i).getChildren();
                 for (int j = 0; j < option.size(); j++) {
                     if (j == tag) {
                         option.get(j).setSelect(true);
@@ -101,12 +158,12 @@ public class OutStorageWorkOrderActivity extends TitleBarActivity {
                     }
                 }
                 Toast.makeText(getApplicationContext(),
-                        datasBeans.get(position).getTitle() + "-" + option.get(tag).getDatas(),
+                        datasBeans.get(position).getFormno() + "-" + option.get(tag).getMtlno(),
                         Toast.LENGTH_SHORT).show();
 
             } else {
                 //这里让之前选中的效果还原成未选中
-                List<Bean.DatasBean.Option> option = datasBeans.get(i).getOptions();
+                List<Beans.StorageForm.StorageDetail> option = datasBeans.get(i).getChildren();
                 for (int j = 0; j < option.size(); j++) {
                     option.get(j).setSelect(false);
                 }

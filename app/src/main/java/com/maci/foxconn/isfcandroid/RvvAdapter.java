@@ -20,11 +20,11 @@ import butterknife.ButterKnife;
  */
 public class RvvAdapter extends RecyclerView.Adapter<RvvAdapter.ViewHolder> {
     private Context mContext;
-    private List<Bean.DatasBean.Option> mList;
+    private List<Beans.StorageForm.StorageDetail> mList;
 
     private int mPosition;
 
-    public RvvAdapter(Context context, List<Bean.DatasBean.Option> list, int position) {
+    public RvvAdapter(Context context, List<Beans.StorageForm.StorageDetail> list, int position) {
         mContext = context;
         mList = list;
         mPosition = position;
@@ -49,8 +49,9 @@ public class RvvAdapter extends RecyclerView.Adapter<RvvAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.lay_option.setTag(position);
-
-        holder.tvOption.setText(mList.get(position).getDatas());
+        holder.tv_materialNum.setText(mList.get(position).getMtlno());
+        holder.tv_materialName.setText(mList.get(position).getProdname());
+        holder.tv_inStorageCount.setText(mList.get(position).getActualqty() + "/" + mList.get(position).getPlanqty() + " " + mList.get(position).getUnit());
         if (mList.get(position).isSelect()) {
             holder.lay_option.setBackgroundResource(R.drawable.background_grid_unselect);
         } else {
@@ -68,8 +69,12 @@ public class RvvAdapter extends RecyclerView.Adapter<RvvAdapter.ViewHolder> {
     class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.lay_option)
         LinearLayout lay_option;
-        @BindView(R.id.tv_option)
-        TextView tvOption;
+        @BindView(R.id.tv_materialNum)
+        TextView tv_materialNum;
+        @BindView(R.id.tv_materialName)
+        TextView tv_materialName;
+        @BindView(R.id.tv_inStorageCount)
+        TextView tv_inStorageCount;
 
         ViewHolder(View view) {
             super(view);
@@ -83,8 +88,6 @@ public class RvvAdapter extends RecyclerView.Adapter<RvvAdapter.ViewHolder> {
                     ((OutStorageWorkOrderActivity) mContext).OnClickListener(mPosition, (int) v.getTag());
                 }
             });
-
-
         }
     }
 }

@@ -24,9 +24,9 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
     public static final int ITEM_TYPE = 100;
 
     private Context mContext;
-    private List<Bean.DatasBean> mList;
+    private List<Beans.StorageForm> mList;
 
-    public RvAdapter(Context context, List<Bean.DatasBean> list) {
+    public RvAdapter(Context context, List<Beans.StorageForm> list) {
         mContext = context;
         mList = list;
     }
@@ -47,14 +47,15 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.tv_title.setText(mList.get(position).getTitle());
-
+        holder.tv_workOrder.setText(mList.get(position).getFormno());
+        holder.tv_payDepartment.setText(mList.get(position).getDptname());
+        holder.tv_storageState.setText(mList.get(position).getFormStatusName());
         /*
          1.把内部RecyclerView的adapter和集合数据通过holder缓存
          2.使内部RecyclerView的adapter提供设置position的方法
          */
         holder.list.clear();
-        holder.list.addAll(mList.get(position).getOptions());
+        holder.list.addAll(mList.get(position).getChildren());
         if (holder.mRvAdapter == null) {
             holder.mRvAdapter = new RvvAdapter(mContext, holder.list, position);
             GridLayoutManager layoutManage = new GridLayoutManager(mContext, 1);
@@ -73,13 +74,17 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.tv_title)
-        TextView tv_title;
+        @BindView(R.id.tv_workOrder)
+        TextView tv_workOrder;
+        @BindView(R.id.tv_payDepartment)
+        TextView tv_payDepartment;
+        @BindView(R.id.tv_storageState)
+        TextView tv_storageState;
         @BindView(R.id.rv_item)
         RecyclerView rvItemItem;
 
         private RvvAdapter mRvAdapter;
-        private List<Bean.DatasBean.Option> list = new ArrayList<>();
+        private List<Beans.StorageForm.StorageDetail> list = new ArrayList<>();
 
         ViewHolder(View view) {
             super(view);
