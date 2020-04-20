@@ -32,18 +32,18 @@ public class InStorageDetailInfoActivity extends TitleBarActivity {
     public static final String RETURN_INFO_MATERIALNAME = "COM.MACI.FOXCONN.ISFCANDROID.IN_STORAGE_DETAIL_INFO.RETURN_INFO_MATERIALNAME";
     public static final String RETURN_INFO_INSTORAGECOUNT = "COM.MACI.FOXCONN.ISFCANDROID.IN_STORAGE_DETAIL_INFO.RETURN_INFO_INSTORAGECOUNT";
 
-    private TextView mworkOrder;
-    private TextView mpayDepartment;
-    private TextView mmaterialNum;
-    private TextView mmaterialName;
-    private TextView minStorageCount;
-    private TextView mpalletCount;
-    private TextView mpackageCount;
-    private TextView mmaterialCount;
+    private TextView mWorkOrder;
+    private TextView mPayDepartment;
+    private TextView mMaterialNum;
+    private TextView mMaterialName;
+    private TextView mInStorageCount;
+    private TextView mPalletCount;
+    private TextView mPackageCount;
+    private TextView mMaterialCount;
 
     private ConstraintLayout dialog_confirm;
-    private EditText mlocationCode;
-    private Button mcommit;
+    private EditText mLocationCode;
+    private Button mCommit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +55,7 @@ public class InStorageDetailInfoActivity extends TitleBarActivity {
     }
 
     private void initEvent() {
-        mcommit.setOnClickListener(v -> commitInstorage());
+        mCommit.setOnClickListener(v -> commitInstorage());
     }
 
     private void commitInstorage() {
@@ -94,27 +94,27 @@ public class InStorageDetailInfoActivity extends TitleBarActivity {
         showRight(true, "用户名", v -> startActivity(new Intent(getApplicationContext(), UserActivity.class)));
 
         dialog_confirm = findViewById(R.id.cl_dialog_confirm);
-        mcommit = findViewById(R.id.btn_commit_inStorage);
-        mlocationCode = findViewById(R.id.et_location_code);
+        mCommit = findViewById(R.id.btn_commit_inStorage);
+        mLocationCode = findViewById(R.id.et_location_code);
 
-        mworkOrder = findViewById(R.id.tv_workOrder);
-        mpayDepartment = findViewById(R.id.tv_payDepartment);
-        mmaterialNum = findViewById(R.id.tv_materialNum);
-        mmaterialName = findViewById(R.id.tv_materialName);
-        minStorageCount = findViewById(R.id.tv_inStorageCount);
-        mpalletCount = findViewById(R.id.tv_palletCount);
-        mpackageCount = findViewById(R.id.tv_packageCount);
-        mmaterialCount = findViewById(R.id.tv_materialCount);
+        mWorkOrder = findViewById(R.id.tv_workOrder);
+        mPayDepartment = findViewById(R.id.tv_payDepartment);
+        mMaterialNum = findViewById(R.id.tv_materialNum);
+        mMaterialName = findViewById(R.id.tv_materialName);
+        mInStorageCount = findViewById(R.id.tv_inStorageCount);
+        mPalletCount = findViewById(R.id.tv_palletCount);
+        mPackageCount = findViewById(R.id.tv_packageCount);
+        mMaterialCount = findViewById(R.id.tv_materialCount);
 
 
-        mworkOrder.setText(getParamsInfo(RETURN_INFO_WORKORDER));
-        mpayDepartment.setText(getParamsInfo(RETURN_INFO_PAYDEPARTMENT));
-        mmaterialNum.setText(getParamsInfo(RETURN_INFO_MATERIALNUM));
-        mmaterialName.setText(getParamsInfo(RETURN_INFO_MATERIALNAME));
-        minStorageCount.setText(getParamsInfo(RETURN_INFO_INSTORAGECOUNT));
-        mpalletCount.setText(0);
-        mpackageCount.setText(0);
-        mmaterialCount.setText(0);
+        mWorkOrder.setText(getParamsInfo(RETURN_INFO_WORKORDER));
+        mPayDepartment.setText(getParamsInfo(RETURN_INFO_PAYDEPARTMENT));
+        mMaterialNum.setText(getParamsInfo(RETURN_INFO_MATERIALNUM));
+        mMaterialName.setText(getParamsInfo(RETURN_INFO_MATERIALNAME));
+        mInStorageCount.setText(getParamsInfo(RETURN_INFO_INSTORAGECOUNT));
+        mPalletCount.setText("0");
+        mPackageCount.setText("0");
+        mMaterialCount.setText("0");
 
     }
 

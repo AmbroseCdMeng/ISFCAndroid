@@ -16,13 +16,13 @@
         android:layout_height="25dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="11dp"
-        android:lines="1"
         android:background="@drawable/shape_border_green"
         android:drawableRight="@mipmap/clear"
         android:hint="@string/hint_search"
+        android:lines="1"
         android:textColor="@color/colorYellowDark"
-        android:textSize="11sp"
         android:textColorHint="@color/colorGrayDark"
+        android:textSize="11sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
@@ -43,17 +43,18 @@
     <ListView
         android:id="@+id/lv_in_storage_work_order"
         android:layout_width="245dp"
-        android:layout_height="393dp"
-        android:layout_marginTop="61dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="25dp"
         android:cacheColorHint="#00000000"
         android:divider="@drawable/divider_line"
         android:dividerHeight="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title">
-    </ListView>
+        app:layout_constraintTop_toBottomOf="@+id/et_search"
+        app:layout_constraintBottom_toTopOf="@+id/btn_scan"></ListView>
 
     <Button
+        android:id="@+id/btn_scan"
         android:layout_width="match_parent"
         android:layout_height="42dp"
         android:background="@color/colorGrayLight"
