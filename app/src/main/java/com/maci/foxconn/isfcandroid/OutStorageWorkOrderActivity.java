@@ -40,11 +40,23 @@ public class OutStorageWorkOrderActivity extends TitleBarActivity {
         setContentView(R.layout.out_storage_work_order);
         ButterKnife.bind(this);
 
-        initdata();
+        initData();
+        initView();
+        initEvent();
+    }
+
+    private void initView() {
+        super.initTitleView();
+        showTitle(false);
+        showLeft(true, "<出库信息");
+        showRight(true, "用户名", v -> startActivity(new Intent(getApplicationContext(), UserActivity.class)));
+    }
+
+    private void initEvent() {
     }
 
     //模拟数据
-    private void initdata() {
+    private void initData() {
 
         String url = "http://10.161.139.45:5088/api/App/QueryOutStockForms?formno=20200328";
 
