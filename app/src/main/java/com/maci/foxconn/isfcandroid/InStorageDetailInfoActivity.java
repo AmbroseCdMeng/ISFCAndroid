@@ -162,16 +162,12 @@ public class InStorageDetailInfoActivity extends TitleBarActivity implements Bar
 
     private void initBarCodeListener() {
 
-        Utils.toast(this, "进来了");
-
         if (Build.MODEL.startsWith("VM1A"))
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         else
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         AidcManager.create(this, (aidcManager) -> {
-
-            Utils.toast(this, "create");
 
             this.aidcManager = aidcManager;
             try {
@@ -186,9 +182,6 @@ public class InStorageDetailInfoActivity extends TitleBarActivity implements Bar
         if (barcodeReader != null) {
             barcodeReader.addBarcodeListener(this);
 
-            Utils.toast(this, "addListener");
-
-
             try {
                 barcodeReader.setProperty(BarcodeReader.PROPERTY_TRIGGER_CONTROL_MODE,
                         BarcodeReader.TRIGGER_CONTROL_MODE_CLIENT_CONTROL);
@@ -197,8 +190,6 @@ public class InStorageDetailInfoActivity extends TitleBarActivity implements Bar
             }
 
             barcodeReader.addTriggerListener(this);
-
-            Utils.toast(this, "addTriggerListener");
 
             Map<String, Object> properties = new HashMap<>();
             properties.put(BarcodeReader.PROPERTY_CODE_128_ENABLED, true);
@@ -222,8 +213,6 @@ public class InStorageDetailInfoActivity extends TitleBarActivity implements Bar
 
     @Override
     public void onBarcodeEvent(final BarcodeReadEvent event) {
-
-        Utils.toast(this, "onBarcodeEvent");
 
         runOnUiThread(() -> {
             List<String> list = new ArrayList<>();

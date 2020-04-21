@@ -25,6 +25,8 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".MainActivity"/>
+
         <activity android:name=".HomeActivity" />
 
         <activity android:name=".TitleBarActivity" />
@@ -42,6 +44,10 @@
         <activity android:name=".AsnRelatedActivity"/>
 
         <activity android:name=".OutStorageListViewActivity"/>
+
+        <activity android:name=".HoneyWellScanActivity"/>
+
+        <activity android:name=".HoneyWellScannerTestActivity"/>
     </application>
 
 	 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />

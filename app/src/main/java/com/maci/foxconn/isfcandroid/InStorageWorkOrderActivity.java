@@ -1,5 +1,6 @@
 package com.maci.foxconn.isfcandroid;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -42,6 +43,7 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
     private ListView mInStorageWorkOrder;
     private EditText mEtSearch;
     private Button mBtnSearch;
+    private Button mBtnScan;
 
 
     private List<Map<String, Object>> data = new ArrayList<>();
@@ -124,6 +126,8 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
     private void initEvent() {
 
         mBtnSearch.setOnClickListener(v -> Utils.toast(this, "查询成功"));
+
+        mBtnScan.setOnClickListener(v -> startActivity(new Intent(this, HoneyWellScanActivity.class)));
 
         new DrawableUtils(mEtSearch, new DrawableUtils.OnDrawableListener() {
             @Override
@@ -235,6 +239,7 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
         mInStorageWorkOrder = findViewById(R.id.lv_in_storage_work_order);
         mEtSearch = findViewById(R.id.et_search);
         mBtnSearch = findViewById(R.id.btn_search);
+        mBtnScan = findViewById(R.id.btn_scan);
     }
 }
 
