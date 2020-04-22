@@ -47,7 +47,6 @@ public class HoneyWellScannerActivity extends TitleBarActivity implements Barcod
         super.onCreate(savedInstanceState);
 
         AidcManager.create(this, aidcManager -> {
-
             try {
                 //创建 AidcManager 和 BarcodeReader 对象
                 manager = aidcManager;
@@ -98,22 +97,23 @@ public class HoneyWellScannerActivity extends TitleBarActivity implements Barcod
      */
     @Override
     public void onTriggerEvent(TriggerStateChangeEvent event) {
-        try {
-            barcodeReader.light(event.getState());//开启/关闭补光
+        if (barcodeReader != null)
+            try {
+                barcodeReader.light(event.getState());//开启/关闭补光
 //            showMsg(this, event.getState() ? "开启 补光" : "关闭 补光");
-            barcodeReader.aim(event.getState());//打开/关闭瞄准线
+                barcodeReader.aim(event.getState());//打开/关闭瞄准线
 //            showMsg(this, event.getState() ? "开启 瞄准线" : "关闭 瞄准线");
-            barcodeReader.decode(event.getState());//扫描信息解码
+                barcodeReader.decode(event.getState());//扫描信息解码
 //            showMsg(this, event.getState() ? "开启 信息解码" : "关闭 信息解码");
-        } catch (ScannerNotClaimedException e) {
-            e.printStackTrace();
-            Toast.makeText(this, "Scanner is not claimed", Toast.LENGTH_SHORT).show();
-        } catch (ScannerUnavailableException e) {
-            e.printStackTrace();
-            Toast.makeText(this, "Scanner unavailable", Toast.LENGTH_SHORT).show();
-        } catch (Exception e) {
-            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
-        }
+            } catch (ScannerNotClaimedException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "Scanner is not claimed", Toast.LENGTH_SHORT).show();
+            } catch (ScannerUnavailableException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "Scanner unavailable", Toast.LENGTH_SHORT).show();
+            } catch (Exception e) {
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
     }
 
     /**
@@ -151,7 +151,8 @@ public class HoneyWellScannerActivity extends TitleBarActivity implements Barcod
     @Override
     protected void onPause() {
         super.onPause();
-        barcodeReader.release();
+        if (barcodeReader != null)
+            barcodeReader.release();
     }
 
     /**
@@ -176,9 +177,12 @@ public class HoneyWellScannerActivity extends TitleBarActivity implements Barcod
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        barcodeReader.removeBarcodeListener(this);
-        barcodeReader.removeTriggerListener(this);
-        barcodeReader.close();
-        manager.close();
+        if (barcodeReader != null) {
+            barcodeReader.removeBarcodeListener(this);
+            barcodeReader.removeTriggerListener(this);
+            barcodeReader.close();
+        }
+        if (manager != null)
+            manager.close();
     }
 }

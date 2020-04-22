@@ -300,6 +300,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/shape_border_thead"
                         android:gravity="center"
+                        android:lines="1"
                         android:text="@string/tHead_number"
                         android:textColor="@color/colorBlack"
                         android:textSize="11sp"
@@ -313,6 +314,7 @@
                         android:background="@drawable/shape_border_thead"
                         android:gravity="center"
                         android:text="@string/tHead_code"
+                        android:lines="1"
                         android:textColor="@color/colorBlack"
                         android:textSize="11sp"
                         android:textStyle="bold" />
@@ -322,6 +324,7 @@
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:lines="1"
                         android:background="@drawable/shape_border_thead"
                         android:gravity="center"
                         android:text="@string/tHead_count_package"
@@ -333,6 +336,7 @@
                         android:id="@+id/tv_mtlCount"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
+                        android:lines="1"
                         android:layout_weight="1"
                         android:background="@drawable/shape_border_thead"
                         android:gravity="center"
@@ -351,6 +355,7 @@
 
                     <TextView
                         android:layout_width="37dp"
+                        android:lines="1"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:background="@drawable/shape_border_tbody"
@@ -365,6 +370,7 @@
                         android:layout_weight="1"
                         android:background="@drawable/shape_border_tbody"
                         android:gravity="center"
+                        android:lines="1"
                         android:text="2020-01-05"
                         android:textColor="@color/colorBlack"
                         android:textSize="11sp" />
@@ -380,6 +386,7 @@
                         android:textSize="11sp" />
 
                     <TextView
+                        android:lines="1"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"

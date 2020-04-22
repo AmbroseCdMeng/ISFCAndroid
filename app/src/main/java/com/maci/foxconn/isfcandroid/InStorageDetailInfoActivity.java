@@ -90,7 +90,7 @@ public class InStorageDetailInfoActivity extends HoneyWellScannerActivity {
 
         initView();
         initEvent();
-        insertTableRows("111");
+        //insertTableRows("111");
     }
 
     private void initEvent() {
@@ -195,6 +195,7 @@ public class InStorageDetailInfoActivity extends HoneyWellScannerActivity {
             tv.setTextColor(getColor(R.color.colorBlack));
             tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, (int) tvTitle.getTextSize() + 1);
             tv.setGravity(tvTitle.getGravity());
+            tv.setLines(1);
 
             row.addView(tv);
 
