@@ -295,3 +295,16 @@
 20. ConstraintLayout 布局的 match_parent 值会铺满
 	
 	- 如果想实现宽度match_parent，就设置宽度为0dp，再设置左约束和右约束；如果想实现高度match_parent，就设置高度为0dp，再设置上约束和下约束
+	
+21. getWidth 和 setWidth 不生效
+
+	- 当在Android开发中用方法setWidth（）和setHeight()动态设置控件的宽高时，当被改后的宽高小雨原来的宽高时，这两个方法将不会生效
+	- 解决办法：
+		```java
+		LayoutParams lp=(LayoutParams)tv.getLayoutParams();
+		lp.height=200;
+		lp.width=100;
+		tv.setLayoutParams(lp);
+		```
+		
+	

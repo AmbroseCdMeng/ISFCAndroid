@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
+import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -35,6 +37,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.maci.foxconn.utils.Utils.showMsg;
+
 
 /***
  * 入库信息详情查询
@@ -43,9 +47,9 @@ import java.util.Map;
 
  * @time 2020/4/7 下午 04:46
  ***/
-public class InStorageDetailInfoActivity extends TitleBarActivity implements BarcodeReader.BarcodeListener, BarcodeReader.TriggerListener {
+public class InStorageDetailInfoActivity extends HoneyWellScannerActivity {
 
-    private static int index = 1;
+    private int index = 1;
 
     public static final String RETURN_INFO_WORKORDER = "COM.MACI.FOXCONN.ISFCANDROID.IN_STORAGE_DETAIL_INFO.RETURN_INFO_WORKORDER";
     public static final String RETURN_INFO_PAYDEPARTMENT = "COM.MACI.FOXCONN.ISFCANDROID.IN_STORAGE_DETAIL_INFO.RETURN_INFO_PAYDEPARTMENT";
@@ -55,6 +59,10 @@ public class InStorageDetailInfoActivity extends TitleBarActivity implements Bar
     public static final String RETURN_INFO_INSTORAGECOUNT = "COM.MACI.FOXCONN.ISFCANDROID.IN_STORAGE_DETAIL_INFO.RETURN_INFO_INSTORAGECOUNT";
 
     private TableLayout mTlInStorage;
+    private TextView mTvIndex;
+    private TextView mTvBarCode;
+    private TextView mTvPkgCount;
+    private TextView mMtlCount;
 
     private TextView mWorkOrder;
     private TextView mPayDepartment;
@@ -64,6 +72,8 @@ public class InStorageDetailInfoActivity extends TitleBarActivity implements Bar
     private TextView mPalletCount;
     private TextView mPackageCount;
     private TextView mMaterialCount;
+
+    private TableRow mTrInStorage;
 
     private ConstraintLayout dialog_confirm;
     private EditText mLocationCode;
@@ -78,10 +88,9 @@ public class InStorageDetailInfoActivity extends TitleBarActivity implements Bar
         super.onCreate(savedInstanceState);
         setContentView(R.layout.in_storage_detail_info);
 
-        initBarCodeListener();
-
         initView();
         initEvent();
+        insertTableRows("111");
     }
 
     private void initEvent() {
@@ -123,6 +132,12 @@ public class InStorageDetailInfoActivity extends TitleBarActivity implements Bar
         showLeft(true, "<入库信息");
         showRight(true, "用户名", v -> startActivity(new Intent(getApplicationContext(), UserActivity.class)));
 
+        mTrInStorage = findViewById(R.id.tr_inStorage);
+        mTvIndex = findViewById(R.id.tv_index);
+        mTvBarCode = findViewById(R.id.tv_barCode);
+        mTvPkgCount = findViewById(R.id.tv_pkgCount);
+        mMtlCount = findViewById(R.id.tv_mtlCount);
+
         mTlInStorage = findViewById(R.id.tl_inStorage);
 
         dialog_confirm = findViewById(R.id.cl_dialog_confirm);
@@ -160,157 +175,57 @@ public class InStorageDetailInfoActivity extends TitleBarActivity implements Bar
     }
 
 
-    private void initBarCodeListener() {
-
-        if (Build.MODEL.startsWith("VM1A"))
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        else
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-        AidcManager.create(this, (aidcManager) -> {
-
-            this.aidcManager = aidcManager;
-            try {
-                barcodeReader = aidcManager.createBarcodeReader();
-            } catch (InvalidScannerNameException e) {
-                Toast.makeText(this, "Invalid Scanner Name Exception: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            } catch (Exception e) {
-                Toast.makeText(this, "Exception: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        if (barcodeReader != null) {
-            barcodeReader.addBarcodeListener(this);
-
-            try {
-                barcodeReader.setProperty(BarcodeReader.PROPERTY_TRIGGER_CONTROL_MODE,
-                        BarcodeReader.TRIGGER_CONTROL_MODE_CLIENT_CONTROL);
-            } catch (UnsupportedPropertyException e) {
-                Toast.makeText(this, "Failed to apply properties", Toast.LENGTH_LONG).show();
-            }
-
-            barcodeReader.addTriggerListener(this);
-
-            Map<String, Object> properties = new HashMap<>();
-            properties.put(BarcodeReader.PROPERTY_CODE_128_ENABLED, true);
-            properties.put(BarcodeReader.PROPERTY_GS1_128_ENABLED, true);
-            properties.put(BarcodeReader.PROPERTY_QR_CODE_ENABLED, true);
-            properties.put(BarcodeReader.PROPERTY_CODE_39_ENABLED, true);
-            properties.put(BarcodeReader.PROPERTY_DATAMATRIX_ENABLED, true);
-            properties.put(BarcodeReader.PROPERTY_UPC_A_ENABLE, true);
-            properties.put(BarcodeReader.PROPERTY_EAN_13_ENABLED, false);
-            properties.put(BarcodeReader.PROPERTY_AZTEC_ENABLED, false);
-            properties.put(BarcodeReader.PROPERTY_CODABAR_ENABLED, false);
-            properties.put(BarcodeReader.PROPERTY_INTERLEAVED_25_ENABLED, false);
-            properties.put(BarcodeReader.PROPERTY_PDF_417_ENABLED, false);
-            properties.put(BarcodeReader.PROPERTY_CODE_39_MAXIMUM_LENGTH, 10);
-            properties.put(BarcodeReader.PROPERTY_CENTER_DECODE, true);
-            properties.put(BarcodeReader.PROPERTY_NOTIFICATION_BAD_READ_ENABLED, false);
-            barcodeReader.setProperties(properties);
-        }
-    }
-
-
-    @Override
-    public void onBarcodeEvent(final BarcodeReadEvent event) {
-
-        runOnUiThread(() -> {
-            List<String> list = new ArrayList<>();
-            list.add("Barcode data: " + event.getBarcodeData());
-            list.add("Character Set: " + event.getCharset());
-            list.add("Code ID: " + event.getCodeId());
-            list.add("AIM ID: " + event.getAimId());
-            list.add("Timestamp: " + event.getTimestamp());
-        });
-        Toast.makeText(this, event.getBarcodeData(), Toast.LENGTH_LONG).show();
-        insertTableRows(event.getBarcodeData());
-    }
-
-    @Override
-    public void onFailureEvent(BarcodeFailureEvent barcodeFailureEvent) {
-        runOnUiThread(new Runnable() {
-
-            @Override
-            public void run() {
-                Toast.makeText(getApplicationContext(), "No data", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    @Override
-    public void onTriggerEvent(TriggerStateChangeEvent event) {
-        try {
-            barcodeReader.aim(event.getState());
-            barcodeReader.light(event.getState());
-            barcodeReader.decode(event.getState());
-        } catch (ScannerNotClaimedException e) {
-            e.printStackTrace();
-            Toast.makeText(this, "Scanner is not claimed", Toast.LENGTH_SHORT).show();
-        } catch (ScannerUnavailableException e) {
-            e.printStackTrace();
-            Toast.makeText(this, "Scanner unavailable", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (barcodeReader != null) {
-            try {
-                barcodeReader.claim();
-            } catch (ScannerUnavailableException e) {
-                e.printStackTrace();
-                Toast.makeText(this, "Scanner unavailable", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        if (barcodeReader != null) {
-            // release the scanner claim so we don't get any scanner
-            // notifications while paused.
-            barcodeReader.release();
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (barcodeReader != null) {
-            barcodeReader.removeBarcodeListener(this);
-            barcodeReader.removeTriggerListener(this);
-            barcodeReader.close();
-            barcodeReader = null;
-        }
-        if (aidcManager != null)
-            aidcManager.close();
-    }
-
-    static BarcodeReader getBarcodeReader() {
-        return barcodeReader;
-    }
-
-
     private boolean insertTableRows(String barCode) {
 
-        TableRow row = new TableRow(this);
-        TextView tvIndex = new TextView(this);
-        TextView tvBarCode = new TextView(this);
-        TextView tvPkgCount = new TextView(this);
-        TextView tvMtlCount = new TextView(this);
+        LinearLayout.LayoutParams lp = new TableRow.LayoutParams(-1, -1);
+        lp.setMargins(1, 1, 1, 1);
+//        TableRow或者TextView.setLayoutParams(lp);
 
-        tvIndex.setText(index++);
-        row.addView(tvIndex);
-        tvBarCode.setText(barCode);
-        row.addView(tvBarCode);
-        tvPkgCount.setText("不知道");
-        row.addView(tvPkgCount);
-        tvMtlCount.setText("也不知道");
-        row.addView(tvMtlCount);
+        TableRow row = new TableRow(this);
+        row.setBackgroundResource(R.color.colorBlack);
+
+        for (int i = 0; i < mTrInStorage.getChildCount(); i++) {
+            TextView tvTitle = (TextView) mTrInStorage.getChildAt(i);
+
+            TextView tv = new TextView(this);
+
+            tv.setWidth(tvTitle.getWidth());
+            tv.setLayoutParams(tvTitle.getLayoutParams());
+            tv.setBackgroundResource(R.drawable.shape_border_tbody);
+            tv.setTextColor(getColor(R.color.colorBlack));
+            tv.setTextSize(TypedValue.COMPLEX_UNIT_PX, (int) tvTitle.getTextSize() + 1);
+            tv.setGravity(tvTitle.getGravity());
+
+            row.addView(tv);
+
+            switch (tvTitle.getId()) {
+                case R.id.tv_index:
+                    tv.setText(index++ + "");
+                    break;
+                case R.id.tv_barCode:
+                    tv.setText(barCode);
+                    break;
+                case R.id.tv_pkgCount:
+                    tv.setText(index++ + "");
+                    break;
+                case R.id.tv_mtlCount:
+                    tv.setText(index++ + "");
+                    break;
+            }
+        }
 
         mTlInStorage.addView(row);
         return true;
+    }
+
+    @Override
+    public void onBarcodeEvent(BarcodeReadEvent event) {
+//        showMsg(this, "data = " + event.getBarcodeData());
+        runOnUiThread(() -> insertTableRows(event.getBarcodeData()));
+    }
+
+    @Override
+    public void onFailureEvent(BarcodeFailureEvent event) {
+        //
     }
 }

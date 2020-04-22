@@ -24,12 +24,16 @@ import static com.maci.foxconn.utils.Utils.showMsg;
 
  * @time 2020/4/21 下午 02:22
  ***/
-public class HoneyWellScannerActivity extends AppCompatActivity implements BarcodeReader.BarcodeListener, BarcodeReader.TriggerListener {
+public class HoneyWellScannerActivity extends TitleBarActivity implements BarcodeReader.BarcodeListener, BarcodeReader.TriggerListener {
     //实现 BarcodeListener 和 TriggerListener 接口进行扫描键的触发监听和条码事件处理
 
 
     AidcManager manager;
-    BarcodeReader barcodeReader;//实现扫描属性的设置和扫描功能的使用
+    static BarcodeReader barcodeReader;//实现扫描属性的设置和扫描功能的使用
+
+    static BarcodeReader getBarcodeObject() {
+        return barcodeReader;
+    }
 
 
     /**

@@ -239,10 +239,10 @@
         android:layout_height="0dp"
         android:layout_marginTop="0dp"
         android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_commit_inStorage"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
-        app:layout_constraintBottom_toTopOf="@+id/btn_commit_inStorage">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
         <ImageView
             android:layout_width="32dp"
@@ -271,10 +271,10 @@
             android:layout_height="0dp"
             android:layout_marginTop="56dp"
             android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/et_location_code"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/et_location_code">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TableLayout
                 android:id="@+id/tl_inStorage"
@@ -287,22 +287,18 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TableRow
+                    android:id="@+id/tr_inStorage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/colorBlack"
-                    android:gravity="center"
-                    android:paddingLeft="0.5dp"
-                    android:paddingTop="0.5dp"
-                    android:paddingRight="0.5dp">
+                    android:gravity="center">
 
                     <TextView
+                        android:id="@+id/tv_index"
                         android:layout_width="37dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="0.5dp"
-                        android:layout_marginTop="0.5dp"
-                        android:layout_marginBottom="0.5dp"
                         android:layout_weight="1"
-                        android:background="@color/colorAquaGreen"
+                        android:background="@drawable/shape_border_thead"
                         android:gravity="center"
                         android:text="@string/tHead_number"
                         android:textColor="@color/colorBlack"
@@ -310,13 +306,11 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tv_barCode"
                         android:layout_width="96dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="0.5dp"
-                        android:layout_marginTop="0.5dp"
-                        android:layout_marginBottom="0.5dp"
                         android:layout_weight="1"
-                        android:background="@color/colorAquaGreen"
+                        android:background="@drawable/shape_border_thead"
                         android:gravity="center"
                         android:text="@string/tHead_code"
                         android:textColor="@color/colorBlack"
@@ -324,13 +318,11 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tv_pkgCount"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="0.5dp"
-                        android:layout_marginTop="0.5dp"
-                        android:layout_marginBottom="0.5dp"
                         android:layout_weight="1"
-                        android:background="@color/colorAquaGreen"
+                        android:background="@drawable/shape_border_thead"
                         android:gravity="center"
                         android:text="@string/tHead_count_package"
                         android:textColor="@color/colorBlack"
@@ -338,13 +330,11 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/tv_mtlCount"
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="0.5dp"
-                        android:layout_marginTop="0.5dp"
-                        android:layout_marginBottom="0.5dp"
                         android:layout_weight="1"
-                        android:background="@color/colorAquaGreen"
+                        android:background="@drawable/shape_border_thead"
                         android:gravity="center"
                         android:text="@string/tHead_count_material"
                         android:textColor="@color/colorBlack"
@@ -357,19 +347,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@color/colorBlack"
-                    android:gravity="center"
-                    android:paddingLeft="0.5dp"
-                    android:paddingTop="0.5dp"
-                    android:paddingRight="0.5dp">
+                    android:gravity="center">
 
                     <TextView
                         android:layout_width="37dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="0.5dp"
-                        android:layout_marginTop="0.5dp"
-                        android:layout_marginBottom="0.5dp"
                         android:layout_weight="1"
-                        android:background="@color/colorGrayPale"
+                        android:background="@drawable/shape_border_tbody"
                         android:gravity="center"
                         android:text="1"
                         android:textColor="@color/colorBlack"
@@ -378,11 +362,8 @@
                     <TextView
                         android:layout_width="96dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="0.5dp"
-                        android:layout_marginTop="0.5dp"
-                        android:layout_marginBottom="0.5dp"
                         android:layout_weight="1"
-                        android:background="@color/colorGrayPale"
+                        android:background="@drawable/shape_border_tbody"
                         android:gravity="center"
                         android:text="2020-01-05"
                         android:textColor="@color/colorBlack"
@@ -391,11 +372,8 @@
                     <TextView
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="0.5dp"
-                        android:layout_marginTop="0.5dp"
-                        android:layout_marginBottom="0.5dp"
                         android:layout_weight="1"
-                        android:background="@color/colorGrayPale"
+                        android:background="@drawable/shape_border_tbody"
                         android:gravity="center"
                         android:text="60"
                         android:textColor="@color/colorBlack"
@@ -404,11 +382,8 @@
                     <TextView
                         android:layout_width="60dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="0.5dp"
-                        android:layout_marginTop="0.5dp"
-                        android:layout_marginBottom="0.5dp"
                         android:layout_weight="1"
-                        android:background="@color/colorGrayPale"
+                        android:background="@drawable/shape_border_tbody"
                         android:gravity="center"
                         android:text="12"
                         android:textColor="@color/colorBlack"
@@ -428,8 +403,8 @@
             android:includeFontPadding="false"
             android:text="@string/label_location_code"
             android:textSize="15sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
             android:id="@+id/et_location_code"
@@ -439,8 +414,8 @@
             android:layout_marginBottom="30dp"
             android:background="@drawable/shape_border_green"
             android:lines="1"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 
