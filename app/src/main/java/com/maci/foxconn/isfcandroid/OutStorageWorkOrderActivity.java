@@ -19,6 +19,8 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.maci.foxconn.utils.Utils.showMsg;
+
 /***
  * 出库工龄单界面
  *
@@ -141,7 +143,7 @@ public class OutStorageWorkOrderActivity extends TitleBarActivity {
 
         JSONObject jsonObject = JSONObject.parseObject(result);
         if ((!(boolean) jsonObject.get("status"))) {
-            Utils.toast(this, jsonObject.get("message").toString());
+            showMsg(this, jsonObject.get("message").toString());
         }
 
         datas = JSONObject.parseArray(jsonObject.getString("result"), Beans.StorageForm.class);

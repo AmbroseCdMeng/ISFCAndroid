@@ -20,14 +20,11 @@ public class Utils {
      * @param activity
      * @param msg
      */
-    public static void toast(final Activity activity, final String msg){
-//        activity.runOnUiThread(new Runnable() {
-//            @Override
-//            public void run() {
-//                Toast.makeText(activity, msg, Toast.LENGTH_LONG).show();
-//            }
-//        });
+    public static void showMsg(final Activity activity, final String msg){
         activity.runOnUiThread(() -> Toast.makeText(activity, msg, Toast.LENGTH_LONG).show());
+    }
+    public static void showMsg(final Activity activity, final String msg, int length){
+        activity.runOnUiThread(() -> Toast.makeText(activity, msg, length).show());
     }
 
     /**

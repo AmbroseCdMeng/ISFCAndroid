@@ -25,6 +25,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.maci.foxconn.utils.Utils.showMsg;
+
 
 /***
  * 入库界面
@@ -125,9 +127,9 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
 
     private void initEvent() {
 
-        mBtnSearch.setOnClickListener(v -> Utils.toast(this, "查询成功"));
+        mBtnSearch.setOnClickListener(v -> showMsg(this, "查询成功"));
 
-        mBtnScan.setOnClickListener(v -> startActivity(new Intent(this, HoneyWellScanActivity.class)));
+        mBtnScan.setOnClickListener(v -> startActivity(new Intent(this, HoneyWellScannerActivity.class)));
 
         new DrawableUtils(mEtSearch, new DrawableUtils.OnDrawableListener() {
             @Override
@@ -176,7 +178,7 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
             String result = "{\"status\":true,\"message\":\"獲取信息成功\",\"result\":[{\"FORMNO\":\"W2K20041101\",\"DPTNO\":\"TOU508\",\"DPTNAME\":\"生產一課\",\"FORMSTATUS\":\"0\",\"FORMSTATUSNAME\":\"未入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"HOUSING\",\"PLANQTY\":\"500\",\"ACTUALQTY\":\"0\",\"UNIT\":\"PC\"},{\"FORMNO\":\"W2K20041202\",\"DPTNO\":\"TOU509\",\"DPTNAME\":\"生產二課\",\"FORMSTATUS\":\"1\",\"FORMSTATUSNAME\":\"部份入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"MIPAD\",\"PLANQTY\":\"300\",\"ACTUALQTY\":\"100\",\"UNIT\":\"PC\"},{\"FORMNO\":\"W2K20041202\",\"DPTNO\":\"TOU509\",\"DPTNAME\":\"生產二課\",\"FORMSTATUS\":\"1\",\"FORMSTATUSNAME\":\"部份入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"MIPAD_TWO\",\"PLANQTY\":\"360\",\"ACTUALQTY\":\"120\",\"UNIT\":\"PC\"},{\"FORMNO\":\"W2K20041302\",\"DPTNO\":\"TOU509\",\"DPTNAME\":\"生產三課\",\"FORMSTATUS\":\"0\",\"FORMSTATUSNAME\":\"未入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"CASE\",\"PLANQTY\":\"600\",\"ACTUALQTY\":\"0\",\"UNIT\":\"PC\"},{\"FORMNO\":\"W2K20041302\",\"DPTNO\":\"TOU509\",\"DPTNAME\":\"生產三課\",\"FORMSTATUS\":\"0\",\"FORMSTATUSNAME\":\"未入庫\",\"MTLNO\":\"1A52TU000-600-T\",\"PRODNAME\":\"CASE_TWO\",\"PLANQTY\":\"1900\",\"ACTUALQTY\":\"0\",\"UNIT\":\"PC\"}]}";
             JSONObject jsonObject = JSONObject.parseObject(result);
             if ((!(boolean) jsonObject.get("status"))) {
-                Utils.toast(this, jsonObject.get("message").toString());
+                showMsg(this, jsonObject.get("message").toString());
                 return null;
             }
             data = ((List<Map<String, Object>>) jsonObject.get("result"));

@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.maci.foxconn.utils.Utils;
 
+import static com.maci.foxconn.utils.Utils.showMsg;
+
 
 /***
  * 登录界面
@@ -77,7 +79,7 @@ public class LoginActivity extends TitleBarActivity {
     private void login()  {
         if(muserno.getText().toString().trim().isEmpty() || mpassword.getText().toString().trim().isEmpty())
         {
-            Utils.toast(LoginActivity.this,"账号密码不能为空" );
+            showMsg(LoginActivity.this,"账号密码不能为空" );
             return ;
         }
 
@@ -89,11 +91,11 @@ public class LoginActivity extends TitleBarActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                Utils.toast(LoginActivity.this, "登录成功");
+                showMsg(LoginActivity.this, "登录成功");
                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                 finish();
             } else
-                Utils.toast(LoginActivity.this, "登录失败");
+                showMsg(LoginActivity.this, "登录失败");
             mlogin.setClickable(true);
         }).start();
     }

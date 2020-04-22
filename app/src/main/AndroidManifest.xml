@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.NoActionFullScreenTheme"
-		
-		android:usesCleartextTraffic="true">
+
+        android:usesCleartextTraffic="true">
         <!--<activity android:name=".MainActivity">-->
         <!--<intent-filter>-->
         <!--<action android:name="android.intent.action.MAIN" />-->
@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" />
 
         <activity android:name=".HomeActivity" />
 
@@ -34,24 +34,27 @@
         <activity android:name=".InStorageWorkOrderActivity" />
 
         <activity android:name=".InStorageDetailInfoActivity" />
-        
+
         <activity android:name=".UserActivity" />
 
-        <activity android:name=".InStorageActivity"/>
+        <activity android:name=".InStorageActivity" />
 
-        <activity android:name=".OutStorageWorkOrderActivity"/>
+        <activity android:name=".OutStorageWorkOrderActivity" />
 
-        <activity android:name=".AsnRelatedActivity"/>
+        <activity android:name=".AsnRelatedActivity" />
 
-        <activity android:name=".OutStorageListViewActivity"/>
+        <activity android:name=".OutStorageListViewActivity" />
 
-        <activity android:name=".HoneyWellScanActivity"/>
+        <activity android:name=".HoneyWellScannerActivity"/>
 
-        <activity android:name=".HoneyWellScannerTestActivity"/>
+        <activity android:name=".HoneyWellScannerTestActivity" />
     </application>
 
-	 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-     <uses-permission android:name="android.permission.INTERNET" />
-     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+         
+    <uses-permission android:name="android.permission.INTERNET" />
+         
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.honeywell.decode.permission.DECODE" />
+
 </manifest>

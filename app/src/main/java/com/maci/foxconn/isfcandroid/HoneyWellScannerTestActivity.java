@@ -1,16 +1,21 @@
 package com.maci.foxconn.isfcandroid;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.honeywell.aidc.AidcManager;
 import com.honeywell.aidc.BarcodeFailureEvent;
 import com.honeywell.aidc.BarcodeReadEvent;
 import com.honeywell.aidc.BarcodeReader;
+import com.honeywell.aidc.InvalidScannerNameException;
 import com.honeywell.aidc.ScannerNotClaimedException;
 import com.honeywell.aidc.ScannerUnavailableException;
 import com.honeywell.aidc.TriggerStateChangeEvent;
@@ -20,6 +25,42 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+class HoneyWellScanActivity extends Activity {
+
+    private static BarcodeReader barcodeReader;
+    private AidcManager manager;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        AidcManager.create(this, new AidcManager.CreatedCallback() {
+
+            @Override
+            public void onCreated(AidcManager aidcManager) {
+                manager = aidcManager;
+                try{
+                    barcodeReader = manager.createBarcodeReader();
+                }
+                catch (InvalidScannerNameException e){
+                    Toast.makeText(getApplicationContext(), "Invalid Scanner Name Exception: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+                catch (Exception e){
+                    Toast.makeText(getApplicationContext(), "Exception: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        Intent barcodeIntent = new Intent(HoneyWellScanActivity.this, HoneyWellScannerTestActivity.class);
+        startActivity(barcodeIntent);
+    }
+
+    static BarcodeReader getBarcodeObject() {
+        return barcodeReader;
+    }
+}
+
 
 public class HoneyWellScannerTestActivity extends Activity implements BarcodeReader.BarcodeListener,
         BarcodeReader.TriggerListener {
