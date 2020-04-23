@@ -44,7 +44,7 @@ import static com.maci.foxconn.utils.Utils.showMsg;
  * 入库信息详情查询
  *
  * @author AmbroseCdMeng
-
+ *
  * @time 2020/4/7 下午 04:46
  ***/
 public class InStorageDetailInfoActivity extends HoneyWellScannerActivity {
