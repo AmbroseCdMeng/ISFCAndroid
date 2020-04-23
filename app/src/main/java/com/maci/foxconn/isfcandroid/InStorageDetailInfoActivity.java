@@ -49,7 +49,7 @@ import static com.maci.foxconn.utils.Utils.showMsg;
  ***/
 public class InStorageDetailInfoActivity extends HoneyWellScannerActivity {
 
-    private int index = 1; 
+    private int index = 1;
 
     public static final String RETURN_INFO_WORKORDER = "COM.MACI.FOXCONN.ISFCANDROID.IN_STORAGE_DETAIL_INFO.RETURN_INFO_WORKORDER";
     public static final String RETURN_INFO_PAYDEPARTMENT = "COM.MACI.FOXCONN.ISFCANDROID.IN_STORAGE_DETAIL_INFO.RETURN_INFO_PAYDEPARTMENT";

@@ -28,9 +28,9 @@ public class HoneyWellScannerActivity extends TitleBarActivity implements Barcod
 
 
     AidcManager manager;
-    static BarcodeReader barcodeReader;//实现扫描属性的设置和扫描功能的使用
+    BarcodeReader barcodeReader;//实现扫描属性的设置和扫描功能的使用
 
-    static BarcodeReader getBarcodeObject() {
+    BarcodeReader getBarcodeObject() {
         return barcodeReader;
     }
 
