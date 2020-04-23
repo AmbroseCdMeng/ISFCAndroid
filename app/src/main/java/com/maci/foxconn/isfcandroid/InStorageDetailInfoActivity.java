@@ -90,7 +90,7 @@ public class InStorageDetailInfoActivity extends HoneyWellScannerActivity {
 
         initView();
         initEvent();
-        //insertTableRows("111");
+        //insertTableRows("Test Code");
     }
 
     private void initEvent() {
@@ -221,7 +221,6 @@ public class InStorageDetailInfoActivity extends HoneyWellScannerActivity {
 
     @Override
     public void onBarcodeEvent(BarcodeReadEvent event) {
-//        showMsg(this, "data = " + event.getBarcodeData());
         runOnUiThread(() -> insertTableRows(event.getBarcodeData()));
     }
 

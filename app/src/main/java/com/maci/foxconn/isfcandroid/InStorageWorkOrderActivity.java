@@ -129,7 +129,7 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
 
         mBtnSearch.setOnClickListener(v -> showMsg(this, "查询成功"));
 
-        mBtnScan.setOnClickListener(v -> startActivity(new Intent(this, HoneyWellScannerActivity.class)));
+        mBtnScan.setOnClickListener(v -> showMsg(this, "这个暂时没有用"));
 
         new DrawableUtils(mEtSearch, new DrawableUtils.OnDrawableListener() {
             @Override
