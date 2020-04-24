@@ -307,4 +307,14 @@
 		tv.setLayoutParams(lp);
 		```
 		
+22. 真机中第二次进入扫描界面崩溃
+
+	- 通过日志列印，内存监控后发现异常：
+		```java
+		Fatal Exception: main
+		Process:com.maci.foxconn.isfcandroid, PID:5316
+		java.lang.RuntimeException:
+		Unable to resume activity{com.maci.foxconn.isfcandroid/com.maci.foxconn.isfcandroid.InStorageWorkOrderActivity}:
+		java.lang.IllegaalStateException:BarcodeReader is closed
+		```
 	

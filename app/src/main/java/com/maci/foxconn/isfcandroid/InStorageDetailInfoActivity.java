@@ -177,10 +177,6 @@ public class InStorageDetailInfoActivity extends HoneyWellScannerActivity {
 
     private boolean insertTableRows(String barCode) {
 
-        LinearLayout.LayoutParams lp = new TableRow.LayoutParams(-1, -1);
-        lp.setMargins(1, 1, 1, 1);
-//        TableRow或者TextView.setLayoutParams(lp);
-
         TableRow row = new TableRow(this);
         row.setBackgroundResource(R.color.colorBlack);
 

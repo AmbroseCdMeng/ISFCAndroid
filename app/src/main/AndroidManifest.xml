@@ -44,8 +44,6 @@
 
         <activity android:name=".AsnRelatedActivity" />
 
-        <activity android:name=".OutStorageListViewActivity" />
-
         <activity android:name=".HoneyWellScannerActivity"/>
 
     </application>
