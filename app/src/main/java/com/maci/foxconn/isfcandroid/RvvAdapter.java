@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -20,11 +21,11 @@ import butterknife.ButterKnife;
  */
 public class RvvAdapter extends RecyclerView.Adapter<RvvAdapter.ViewHolder> {
     private Context mContext;
-    private List<Beans.StorageForm.StorageDetail> mList;
+    private List<Map<String, Object>> mList;
 
     private int mPosition;
 
-    public RvvAdapter(Context context, List<Beans.StorageForm.StorageDetail> list, int position) {
+    public RvvAdapter(Context context, List<Map<String, Object>> list, int position) {
         mContext = context;
         mList = list;
         mPosition = position;
@@ -49,10 +50,10 @@ public class RvvAdapter extends RecyclerView.Adapter<RvvAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.lay_option.setTag(position);
-        holder.tv_materialNum.setText(mList.get(position).getMtlno());
-        holder.tv_materialName.setText(mList.get(position).getProdname());
-        holder.tv_inStorageCount.setText(mList.get(position).getActualqty() + "/" + mList.get(position).getPlanqty() + " " + mList.get(position).getUnit());
-        if (mList.get(position).isSelect()) {
+        holder.tv_materialNum.setText(String.valueOf(mList.get(position).get("MTLNO")));
+        holder.tv_materialName.setText(String.valueOf(mList.get(position).get("PRODNAME")));
+        holder.tv_inStorageCount.setText(mList.get(position).get("ACTUALQTY") + "/" + mList.get(position).get("PLANQTY") + " " + mList.get(position).get("UNIT"));
+        if (Boolean.parseBoolean(String.valueOf(mList.get(position).get("isSelect")))) {
             holder.lay_option.setBackgroundResource(R.drawable.background_grid_unselect);
         } else {
             holder.lay_option.setBackgroundResource(R.drawable.background_grid_select);
@@ -84,7 +85,7 @@ public class RvvAdapter extends RecyclerView.Adapter<RvvAdapter.ViewHolder> {
             lay_option.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    mList.get((int) v.getTag()).setSelect(true);
+                    mList.get((int) v.getTag()).put("isSelect", true);
                     ((OutStorageWorkOrderActivity) mContext).OnClickListener(mPosition, (int) v.getTag());
                 }
             });

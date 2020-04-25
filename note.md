@@ -285,7 +285,7 @@
 	- 配置 DNS 与主机相同
 		`C:\Users\Administrator>emulator -avd 4_WVGA_Nexus_S_API_28 -dns-server 10.151.7.160,10.151.7.196`
 		
-		
+		  
 19. Only the original thread that created a view hierarchy can touch its views
 
 	- Android系统中的视图组件并不是线程安全的，如果要更新视图，必须在主线程中更新，不可以在子线程中执行更新的操作
@@ -317,4 +317,8 @@
 		Unable to resume activity{com.maci.foxconn.isfcandroid/com.maci.foxconn.isfcandroid.InStorageWorkOrderActivity}:
 		java.lang.IllegaalStateException:BarcodeReader is closed
 		```
+		
+		
+23. fastJson String 转换 List<Map<String, Object>> 对象
+	JSONObject.parseObject(response.getResult().toString(), new TypeReference<List<Map<String, Object>>>(){});
 	

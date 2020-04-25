@@ -8,9 +8,14 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.maci.foxconn.utils.Utils;
+import com.maci.foxconn.utils.HttpUtils;
+import com.maci.foxconn.utils.MachineUtils;
+import com.maci.foxconn.utils.PropertiesUtils;
+
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import static com.maci.foxconn.utils.Utils.showMsg;
 
@@ -24,92 +29,122 @@ import static com.maci.foxconn.utils.Utils.showMsg;
  ***/
 public class LoginActivity extends TitleBarActivity {
 
-    private EditText muserno;
-    private EditText mpassword;
-    private CheckBox msPwd;
-    private TextView mfPwd;
-    private Button mlogin;
+    private static String APIURL;
+
+    @BindView(R.id.ed_userno)
+    EditText mUserNo;
+    @BindView(R.id.ed_pwd)
+    EditText mPwd;
+    @BindView(R.id.btn_login)
+    Button mLogin;
+    @BindView(R.id.cb_s_pwd)
+    CheckBox mShowPwd;
+    @BindView(R.id.tv_f_pwd)
+    TextView mFgtPwd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        ButterKnife.bind(this);
 
-        initView();
+        setApiurl();
+
+        mUserNo.setText("Admin");
+        mPwd.setText("Administrator");
+
         initEvent();
-
-        muserno.setText("Admin");
-        mpassword.setText("Administrator");
-
     }
 
-
-    private void initView() {
-        muserno = findViewById(R.id.ed_userno);
-        mpassword = findViewById(R.id.ed_pwd);
-        msPwd = findViewById(R.id.cb_s_pwd);
-        mfPwd = findViewById(R.id.tv_f_pwd);
-        mlogin = findViewById(R.id.btn_login);
-
+    private static String getAPIURL() {
+        return APIURL;
     }
+
+    private void setApiurl() {
+        APIURL = isReleaseMode() ? PropertiesUtils.getNetConfigProperties("API_DEBUG") : PropertiesUtils.getNetConfigProperties("API_RELEASE");
+    }
+
+    public static boolean isReleaseMode() {
+        return false;
+    }
+
 
     private void initEvent() {
 
-        mlogin.setOnClickListener(v -> login());
-        msPwd.setOnCheckedChangeListener((v, isChecked) -> {
+        mLogin.setOnClickListener(v -> login());
+        mShowPwd.setOnCheckedChangeListener((v, isChecked) -> {
             changePwdStatus(isChecked);
         });
-        mfPwd.setOnClickListener(v -> forgetPwd());
+        mFgtPwd.setOnClickListener(v -> forgetPwd());
     }
 
     private void forgetPwd() {
-        Toast.makeText(LoginActivity.this, "忘记密码", Toast.LENGTH_LONG).show();
+        showMsg(this, "忘记密码");
     }
 
-    private void changePwdStatus(boolean isChecked){
+    private void changePwdStatus(boolean isChecked) {
         if (isChecked)
-            mpassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+            mPwd.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
         else
-            mpassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-        mpassword.setSelection(mpassword.getText().length());
+            mPwd.setTransformationMethod(PasswordTransformationMethod.getInstance());
+        mPwd.setSelection(mPwd.getText().length());
     }
 
 
-    private void login()  {
-        if(muserno.getText().toString().trim().isEmpty() || mpassword.getText().toString().trim().isEmpty())
-        {
-            showMsg(LoginActivity.this,"账号密码不能为空" );
-            return ;
+    private void login() {
+        if (getUserNo().isEmpty() || getPwd().isEmpty()) {
+            showMsg(LoginActivity.this, "账号密码不能为空");
+            return;
         }
 
         new Thread(() -> {
-            mlogin.setClickable(false);
-            if ("Admin".equals(muserno.getText().toString().trim())) {
+            mLogin.setClickable(false);
+            if (isReleaseMode()) {
+                String url = String.format("%sSys/LoginValidate?sysname=%s&userid=%s&pwd=%s&ip=%s"
+                        , getAPIURL()
+                        , PropertiesUtils.getAppConfigProperties("SYSID")
+                        , getUserNo()
+                        , getPwd()
+                        , MachineUtils.getLocalIPAddress());
+
+                Beans response = new Beans();
                 try {
-                    Thread.sleep(500);
+                    response = HttpUtils.doGet(url, Beans.class);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                if (response.getStatus()) {
+                    showMsg(LoginActivity.this, response.getMessage());
+                    startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                    finish();
+                } else
+                    showMsg(this, response.getMessage());
+            } else {
+                try {
+                    Thread.sleep(200);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
                 showMsg(LoginActivity.this, "登录成功");
                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                 finish();
-            } else
-                showMsg(LoginActivity.this, "登录失败");
-            mlogin.setClickable(true);
+            }
+            mLogin.setClickable(true);
         }).start();
     }
 
-    private String getUserNo(){
-        return muserno.getText().toString().trim();
+    private String getUserNo() {
+        return mUserNo.getText().toString().trim();
     }
 
-    private String getPwd(){
-        //省略加密过程
-        return mpassword.getText().toString().trim();
+    private String getPwd() {
+        //省略加密/解密过程
+        return mPwd.getText().toString().trim();
     }
 
-    private boolean getSPwdStatus(){
-        return msPwd.isChecked();
+    private boolean getSPwdStatus() {
+        return mShowPwd.isChecked();
     }
 }

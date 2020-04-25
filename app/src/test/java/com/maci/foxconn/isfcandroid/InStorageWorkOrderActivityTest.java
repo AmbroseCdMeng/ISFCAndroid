@@ -8,7 +8,5 @@ public class InStorageWorkOrderActivityTest {
 
     @Test
     public void onCreate() {
-        new InStorageWorkOrderActivity().initData_();
-        new InStorageWorkOrderActivity().initData();
     }
 }

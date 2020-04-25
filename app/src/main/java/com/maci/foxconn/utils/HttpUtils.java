@@ -1,5 +1,9 @@
 package com.maci.foxconn.utils;
 
+import android.content.Context;
+
+import com.alibaba.fastjson.JSONObject;
+import com.maci.foxconn.isfcandroid.Beans;
 import com.maci.foxconn.isfcandroid.MainActivity;
 
 import java.io.ByteArrayOutputStream;
@@ -34,7 +38,7 @@ public class HttpUtils {
                     baos.write(buffer, 0, len);
                 }
                 is.close();
-                return baos.toString();
+                return baos.toString().replaceAll("^\"|\"$", "");
             }
         } catch (MalformedURLException e) {
             return e.getMessage();
@@ -42,6 +46,10 @@ public class HttpUtils {
             return e.getMessage();
         }
         return null;
+    }
+
+    public static final <T> T doGet(String url, Class<T> clazz){
+        return JSONObject.parseObject(doGet(url).replace("\\","" ), clazz);
     }
 
 
@@ -75,11 +83,15 @@ public class HttpUtils {
                     baos.write(buffer, 0, len);
                 }
                 is.close();
-                return baos.toString();
+                return baos.toString().replaceAll("^\"|\"$", "");
             }
         } catch (IOException e) {
             return e.getMessage();
         }
         return null;
+    }
+
+    public static final <T> T doPost(String url, String context,  Class<T> clazz){
+        return JSONObject.parseObject(doPost(url, context), clazz);
     }
 }

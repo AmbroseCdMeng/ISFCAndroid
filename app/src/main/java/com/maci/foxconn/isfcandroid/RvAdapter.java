@@ -10,8 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,9 +29,9 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
     public static final int ITEM_TYPE = 100;
 
     private Context mContext;
-    private List<Beans.StorageForm> mList;
+    private List<Map<String, Object>> mList;
 
-    public RvAdapter(Context context, List<Beans.StorageForm> list) {
+    public RvAdapter(Context context, List<Map<String, Object>> list) {
         mContext = context;
         mList = list;
     }
@@ -47,15 +52,16 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.tv_workOrder.setText(mList.get(position).getFormno());
-        holder.tv_payDepartment.setText(mList.get(position).getDptname());
-        holder.tv_storageState.setText(mList.get(position).getFormStatusName());
+        holder.tv_workOrder.setText(String.valueOf(mList.get(position).get("FORMNO")));
+        holder.tv_payDepartment.setText(String.valueOf(mList.get(position).get("DPTNAME")));
+        holder.tv_storageState.setText(String.valueOf(mList.get(position).get("FORMSTATUSNAME")));
         /*
          1.把内部RecyclerView的adapter和集合数据通过holder缓存
          2.使内部RecyclerView的adapter提供设置position的方法
          */
         holder.list.clear();
-        holder.list.addAll(mList.get(position).getChildren());
+        holder.list.addAll(JSONObject.parseObject(String.valueOf(mList.get(position).get("CHILDREN")), new TypeReference<List<Map<String, Object>>>() {
+        }));
         if (holder.mRvAdapter == null) {
             holder.mRvAdapter = new RvvAdapter(mContext, holder.list, position);
             GridLayoutManager layoutManage = new GridLayoutManager(mContext, 1);
@@ -84,7 +90,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
         RecyclerView rvItemItem;
 
         private RvvAdapter mRvAdapter;
-        private List<Beans.StorageForm.StorageDetail> list = new ArrayList<>();
+        private List<Map<String, Object>> list = new ArrayList<>();
 
         ViewHolder(View view) {
             super(view);
