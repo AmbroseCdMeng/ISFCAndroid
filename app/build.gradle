@@ -36,4 +36,5 @@ dependencies {
     implementation 'com.alibaba:fastjson:1.1.54.android'
     implementation 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+    implementation 'com.google.android:flexbox:0.2.6'
 }

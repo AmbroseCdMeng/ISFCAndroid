@@ -17,6 +17,11 @@ import com.maci.foxconn.utils.PropertiesUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.maci.foxconn.isfcandroid.CommonActivity.getAPIURL;
+import static com.maci.foxconn.isfcandroid.CommonActivity.getCurrentUser;
+import static com.maci.foxconn.isfcandroid.CommonActivity.getIP;
+import static com.maci.foxconn.isfcandroid.CommonActivity.getSYSID;
+import static com.maci.foxconn.isfcandroid.CommonActivity.isReleaseMode;
 import static com.maci.foxconn.utils.Utils.showMsg;
 
 
@@ -28,8 +33,6 @@ import static com.maci.foxconn.utils.Utils.showMsg;
  * @time 2020/3/27 下午 04:00
  ***/
 public class LoginActivity extends TitleBarActivity {
-
-    private static String APIURL;
 
     @BindView(R.id.ed_userno)
     EditText mUserNo;
@@ -49,26 +52,19 @@ public class LoginActivity extends TitleBarActivity {
         setContentView(R.layout.login);
         ButterKnife.bind(this);
 
-        setApiurl();
-
-        mUserNo.setText("Admin");
+        mUserNo.setText("F1680502");
         mPwd.setText("Administrator");
+        checkReleaseMode();
 
         initEvent();
     }
 
-    private static String getAPIURL() {
-        return APIURL;
+    public void checkReleaseMode() {
+        if ("F1680502".equals(getUserNo()))
+            CommonActivity.setReleaseMode(false);
+        else
+            CommonActivity.setReleaseMode(true);
     }
-
-    private void setApiurl() {
-        APIURL = isReleaseMode() ? PropertiesUtils.getNetConfigProperties("API_DEBUG") : PropertiesUtils.getNetConfigProperties("API_RELEASE");
-    }
-
-    public static boolean isReleaseMode() {
-        return false;
-    }
-
 
     private void initEvent() {
 
@@ -91,7 +87,6 @@ public class LoginActivity extends TitleBarActivity {
         mPwd.setSelection(mPwd.getText().length());
     }
 
-
     private void login() {
         if (getUserNo().isEmpty() || getPwd().isEmpty()) {
             showMsg(LoginActivity.this, "账号密码不能为空");
@@ -101,21 +96,9 @@ public class LoginActivity extends TitleBarActivity {
         new Thread(() -> {
             mLogin.setClickable(false);
             if (isReleaseMode()) {
-                String url = String.format("%sSys/LoginValidate?sysname=%s&userid=%s&pwd=%s&ip=%s"
-                        , getAPIURL()
-                        , PropertiesUtils.getAppConfigProperties("SYSID")
-                        , getUserNo()
-                        , getPwd()
-                        , MachineUtils.getLocalIPAddress());
-
-                Beans response = new Beans();
-                try {
-                    response = HttpUtils.doGet(url, Beans.class);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
+                Beans response = getUserResponse();
                 if (response.getStatus()) {
+                    CommonActivity.setCurrentUser(getUserNo());
                     showMsg(LoginActivity.this, response.getMessage());
                     startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                     finish();
@@ -127,7 +110,8 @@ public class LoginActivity extends TitleBarActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                showMsg(LoginActivity.this, "登录成功");
+                CommonActivity.setCurrentUser(getUserNo());
+                showMsg(LoginActivity.this, "登录成功(测试环境)");
                 startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                 finish();
             }
@@ -146,5 +130,22 @@ public class LoginActivity extends TitleBarActivity {
 
     private boolean getSPwdStatus() {
         return mShowPwd.isChecked();
+    }
+
+    private Beans getUserResponse() {
+        Beans beans = new Beans();
+        String url = String.format("%sSys/LoginValidate?sysname=%s&userid=%s&pwd=%s&ip=%s"
+                , getAPIURL()
+                , getSYSID()
+                , getCurrentUser()
+                , getPwd()
+                , getIP());
+
+        try {
+            beans = HttpUtils.doGet(url, Beans.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return beans;
     }
 }

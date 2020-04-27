@@ -1,0 +1,51 @@
+{
+  "comment": "菜单信息 API 返回 JSON 数据示例(该 key 仅用于充当注释，真实返回数据不含该 key)",
+  "status": true,
+  "message": "获取成功！",
+  "result": [
+    {
+      "MODULEID": "13",
+      "MODULENAME": "InStock",
+      "MODULCNAME": "入库",
+      "REQUESTTYPE": "0",
+      "HTTPURL": null,
+      "AREANAME": null,
+      "CONTROLLERNAME": null,
+      "ACTIONNAME": null,
+      "TARGET": null
+    },
+    {
+      "MODULEID": "17",
+      "MODULENAME": "BindASN",
+      "MODULCNAME": "ASN绑定",
+      "REQUESTTYPE": "0",
+      "HTTPURL": null,
+      "AREANAME": null,
+      "CONTROLLERNAME": null,
+      "ACTIONNAME": null,
+      "TARGET": null
+    },
+    {
+      "MODULEID": "14",
+      "MODULENAME": "Ship",
+      "MODULCNAME": "出货",
+      "REQUESTTYPE": "0",
+      "HTTPURL": null,
+      "AREANAME": null,
+      "CONTROLLERNAME": null,
+      "ACTIONNAME": null,
+      "TARGET": null
+    },
+    {
+      "MODULEID": "15",
+      "MODULENAME": "OutStock",
+      "MODULCNAME": "出库",
+      "REQUESTTYPE": "0",
+      "HTTPURL": null,
+      "AREANAME": null,
+      "CONTROLLERNAME": null,
+      "ACTIONNAME": null,
+      "TARGET": null
+    }
+  ]
+}

@@ -10,62 +10,63 @@
         android:id="@+id/title"
         layout="@layout/title_bar" />
 
-    <Button
-        android:id="@+id/btn_InStorage"
-        android:layout_width="121dp"
-        android:layout_height="77dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="68dp"
-        android:background="@drawable/shape_corner_shadow_1"
-        android:drawableTop="@mipmap/instorage"
-        android:drawablePadding="-10dp"
-        android:paddingTop="12dp"
-        android:text="@string/btn_inStorage"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
-
-
-    <Button
-        android:id="@+id/btn_OutStorage"
-        android:layout_width="121dp"
-        android:layout_height="77dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="26dp"
-        android:background="@drawable/shape_corner_shadow_1"
-        android:drawableTop="@mipmap/outstorage"
-        android:drawablePadding="-10dp"
-        android:paddingTop="12dp"
-        android:text="@string/btn_outStorage"
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/fl_homeMenu"
+        android:layout_width="260dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="67dp"
+        android:layout_marginEnd="8dp"
+        app:alignItems="flex_start"
+        app:flexDirection="row"
+        app:flexWrap="wrap"
+        app:justifyContent="space_between"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title" />
-
-
-    <Button
-        android:id="@+id/btn_AsnRelated"
-        android:layout_width="121dp"
-        android:layout_height="77dp"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/shape_corner_shadow_1"
-        android:drawableTop="@mipmap/asn"
-        android:drawablePadding="-10dp"
-        android:paddingTop="12dp"
-        android:text="@string/btn_asnRelated"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_InStorage" />
+        app:layout_constraintTop_toBottomOf="@+id/title">
 
+        <Button
+            android:id="@+id/btn_InStorage"
+            android:layout_width="121dp"
+            android:layout_height="77dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/shape_corner_shadow_1"
+            android:drawableTop="@mipmap/instorage"
+            android:drawablePadding="-10dp"
+            android:paddingTop="12dp"
+            android:text="@string/btn_inStorage" />
 
-    <Button
-        android:id="@+id/btn_More"
-        android:layout_width="121dp"
-        android:layout_height="77dp"
-        android:padding="15dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="26dp"
-        android:background="@drawable/shape_corner_shadow_1"
-        android:drawableTop="@mipmap/more"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_OutStorage" />
+        <Button
+            android:id="@+id/btn_OutStorage"
+            android:layout_width="121dp"
+            android:layout_height="77dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/shape_corner_shadow_1"
+            android:drawableTop="@mipmap/outstorage"
+            android:drawablePadding="-10dp"
+            android:paddingTop="12dp"
+            android:text="@string/btn_outStorage" />
 
+        <Button
+            android:id="@+id/btn_AsnRelated"
+            android:layout_width="121dp"
+            android:layout_height="77dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/shape_corner_shadow_1"
+            android:drawableTop="@mipmap/asn"
+            android:drawablePadding="-10dp"
+            android:paddingTop="12dp"
+            android:text="@string/btn_asnRelated" />
+
+        <Button
+            android:id="@+id/btn_More"
+            android:layout_width="121dp"
+            android:layout_height="77dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/shape_corner_shadow_1"
+            android:drawableTop="@mipmap/more"
+            android:padding="15dp" />
+
+    </com.google.android.flexbox.FlexboxLayout>
 
 </android.support.constraint.ConstraintLayout>

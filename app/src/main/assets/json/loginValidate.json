@@ -1,0 +1,6 @@
+{
+  "comment": "登录验证 API 返回 JSON 数据示例(该 key 仅用于充当注释，真实返回数据不含该 key)",
+  "status": true,
+  "message": "登录成功！",
+  "result": null
+}

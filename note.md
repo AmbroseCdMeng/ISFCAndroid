@@ -298,7 +298,7 @@
 	
 21. getWidth 和 setWidth 不生效
 
-	- 当在Android开发中用方法setWidth（）和setHeight()动态设置控件的宽高时，当被改后的宽高小雨原来的宽高时，这两个方法将不会生效
+	- 当在Android开发中用方法setWidth()和setHeight()动态设置控件的宽高时，当被改后的宽高小雨原来的宽高时，这两个方法将不会生效
 	- 解决办法：
 		```java
 		LayoutParams lp=(LayoutParams)tv.getLayoutParams();
@@ -322,3 +322,11 @@
 23. fastJson String 转换 List<Map<String, Object>> 对象
 	JSONObject.parseObject(response.getResult().toString(), new TypeReference<List<Map<String, Object>>>(){});
 	
+	
+24. FlexboxLayout 布局
+	- 添加依赖
+		```xml
+		dependencies {
+			compile 'com.google.android:flexbox:0.2.6'
+		}
+		```

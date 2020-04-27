@@ -4,24 +4,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.maci.foxconn.utils.HttpUtils;
-import com.maci.foxconn.utils.Utils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static com.maci.foxconn.isfcandroid.LoginActivity.isReleaseMode;
+import static com.maci.foxconn.isfcandroid.CommonActivity.isReleaseMode;
 import static com.maci.foxconn.utils.Utils.showMsg;
 
 /***
@@ -82,8 +77,7 @@ public class OutStorageWorkOrderActivity extends TitleBarActivity {
         c_RecyclerView.setLayoutManager(layoutManager);
         c_RecyclerView.setFocusableInTouchMode(false);
 
-        mBean = new Beans();
-        List<Map<String, Object>> datas = new ArrayList<>();
+        List<Map<String, Object>> datas ;
 
         if ((!response.getStatus())) {
             showMsg(this, response.getMessage());
@@ -92,7 +86,7 @@ public class OutStorageWorkOrderActivity extends TitleBarActivity {
         datas = JSONObject.parseObject(response.getResult().toString(), new TypeReference<List<Map<String, Object>>>(){});
 
         mBean.setResult(datas);
-        mRvAdapter = new RvAdapter(this, (List<Map<String, Object>>) mBean.getResult());
+        mRvAdapter = new RvAdapter(this, JSONObject.parseObject(mBean.getResult().toString(), new TypeReference<List<Map<String, Object>>>(){}));
         c_RecyclerView.setAdapter(mRvAdapter);
         mRvAdapter.notifyDataSetChanged();
     }
