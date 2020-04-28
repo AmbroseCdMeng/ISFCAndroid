@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/title_bar" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="99dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title">
+
+        <TextView
+            android:layout_width="51dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="15dp"
+            android:includeFontPadding="false"
+            android:text="@string/label_workOrder"
+            android:textColor="@color/colorBlack"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_workOrder"
+            android:layout_width="78dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="87dp"
+            android:layout_marginTop="15dp"
+            android:includeFontPadding="false"
+            android:text="4399"
+            android:textColor="@color/colorBlack"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="51dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="193dp"
+            android:layout_marginTop="15dp"
+            android:includeFontPadding="false"
+            android:text="@string/label_payDepartment"
+            android:textColor="@color/colorBlack"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_payDepartment"
+            android:layout_width="51dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="247dp"
+            android:layout_marginTop="15dp"
+            android:includeFontPadding="false"
+            android:text="XXX 部门"
+            android:textColor="@color/colorBlack"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="51dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="32dp"
+            android:includeFontPadding="false"
+            android:text="@string/label_materialNum"
+            android:textColor="@color/colorBlack"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_materialNum"
+            android:layout_width="78dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="87dp"
+            android:layout_marginTop="32dp"
+            android:includeFontPadding="false"
+            android:text="4399"
+            android:textColor="@color/colorBlack"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="51dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="193dp"
+            android:layout_marginTop="32dp"
+            android:includeFontPadding="false"
+            android:text="@string/label_materialName"
+            android:textColor="@color/colorBlack"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tv_materialName"
+            android:layout_width="51dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="256dp"
+            android:layout_marginTop="32dp"
+            android:includeFontPadding="false"
+            android:text="支架"
+            android:textColor="@color/colorBlack"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="48dp"
+            android:includeFontPadding="false"
+            android:text="@string/label_inStorageCount"
+            android:textColor="@color/colorBlack"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_inStorageCount"
+            android:layout_width="77dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="129dp"
+            android:layout_marginTop="48dp"
+            android:includeFontPadding="false"
+            android:text="4399"
+            android:textColor="@color/colorLakeGreen"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="51dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="65dp"
+            android:includeFontPadding="false"
+            android:text="@string/label_thisInStorage"
+            android:textColor="@color/colorBlack"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="51dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="81dp"
+            android:includeFontPadding="false"
+            android:text="@string/label_pallet"
+            android:textColor="@color/colorBlack"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_palletCount"
+            android:layout_width="20dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="53dp"
+            android:layout_marginTop="80dp"
+            android:includeFontPadding="false"
+            android:text="9"
+            android:textColor="@color/colorLakeGreen"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="51dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="86dp"
+            android:layout_marginTop="81dp"
+            android:includeFontPadding="false"
+            android:text="@string/label_package"
+            android:textColor="@color/colorBlack"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_packageCount"
+            android:layout_width="30dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="80dp"
+            android:includeFontPadding="false"
+            android:text="29"
+            android:textColor="@color/colorLakeGreen"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="51dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="161dp"
+            android:layout_marginTop="81dp"
+            android:includeFontPadding="false"
+            android:text="@string/label_material"
+            android:textColor="@color/colorBlack"
+            android:textSize="10sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_materialCount"
+            android:layout_width="30dp"
+            android:layout_height="11dp"
+            android:layout_marginStart="194dp"
+            android:layout_marginTop="80dp"
+            android:includeFontPadding="false"
+            android:text="109"
+            android:textColor="@color/colorLakeGreenDark"
+            android:textSize="11sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_commit_inStorage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="13dp"
+            android:src="@mipmap/barcode"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="140dp"
+            android:layout_height="17dp"
+            android:layout_marginStart="63dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorGrayPale"
+            android:includeFontPadding="false"
+            android:text="@string/label_scan"
+            android:textColor="@color/colorBlack"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ScrollView
+            android:layout_width="280dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/et_location_code"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TableLayout
+                android:id="@+id/tl_inStorage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="0dp"
+                android:background="@color/colorGrayPale"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TableRow
+                    android:id="@+id/tr_inStorage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorBlack"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/tv_index"
+                        android:layout_width="37dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_border_thead"
+                        android:gravity="center"
+                        android:lines="1"
+                        android:text="@string/tHead_number"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_barCode"
+                        android:layout_width="96dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_border_thead"
+                        android:gravity="center"
+                        android:text="@string/tHead_code"
+                        android:lines="1"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_pkgCount"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:lines="1"
+                        android:background="@drawable/shape_border_thead"
+                        android:gravity="center"
+                        android:text="@string/tHead_count_package"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_mtlCount"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:lines="1"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_border_thead"
+                        android:gravity="center"
+                        android:text="@string/tHead_count_material"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/colorBlack"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="37dp"
+                        android:lines="1"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_border_tbody"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="96dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_border_tbody"
+                        android:gravity="center"
+                        android:lines="1"
+                        android:text="2020-01-05"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_border_tbody"
+                        android:gravity="center"
+                        android:text="60"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:lines="1"
+                        android:layout_width="60dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/shape_border_tbody"
+                        android:gravity="center"
+                        android:text="12"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="11sp" />
+
+                </TableRow>
+
+            </TableLayout>
+
+        </ScrollView>
+
+        <TextView
+            android:layout_width="49dp"
+            android:layout_height="16dp"
+            android:layout_marginStart="27dp"
+            android:layout_marginBottom="35dp"
+            android:includeFontPadding="false"
+            android:text="@string/label_location_code"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/et_location_code"
+            android:layout_width="211dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="87dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/shape_border_green"
+            android:lines="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btn_commit_inStorage"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:background="@color/colorWhite"
+        android:drawableLeft="@mipmap/commit"
+        android:drawablePadding="-113dp"
+        android:includeFontPadding="false"
+        android:paddingLeft="113dp"
+        android:text="@string/btn_commit_storage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</android.support.constraint.ConstraintLayout>

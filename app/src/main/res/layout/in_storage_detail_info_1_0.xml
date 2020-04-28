@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/title"
+        layout="@layout/title_bar" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/colorBlack"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title">
+
+        <TableRow android:background="@color/colorBlack">
+
+            <TextView
+                android:layout_width="50dp"
+                android:background="@drawable/shape_border_tbody"
+                android:text="123" />
+
+            <TextView
+                android:layout_width="50dp"
+                android:background="@drawable/shape_border_tbody"
+                android:text="123" />
+
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="50dp"
+                android:background="@drawable/shape_border_tbody"
+                android:text="123" />
+
+            <TextView
+                android:layout_width="50dp"
+                android:background="@drawable/shape_border_tbody"
+                android:text="123" />
+
+        </TableRow>
+    </TableLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:includeFontPadding="false"
+            android:text="取消" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:includeFontPadding="false"
+            android:text="取消" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
