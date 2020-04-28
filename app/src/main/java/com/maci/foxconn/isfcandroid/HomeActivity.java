@@ -1,11 +1,11 @@
 package com.maci.foxconn.isfcandroid;
 
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
@@ -23,6 +23,7 @@ import static com.maci.foxconn.isfcandroid.CommonActivity.getAPIURL;
 import static com.maci.foxconn.isfcandroid.CommonActivity.getCurrentUser;
 import static com.maci.foxconn.isfcandroid.CommonActivity.getSYSID;
 import static com.maci.foxconn.utils.LayoutUtils.getMipmapIdByName;
+import static com.maci.foxconn.utils.StringUtils.defaultIfNullOrEmpty;
 import static com.maci.foxconn.utils.UnitConvertUtils.dp2px;
 import static com.maci.foxconn.utils.Utils.showMsg;
 
@@ -105,9 +106,14 @@ public class HomeActivity extends TitleBarActivity {
                         button.setBackgroundResource(R.drawable.shape_corner_shadow_1);
 
                         //Drawable top = ContextCompat.getDrawable(this, R.mipmap.instorage);
-                        Drawable top = ContextCompat.getDrawable(this, getMipmapIdByName("instorage"));
-                        button.setCompoundDrawablesWithIntrinsicBounds(null, top, null, null);
-                        button.setCompoundDrawablePadding(-10);
+                        String mipmap = defaultIfNullOrEmpty(item.get("IMGURL"), "more");
+                        try {
+                            Drawable top = ContextCompat.getDrawable(this, getMipmapIdByName(mipmap));
+                            button.setCompoundDrawablesWithIntrinsicBounds(null, top, null, null);
+                            button.setCompoundDrawablePadding(-10);
+                        } catch (Resources.NotFoundException e) {
+                            e.printStackTrace();
+                        }
 
                         button.setPadding(0, 12, 0, 0);
                         mFlHomeMenu.addView(button);
