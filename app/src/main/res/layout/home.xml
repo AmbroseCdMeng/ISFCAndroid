@@ -25,6 +25,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title">
 
+        <!-- 菜单列表改为代码中动态生成
         <Button
             android:id="@+id/btn_InStorage"
             android:layout_width="121dp"
@@ -66,6 +67,7 @@
             android:background="@drawable/shape_corner_shadow_1"
             android:drawableTop="@mipmap/more"
             android:padding="15dp" />
+         -->
 
     </com.google.android.flexbox.FlexboxLayout>
 

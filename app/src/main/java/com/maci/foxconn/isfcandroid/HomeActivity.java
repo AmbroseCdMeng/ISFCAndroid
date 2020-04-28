@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
-import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.alibaba.fastjson.JSONObject;
@@ -21,6 +20,7 @@ import butterknife.ButterKnife;
 import static com.maci.foxconn.isfcandroid.CommonActivity.getAPIURL;
 import static com.maci.foxconn.isfcandroid.CommonActivity.getCurrentUser;
 import static com.maci.foxconn.isfcandroid.CommonActivity.getSYSID;
+import static com.maci.foxconn.utils.LayoutUtils.getMipmapIdByName;
 import static com.maci.foxconn.utils.UnitConvertUtils.dp2px;
 import static com.maci.foxconn.utils.Utils.showMsg;
 
@@ -52,7 +52,7 @@ public class HomeActivity extends TitleBarActivity {
         ButterKnife.bind(this);
         showTitleBtn();
         initMenuList();
-        initEvent();
+        //initEvent();
     }
 
     private void showTitleBtn() {
@@ -130,23 +130,45 @@ public class HomeActivity extends TitleBarActivity {
                 });
                 runOnUiThread(() -> {
                     for (Map item : result) {
+                        String mName = String.valueOf(item.get("MODULENAME"));
+
                         Button button = new Button(this);
-                        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(dp2px(this, 121), dp2px(this, 77));
-                        button.setLayoutParams(lp);
+                        button.setTag(mName);
 
                         button.setText(String.valueOf(item.get("MODULCNAME")));
                         button.setBackgroundResource(R.drawable.shape_corner_shadow_1);
 
-                        Drawable top = ContextCompat.getDrawable(this, R.mipmap.instorage);
+                        //Drawable top = ContextCompat.getDrawable(this, R.mipmap.instorage);
+                        Drawable top = ContextCompat.getDrawable(this, getMipmapIdByName("instorage"));
                         button.setCompoundDrawablesWithIntrinsicBounds(null, top, null, null);
                         button.setCompoundDrawablePadding(-10);
 
                         button.setPadding(0, 12, 0, 0);
                         mFlHomeMenu.addView(button);
 
-//                        ViewGroup.LayoutParams lp = button.getLayoutParams();
-//                        lp.width = dp2px(this, 121);
-//                        lp.height = dp2px(this, 77);
+                        FlexboxLayout.LayoutParams llp = new FlexboxLayout.LayoutParams(dp2px(this, 121), dp2px(this, 77));
+                        llp.setMargins(0, 0, 0, 40);
+                        button.setLayoutParams(llp);
+
+                        switch (String.valueOf(button.getTag()).trim().toUpperCase()) {
+                            case "INSTOCK":
+                                button.setOnClickListener((v) -> jumpToInStorageWorkOrderView());
+                                break;
+                            case "BINDASN":
+                                button.setOnClickListener((v) -> jumpToAsnRelatedView());
+                                break;
+                            case "SHIP":
+                                button.setOnClickListener((v) -> jumpToAsnRelatedView());
+                                break;
+                            case "OUTSTOCK":
+                                button.setOnClickListener((v) -> jumpToOutStorageWorkOrderView());
+                                break;
+                            default:
+                                break;
+                        }
+
+
+
                     }
                 });
             } catch (Exception e) {
@@ -155,8 +177,5 @@ public class HomeActivity extends TitleBarActivity {
 
 
         }).start();
-        runOnUiThread(() -> {
-            getMenuResponse();
-        });
     }
 }
