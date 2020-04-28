@@ -62,14 +62,14 @@ public class OutStorageWorkOrderActivity extends TitleBarActivity {
 
         Beans response = new Beans();
         try {
-            response = HttpUtils.doGet(url, Beans.class);
+            //TODO HttpTestResponseText
+            if (!isReleaseMode()) {
+                response = initTestResponseText();
+            } else {
+                response = HttpUtils.doGet(url, Beans.class);
+            }
         } catch (Exception e) {
             e.printStackTrace();
-        }
-
-        //TODO HttpTestResponseText
-        if (!isReleaseMode()){
-            response = initTestResponseText();
         }
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -77,16 +77,15 @@ public class OutStorageWorkOrderActivity extends TitleBarActivity {
         c_RecyclerView.setLayoutManager(layoutManager);
         c_RecyclerView.setFocusableInTouchMode(false);
 
-        List<Map<String, Object>> datas ;
 
         if ((!response.getStatus())) {
             showMsg(this, response.getMessage());
         }
 
-        datas = JSONObject.parseObject(response.getResult().toString(), new TypeReference<List<Map<String, Object>>>(){});
-
-        mBean.setResult(datas);
-        mRvAdapter = new RvAdapter(this, JSONObject.parseObject(mBean.getResult().toString(), new TypeReference<List<Map<String, Object>>>(){}));
+        mBean = new Beans();
+        mBean.setResult(JSONObject.parseObject(response.getResult().toString(), new TypeReference<List<Map<String, Object>>>() {
+        }));
+        mRvAdapter = new RvAdapter(this, (List<Map<String, Object>>)mBean.getResult());
         c_RecyclerView.setAdapter(mRvAdapter);
         mRvAdapter.notifyDataSetChanged();
     }
@@ -124,7 +123,7 @@ public class OutStorageWorkOrderActivity extends TitleBarActivity {
         mRvAdapter.notifyDataSetChanged();
     }
 
-    private Beans initTestResponseText(){
+    private Beans initTestResponseText() {
         String result = "{\n" +
                 "  \"status\": true,\n" +
                 "  \"message\": \"獲取信息成功\",\n" +
@@ -193,6 +192,6 @@ public class OutStorageWorkOrderActivity extends TitleBarActivity {
                 "    }\n" +
                 "  ]\n" +
                 "}\n";
-        return JSONObject.parseObject(result.replace("\\","" ), Beans.class);
+        return JSONObject.parseObject(result.replace("\\", ""), Beans.class);
     }
 }

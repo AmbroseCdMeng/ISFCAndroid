@@ -5,10 +5,12 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.google.android.flexbox.FlexboxLayout;
+import com.maci.foxconn.utils.ButtonUtils;
 import com.maci.foxconn.utils.HttpUtils;
 
 import java.util.List;
@@ -33,15 +35,6 @@ import static com.maci.foxconn.utils.Utils.showMsg;
  ***/
 public class HomeActivity extends TitleBarActivity {
 
-    @BindView(R.id.btn_InStorage)
-    Button mInStorage;
-    @BindView(R.id.btn_OutStorage)
-    Button mOutStorage;
-    @BindView(R.id.btn_AsnRelated)
-    Button mAsnRelated;
-    @BindView(R.id.btn_More)
-    Button mMore;
-
     @BindView(R.id.fl_homeMenu)
     FlexboxLayout mFlHomeMenu;
 
@@ -52,7 +45,7 @@ public class HomeActivity extends TitleBarActivity {
         ButterKnife.bind(this);
         showTitleBtn();
         initMenuList();
-        //initEvent();
+        initEvent();
     }
 
     private void showTitleBtn() {
@@ -63,45 +56,18 @@ public class HomeActivity extends TitleBarActivity {
     }
 
     private void initEvent() {
-        mInStorage.setOnClickListener(v -> jumpToInStorageWorkOrderView());
-        mOutStorage.setOnClickListener(v -> jumpToOutStorageWorkOrderView());
-        mAsnRelated.setOnClickListener(v -> jumpToAsnRelatedView());
     }
 
-    private void jumpToInStorageWorkOrderView() {
-        new Thread() {
-            @Override
-            public void run() {
-                super.run();
-                mInStorage.setClickable(false);
-                startActivity(new Intent(HomeActivity.this, InStorageWorkOrderActivity.class));
-                mInStorage.setClickable(true);
-            }
-        }.start();
+    private void jumpToInStorageWorkOrderView(Button button) {
+        ButtonUtils.jumpToActivity(button, this, InStorageWorkOrderActivity.class);
     }
 
-    private void jumpToOutStorageWorkOrderView() {
-        new Thread() {
-            @Override
-            public void run() {
-                super.run();
-                mOutStorage.setClickable(false);
-                startActivity(new Intent(HomeActivity.this, OutStorageWorkOrderActivity.class));
-                mOutStorage.setClickable(true);
-            }
-        }.start();
+    private void jumpToOutStorageWorkOrderView(Button button) {
+        ButtonUtils.jumpToActivity(button, this, OutStorageWorkOrderActivity.class);
     }
 
-    private void jumpToAsnRelatedView() {
-        new Thread() {
-            @Override
-            public void run() {
-                super.run();
-                mAsnRelated.setClickable(false);
-                startActivity(new Intent(HomeActivity.this, AsnRelatedActivity.class));
-                mAsnRelated.setClickable(true);
-            }
-        }.start();
+    private void jumpToAsnRelatedView(Button button) {
+        ButtonUtils.jumpToActivity(button, this, AsnRelatedActivity.class);
     }
 
     private Beans getMenuResponse() {
@@ -152,30 +118,25 @@ public class HomeActivity extends TitleBarActivity {
 
                         switch (String.valueOf(button.getTag()).trim().toUpperCase()) {
                             case "INSTOCK":
-                                button.setOnClickListener((v) -> jumpToInStorageWorkOrderView());
+                                button.setOnClickListener((v) -> jumpToInStorageWorkOrderView(button));
                                 break;
                             case "BINDASN":
-                                button.setOnClickListener((v) -> jumpToAsnRelatedView());
+                                button.setOnClickListener((v) -> jumpToAsnRelatedView(button));
                                 break;
                             case "SHIP":
-                                button.setOnClickListener((v) -> jumpToAsnRelatedView());
+                                button.setOnClickListener((v) -> jumpToAsnRelatedView(button));
                                 break;
                             case "OUTSTOCK":
-                                button.setOnClickListener((v) -> jumpToOutStorageWorkOrderView());
+                                button.setOnClickListener((v) -> jumpToOutStorageWorkOrderView(button));
                                 break;
                             default:
                                 break;
                         }
-
-
-
                     }
                 });
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-
         }).start();
     }
 }
