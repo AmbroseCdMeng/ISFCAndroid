@@ -10,7 +10,7 @@ import android.widget.Button;
 import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson.TypeReference;
 import com.google.android.flexbox.FlexboxLayout;
-import com.maci.foxconn.utils.ButtonUtils;
+import com.maci.foxconn.utils.ActivityUtils;
 import com.maci.foxconn.utils.HttpUtils;
 
 import java.util.List;
@@ -60,15 +60,15 @@ public class HomeActivity extends TitleBarActivity {
     }
 
     private void jumpToInStorageWorkOrderView(Button button) {
-        ButtonUtils.jumpToActivity(button, this, InStorageWorkOrderActivity.class);
+        ActivityUtils.jumpToActivity(button, this, InStorageWorkOrderActivity.class);
     }
 
     private void jumpToOutStorageWorkOrderView(Button button) {
-        ButtonUtils.jumpToActivity(button, this, OutStorageWorkOrderActivity.class);
+        ActivityUtils.jumpToActivity(button, this, OutStorageWorkOrderActivity.class);
     }
 
     private void jumpToAsnRelatedView(Button button) {
-        ButtonUtils.jumpToActivity(button, this, AsnRelatedActivity.class);
+        ActivityUtils.jumpToActivity(button, this, AsnRelatedActivity.class);
     }
 
     private Beans getMenuResponse() {

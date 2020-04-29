@@ -2,9 +2,7 @@ package com.maci.foxconn.isfcandroid;
 
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.util.TypedValue;
@@ -15,30 +13,19 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.honeywell.aidc.AidcManager;
 import com.honeywell.aidc.BarcodeFailureEvent;
 import com.honeywell.aidc.BarcodeReadEvent;
 import com.honeywell.aidc.BarcodeReader;
-import com.honeywell.aidc.InvalidScannerNameException;
-import com.honeywell.aidc.ScannerNotClaimedException;
-import com.honeywell.aidc.ScannerUnavailableException;
-import com.honeywell.aidc.TriggerStateChangeEvent;
-import com.honeywell.aidc.UnsupportedPropertyException;
-import com.maci.foxconn.utils.Utils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 import static com.maci.foxconn.utils.ActivityUtils.getParamsInfo;
-import static com.maci.foxconn.utils.Utils.showMsg;
 
 
 /***
@@ -48,9 +35,12 @@ import static com.maci.foxconn.utils.Utils.showMsg;
  *
  * @time 2020/4/7 下午 04:46
  ***/
-public class InStorageDetailInfoActivity extends HoneyWellScannerActivity {
+public class InStorageDetailInfoActivity_1 extends HoneyWellScannerActivity {
 
     private int index = 1;
+
+    View dialogView;
+    AlertDialog alertDialog;
 
     public static final String RETURN_INFO_WORKORDER = "COM.MACI.FOXCONN.ISFCANDROID.IN_STORAGE_DETAIL_INFO.RETURN_INFO_WORKORDER";
     public static final String RETURN_INFO_PAYDEPARTMENT = "COM.MACI.FOXCONN.ISFCANDROID.IN_STORAGE_DETAIL_INFO.RETURN_INFO_PAYDEPARTMENT";
@@ -59,48 +49,73 @@ public class InStorageDetailInfoActivity extends HoneyWellScannerActivity {
     public static final String RETURN_INFO_MATERIALNAME = "COM.MACI.FOXCONN.ISFCANDROID.IN_STORAGE_DETAIL_INFO.RETURN_INFO_MATERIALNAME";
     public static final String RETURN_INFO_INSTORAGECOUNT = "COM.MACI.FOXCONN.ISFCANDROID.IN_STORAGE_DETAIL_INFO.RETURN_INFO_INSTORAGECOUNT";
 
-    private TableLayout mTlInStorage;
-    private TextView mTvIndex;
-    private TextView mTvBarCode;
-    private TextView mTvPkgCount;
-    private TextView mMtlCount;
-
-    private TextView mWorkOrder;
-    private TextView mPayDepartment;
-    private TextView mMaterialNum;
-    private TextView mMaterialName;
-    private TextView mInStorageCount;
-    private TextView mPalletCount;
-    private TextView mPackageCount;
-    private TextView mMaterialCount;
-
-    private TableRow mTrInStorage;
-
-    private ConstraintLayout dialog_confirm;
-    private EditText mLocationCode;
-    private Button mCommit;
-
+    @BindView(R.id.btn_acceptCount)
+    Button mAcceptCount;
+    @BindView(R.id.tv_inStorageOrder)
+    TextView mInStorageOrder;
+    @BindView(R.id.tv_workOrder)
+    TextView mWorkOrder;
+    @BindView(R.id.tv_materialNum)
+    TextView mMaterialNum;
+    @BindView(R.id.tv_productName)
+    TextView mProductName;
+    @BindView(R.id.tv_specific)
+    TextView mSpecific;
+    @BindView(R.id.tv_payDepartment)
+    TextView mPayDepartment;
+    @BindView(R.id.tv_unit)
+    TextView mUnit;
+    @BindView(R.id.inStorageCount)
+    TextView mInStorageCount;
+    @BindView(R.id.tv_wareHouse)
+    TextView mWareHouse;
+    @BindView(R.id.tv_location)
+    TextView mLocation;
+    @BindView(R.id.tv_mark)
+    TextView mMark;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.in_storage_detail_info);
+        setContentView(R.layout.in_storage_detail_info_1_0);
 
-        initView();
+        ButterKnife.bind(this);
+        showTitleBtn();
+        initData();
         initEvent();
+        initShowMoreCodeMsgDialog();
         //insertTableRows("Test Code");
     }
 
-    private void initEvent() {
-        mCommit.setOnClickListener(v -> commitInstorage());
+    private void initData() {
+        mAcceptCount.setText(getParamsInfo(this, ""));
+        mWorkOrder.setText(getParamsInfo(this, RETURN_INFO_WORKORDER));
+        mPayDepartment.setText(getParamsInfo(this, RETURN_INFO_PAYDEPARTMENT));
+        mMaterialNum.setText(getParamsInfo(this, RETURN_INFO_MATERIALNUM));
+        mInStorageCount.setText(getParamsInfo(this, RETURN_INFO_INSTORAGECOUNT));
+        mInStorageOrder.setText(getParamsInfo(this, ""));
+        mSpecific.setText(getParamsInfo(this, ""));
+        mUnit.setText(getParamsInfo(this, ""));
+        mWareHouse.setText(getParamsInfo(this, ""));
+        mLocation.setText(getParamsInfo(this, ""));
+        mMark.setText(getParamsInfo(this, ""));
+        mProductName.setText(getParamsInfo(this, ""));
     }
 
-    private void commitInstorage() {
-        final AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
-        View dialogView = View.inflate(this, R.layout.in_storage_confirm_dialog, null);
+    private void initEvent() {
+        mAcceptCount.setOnClickListener(v -> showMoreCodeMsg());
+    }
 
-        final AlertDialog alertDialog = alertBuilder.setTitle(null).setIcon(null).setView(dialogView).create();
+    private void showMoreCodeMsg() {
         alertDialog.show();
+
+    }
+
+    private void initShowMoreCodeMsgDialog() {
+        final AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
+        dialogView = View.inflate(this, R.layout.in_storage_detail_info_1_1, null);
+        alertDialog = alertBuilder.setTitle(null).setIcon(null).setView(dialogView).create();
+        //alertDialog.show();
 
         Window window = alertDialog.getWindow();
 
@@ -114,56 +129,20 @@ public class InStorageDetailInfoActivity extends HoneyWellScannerActivity {
         window.setAttributes(layoutParams);       //window.getDecorView().setMinimumWidth(getResources().getDisplayMetrics().widthPixels);
         window.getDecorView().setBackgroundColor(Color.TRANSPARENT);
 
-        dialogView.findViewById(R.id.btn_commit).setOnClickListener(v -> commit());
-        dialogView.findViewById(R.id.btn_cancel).setOnClickListener(v -> alertDialog.dismiss());
-
     }
 
-    private void commit() {
-//        Toast.makeText(this, "Commit", Toast.LENGTH_LONG).show();
-        startActivity(new Intent(getApplicationContext(), InStorageActivity.class));
-    }
 
-    private void initView() {
+    private void showTitleBtn() {
         super.initTitleView();
         showTitle(false);
         showLeft(true, "<入库信息");
         showRight(true, "用户名", v -> startActivity(new Intent(getApplicationContext(), UserActivity.class)));
-
-        mTrInStorage = findViewById(R.id.tr_inStorage);
-        mTvIndex = findViewById(R.id.tv_index);
-        mTvBarCode = findViewById(R.id.tv_barCode);
-        mTvPkgCount = findViewById(R.id.tv_pkgCount);
-        mMtlCount = findViewById(R.id.tv_mtlCount);
-
-        mTlInStorage = findViewById(R.id.tl_inStorage);
-
-        dialog_confirm = findViewById(R.id.cl_dialog_confirm);
-        mCommit = findViewById(R.id.btn_commit_inStorage);
-        mLocationCode = findViewById(R.id.et_location_code);
-
-        mWorkOrder = findViewById(R.id.tv_workOrder);
-        mPayDepartment = findViewById(R.id.tv_payDepartment);
-        mMaterialNum = findViewById(R.id.tv_materialNum);
-        mMaterialName = findViewById(R.id.tv_materialName);
-        mInStorageCount = findViewById(R.id.tv_inStorageCount);
-        mPalletCount = findViewById(R.id.tv_palletCount);
-        mPackageCount = findViewById(R.id.tv_packageCount);
-        mMaterialCount = findViewById(R.id.tv_materialCount);
-
-
-        mWorkOrder.setText(getParamsInfo(this, RETURN_INFO_WORKORDER));
-        mPayDepartment.setText(getParamsInfo(this, RETURN_INFO_PAYDEPARTMENT));
-        mMaterialNum.setText(getParamsInfo(this, RETURN_INFO_MATERIALNUM));
-        mMaterialName.setText(getParamsInfo(this, RETURN_INFO_MATERIALNAME));
-        mInStorageCount.setText(getParamsInfo(this, RETURN_INFO_INSTORAGECOUNT));
-        mPalletCount.setText("0");
-        mPackageCount.setText("0");
-        mMaterialCount.setText("0");
-
     }
 
     private boolean insertTableRows(String barCode) {
+
+        TableLayout mTlInStorage = dialogView.findViewById(R.id.tl_inStorage);
+        TableRow mTrInStorage = dialogView.findViewById(R.id.tr_inStorage);
 
         TableRow row = new TableRow(this);
         row.setBackgroundResource(R.color.colorBlack);
@@ -205,7 +184,12 @@ public class InStorageDetailInfoActivity extends HoneyWellScannerActivity {
 
     @Override
     public void onBarcodeEvent(BarcodeReadEvent event) {
-        runOnUiThread(() -> insertTableRows(event.getBarcodeData()));
+        runOnUiThread(() ->
+        {
+            mAcceptCount.setText(Double.parseDouble(mAcceptCount.getText().toString()) + (Math.random() * 1000) + "");
+            insertTableRows(event.getBarcodeData());
+        });
+
     }
 
     @Override

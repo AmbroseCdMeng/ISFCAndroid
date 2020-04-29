@@ -36,6 +36,8 @@
 
         <activity android:name=".InStorageDetailInfoActivity" />
 
+        <activity android:name=".InStorageDetailInfoActivity_1"/>
+
         <activity android:name=".UserActivity" />
 
         <activity android:name=".InStorageActivity" />

@@ -5,11 +5,11 @@ import java.util.List;
 
 public class Beans implements Serializable {
 
-    private Boolean status;
+    private boolean status;
     private String message;
     private Object result;
 
-    public Boolean getStatus() {
+    public boolean getStatus() {
         return status;
     }
 

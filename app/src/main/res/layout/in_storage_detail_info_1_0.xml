@@ -9,43 +9,262 @@
         android:id="@+id/title"
         layout="@layout/title_bar" />
 
-    <TableLayout
-        android:layout_width="match_parent"
+    <ScrollView
+        android:layout_width="293dp"
         android:layout_height="0dp"
-        android:background="@color/colorBlack"
+        android:layout_marginTop="21dp"
         app:layout_constraintBottom_toTopOf="@id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title">
 
-        <TableRow android:background="@color/colorBlack">
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorGrayDark"
+            android:stretchColumns="1">
 
-            <TextView
-                android:layout_width="50dp"
-                android:background="@drawable/shape_border_tbody"
-                android:text="123" />
+            <TableRow>
 
-            <TextView
-                android:layout_width="50dp"
-                android:background="@drawable/shape_border_tbody"
-                android:text="123" />
+                <TextView
+                    android:layout_width="103dp"
+                    android:background="@drawable/shape_border_tbody_0"
+                    android:gravity="right"
+                    android:paddingRight="17dp"
+                    android:text="@string/lobel_inStorageOrder"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
 
-        </TableRow>
+                <TextView
+                    android:id="@+id/tv_inStorageOrder"
+                    android:background="@drawable/shape_border_tbody_0"
+                    android:gravity="center"
+                    android:text="62a-IC0776"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
+            </TableRow>
 
-        <TableRow>
+            <TableRow android:background="@color/colorGrayDark">
 
-            <TextView
-                android:layout_width="50dp"
-                android:background="@drawable/shape_border_tbody"
-                android:text="123" />
+                <TextView
+                    android:layout_width="103dp"
+                    android:background="@drawable/shape_border_tbody_1"
+                    android:gravity="right"
+                    android:paddingRight="17dp"
+                    android:text="@string/label_workOrder"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
 
-            <TextView
-                android:layout_width="50dp"
-                android:background="@drawable/shape_border_tbody"
-                android:text="123" />
+                <TextView
+                    android:id="@+id/tv_workOrder"
+                    android:background="@drawable/shape_border_tbody_1"
+                    android:gravity="center"
+                    android:text="W2E-IC0776"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
+            </TableRow>
 
-        </TableRow>
-    </TableLayout>
+            <TableRow android:background="@color/colorGrayDark">
+
+                <TextView
+                    android:layout_width="103dp"
+                    android:background="@drawable/shape_border_tbody_0"
+                    android:gravity="right"
+                    android:paddingRight="17dp"
+                    android:text="@string/label_materialNum"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tv_materialNum"
+                    android:background="@drawable/shape_border_tbody_0"
+                    android:gravity="center"
+                    android:text="W2E-IC0776"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
+            </TableRow>
+
+            <TableRow android:background="@color/colorGrayDark">
+
+                <TextView
+                    android:layout_width="103dp"
+                    android:background="@drawable/shape_border_tbody_1"
+                    android:gravity="right"
+                    android:paddingRight="17dp"
+                    android:text="@string/lable_productName"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tv_productName"
+                    android:background="@drawable/shape_border_tbody_1"
+                    android:gravity="center"
+                    android:text="W2E-IC0776"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
+            </TableRow>
+
+            <TableRow android:background="@color/colorGrayDark">
+
+                <TextView
+                    android:layout_width="103dp"
+                    android:background="@drawable/shape_border_tbody_0"
+                    android:gravity="right"
+                    android:paddingRight="17dp"
+                    android:text="@string/label_specific"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tv_specific"
+                    android:background="@drawable/shape_border_tbody_0"
+                    android:gravity="center"
+                    android:text="W2E-IC0776"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
+            </TableRow>
+
+            <TableRow android:background="@color/colorGrayDark">
+
+                <TextView
+                    android:layout_width="103dp"
+                    android:background="@drawable/shape_border_tbody_1"
+                    android:gravity="right"
+                    android:paddingRight="17dp"
+                    android:text="@string/label_payDepartment"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tv_payDepartment"
+                    android:background="@drawable/shape_border_tbody_1"
+                    android:gravity="center"
+                    android:text="W2E-IC0776"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
+            </TableRow>
+
+            <TableRow android:background="@color/colorGrayDark">
+
+                <TextView
+                    android:layout_width="103dp"
+                    android:background="@drawable/shape_border_tbody_0"
+                    android:gravity="right"
+                    android:paddingRight="17dp"
+                    android:text="@string/label_unit"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tv_unit"
+                    android:background="@drawable/shape_border_tbody_0"
+                    android:gravity="center"
+                    android:text="W2E-IC0776"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
+            </TableRow>
+
+            <TableRow android:background="@color/colorGrayDark">
+
+                <TextView
+                    android:layout_width="103dp"
+                    android:background="@drawable/shape_border_tbody_1"
+                    android:gravity="right"
+                    android:paddingRight="17dp"
+                    android:text="入库数量"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/inStorageCount"
+                    android:background="@drawable/shape_border_tbody_1"
+                    android:gravity="center"
+                    android:text="2080"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
+            </TableRow>
+
+            <TableRow android:background="@color/colorGrayDark">
+
+                <TextView
+                    android:layout_width="103dp"
+                    android:background="@drawable/shape_border_tbody_0"
+                    android:gravity="right"
+                    android:paddingRight="17dp"
+                    android:text="@string/label_accept_count"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
+
+                <Button
+                    android:id="@+id/btn_acceptCount"
+                    android:layout_height="24dp"
+                    android:background="@drawable/shape_border_tbody_0"
+                    android:drawableRight="@mipmap/btnmore"
+                    android:drawablePadding="-60dp"
+                    android:paddingRight="20dp"
+                    android:text="2080"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
+
+            </TableRow>
+
+            <TableRow android:background="@color/colorGrayDark">
+
+                <TextView
+                    android:layout_width="103dp"
+                    android:background="@drawable/shape_border_tbody_1"
+                    android:gravity="right"
+                    android:paddingRight="17dp"
+                    android:text="@string/label_wareHouse"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tv_wareHouse"
+                    android:background="@drawable/shape_border_tbody_1"
+                    android:gravity="center"
+                    android:text="W2E-IC0776"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
+            </TableRow>
+
+            <TableRow android:background="@color/colorGrayDark">
+
+                <TextView
+                    android:layout_width="103dp"
+                    android:background="@drawable/shape_border_tbody_0"
+                    android:gravity="right"
+                    android:paddingRight="17dp"
+                    android:text="@string/label_location"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tv_location"
+                    android:layout_width="190dp"
+                    android:background="@drawable/shape_border_tbody_0"
+                    android:gravity="center"
+                    android:text="W2E-IC0776"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
+            </TableRow>
+
+            <TableRow android:background="@color/colorGrayDark">
+
+                <TextView
+                    android:id="@+id/tv_mark"
+                    android:layout_width="103dp"
+                    android:layout_span="2"
+                    android:background="@drawable/shape_border_tbody_1"
+                    android:gravity="left"
+                    android:paddingLeft="17dp"
+                    android:text="备注：有需要时备注"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="17sp" />
+            </TableRow>
+        </TableLayout>
+
+    </ScrollView>
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -60,6 +279,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="5"
+            android:background="@color/colorLakeGreenLight"
             android:includeFontPadding="false"
             android:text="取消" />
 
@@ -67,7 +287,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="5"
+            android:background="@color/colorLakeGreenDark"
             android:includeFontPadding="false"
-            android:text="取消" />
+            android:text="签收" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

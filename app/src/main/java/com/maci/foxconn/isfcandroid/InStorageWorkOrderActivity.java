@@ -156,7 +156,8 @@ public class InStorageWorkOrderActivity extends TitleBarActivity {
 
         mInStorageWorkOrder.setOnItemClickListener((parent, view, position, id) ->
                 {
-                    Intent intent = new Intent(getApplicationContext(), InStorageDetailInfoActivity.class);
+//                    Intent intent = new Intent(getApplicationContext(), InStorageDetailInfoActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), InStorageDetailInfoActivity_1.class);
 
                     intent.putExtra(InStorageDetailInfoActivity.RETURN_INFO_WORKORDER, data.get(position).get("FORMNO").toString().trim());
                     intent.putExtra(InStorageDetailInfoActivity.RETURN_INFO_PAYDEPARTMENT, data.get(position).get("DPTNAME").toString().trim());

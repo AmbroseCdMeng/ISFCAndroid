@@ -26,16 +26,17 @@
     <string name="btn_search">查询</string>
     <string name="btn_addInStorage">扫码新增入库单</string>
 
-    <string name="label_workOrder">工令单号：</string>
-    <string name="label_payDepartment">缴库部门：</string>
+    <string name="lobel_inStorageOrder">入库单号</string>
+    <string name="label_workOrder">工令单号</string>
+    <string name="label_payDepartment">缴库部门</string>
 
     <string name="label_inStorage_no">未入库</string>
     <string name="label_inStorage_part">部分入库</string>
     <string name="label_inStorage_full">已入库</string>
 
-    <string name="label_materialNum">料号：</string>
-    <string name="label_materialName">物料名称：</string>
-    <string name="label_inStorageCount">实际/计划入库数量：</string>
+    <string name="label_materialNum">料号</string>
+    <string name="label_materialName">物料名称</string>
+    <string name="label_inStorageCount">实际/计划入库数量</string>
 
     <string name="label_thisInStorage">本次入库</string>
     <string name="label_pallet">栈板</string>
@@ -44,6 +45,8 @@
 
     <string name="label_scan">请扫描栈板码/箱码</string>
 
+    <string name="label_wareHouse">仓库</string>
+    <string name="label_location">储位</string>
     <string name="label_location_code">储位码</string>
     <string name="btn_commit_storage">提交入库</string>
 
@@ -54,10 +57,17 @@
     <string name="tHead_asn_code">ASN 码</string>
     <string name="tHead_result">判定结果</string>
 
-    <string name="lable_inStorage_operator">入库人员：</string>
-    <string name="lable_inStorage_date">入库时间：</string>
+    <string name="lable_inStorage_operator">入库人员</string>
+    <string name="lable_inStorage_count">入库数量</string>
+    <string name="lable_inStorage_date">入库时间</string>
+    <string name="label_accept_count">点收数量</string>
 
     <string name="label_inStorageInfo">入库信息</string>
+
+    <string name="lable_productName">品名</string>
+    <string name="label_specific">规格</string>
+    <string name="label_unit">单位</string>
+
 
 
     <!-- ASNRelated View-->
