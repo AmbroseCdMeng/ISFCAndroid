@@ -75,6 +75,8 @@ public class InStorageDetailInfoActivity_1 extends HoneyWellScannerActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        dialogView = View.inflate(this, R.layout.in_storage_detail_info_1_1, null);
+
         setContentView(R.layout.in_storage_detail_info_1_0);
 
         ButterKnife.bind(this);
@@ -105,7 +107,6 @@ public class InStorageDetailInfoActivity_1 extends HoneyWellScannerActivity {
 
     private void showMoreCodeMsgDialog() {
         final AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
-        dialogView = View.inflate(this, R.layout.in_storage_detail_info_1_1, null);
 
         final AlertDialog alertDialog = alertBuilder.setTitle(null).setIcon(null).setView(dialogView).create();
         alertDialog.show();
