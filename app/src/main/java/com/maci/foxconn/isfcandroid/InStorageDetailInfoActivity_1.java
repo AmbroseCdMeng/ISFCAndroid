@@ -38,9 +38,7 @@ import static com.maci.foxconn.utils.ActivityUtils.getParamsInfo;
 public class InStorageDetailInfoActivity_1 extends HoneyWellScannerActivity {
 
     private int index = 1;
-
-    View dialogView;
-    AlertDialog alertDialog;
+    private View dialogView;
 
     public static final String RETURN_INFO_WORKORDER = "COM.MACI.FOXCONN.ISFCANDROID.IN_STORAGE_DETAIL_INFO.RETURN_INFO_WORKORDER";
     public static final String RETURN_INFO_PAYDEPARTMENT = "COM.MACI.FOXCONN.ISFCANDROID.IN_STORAGE_DETAIL_INFO.RETURN_INFO_PAYDEPARTMENT";
@@ -83,12 +81,11 @@ public class InStorageDetailInfoActivity_1 extends HoneyWellScannerActivity {
         showTitleBtn();
         initData();
         initEvent();
-        initShowMoreCodeMsgDialog();
         //insertTableRows("Test Code");
     }
 
     private void initData() {
-        mAcceptCount.setText(getParamsInfo(this, ""));
+        mAcceptCount.setText(getParamsInfo(this, RETURN_INFO_INSTORAGECOUNT));
         mWorkOrder.setText(getParamsInfo(this, RETURN_INFO_WORKORDER));
         mPayDepartment.setText(getParamsInfo(this, RETURN_INFO_PAYDEPARTMENT));
         mMaterialNum.setText(getParamsInfo(this, RETURN_INFO_MATERIALNUM));
@@ -103,19 +100,15 @@ public class InStorageDetailInfoActivity_1 extends HoneyWellScannerActivity {
     }
 
     private void initEvent() {
-        mAcceptCount.setOnClickListener(v -> showMoreCodeMsg());
+        mAcceptCount.setOnClickListener(v -> showMoreCodeMsgDialog());
     }
 
-    private void showMoreCodeMsg() {
-        alertDialog.show();
-
-    }
-
-    private void initShowMoreCodeMsgDialog() {
+    private void showMoreCodeMsgDialog() {
         final AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
         dialogView = View.inflate(this, R.layout.in_storage_detail_info_1_1, null);
-        alertDialog = alertBuilder.setTitle(null).setIcon(null).setView(dialogView).create();
-        //alertDialog.show();
+
+        final AlertDialog alertDialog = alertBuilder.setTitle(null).setIcon(null).setView(dialogView).create();
+        alertDialog.show();
 
         Window window = alertDialog.getWindow();
 
@@ -128,7 +121,6 @@ public class InStorageDetailInfoActivity_1 extends HoneyWellScannerActivity {
 
         window.setAttributes(layoutParams);       //window.getDecorView().setMinimumWidth(getResources().getDisplayMetrics().widthPixels);
         window.getDecorView().setBackgroundColor(Color.TRANSPARENT);
-
     }
 
 
