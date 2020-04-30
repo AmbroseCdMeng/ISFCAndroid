@@ -3,9 +3,9 @@
 
     <!-- Login View -->
     <string name="label_username">账号：</string>
-    <string name="hint_username">Please Enter Your Userno</string>
+    <string name="hint_username">Userno</string>
     <string name="label_password">密码：</string>
-    <string name="hint_password">Please Enter Your Password</string>
+    <string name="hint_password">Password</string>
     <string name="label_showPassword">显示密码</string>
     <string name="cb_showPassword">false</string>
     <string name="label_fgPassword">忘记密码</string>

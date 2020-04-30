@@ -17,6 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.maci.foxconn.isfcandroid.CommonActivity.isReleaseMode;
+import static com.maci.foxconn.utils.ActivityUtils.jumpToActivity;
 import static com.maci.foxconn.utils.Utils.showMsg;
 
 /***
@@ -111,6 +112,7 @@ public class OutStorageWorkOrderActivity extends TitleBarActivity {
                 Toast.makeText(getApplicationContext(),
                         datasBeans.get(position).get("FORMNO") + "-" + option.get(tag).get("MTLNO"),
                         Toast.LENGTH_SHORT).show();
+                jumpToActivity(null, this, InStorageDetailInfoActivity_1.class);
 
             } else {
                 //这里让之前选中的效果还原成未选中

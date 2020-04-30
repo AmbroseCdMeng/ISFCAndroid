@@ -24,10 +24,10 @@
 
     <ImageView
         android:id="@+id/iv_user"
-        android:layout_width="14.6dp"
-        android:layout_height="17.3dp"
+        android:layout_width="17dp"
+        android:layout_height="21dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="204dp"
+        android:layout_marginTop="207dp"
         android:src="@mipmap/user"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
@@ -43,16 +43,16 @@
         android:lines="1"
         android:textColor="@color/colorYellowDark"
         android:textColorHint="@color/colorGrayDark"
-        android:textSize="11.11sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/iv_user"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <ImageView
         android:id="@+id/iv_pwd"
-        android:layout_width="14.6dp"
-        android:layout_height="17.3dp"
+        android:layout_width="17dp"
+        android:layout_height="21dp"
         android:layout_marginStart="64dp"
-        android:layout_marginTop="239.3dp"
+        android:layout_marginTop="243dp"
         android:src="@mipmap/pwd"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
@@ -68,7 +68,7 @@
         android:lines="1"
         android:textColor="@color/colorYellowDark"
         android:textColorHint="@color/colorGrayDark"
-        android:textSize="11.11sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/iv_pwd"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
@@ -94,27 +94,27 @@
         android:id="@+id/cb_s_pwd"
         style="@style/CheckBoxForRememberPasswordTheme"
         android:layout_width="wrap_content"
-        android:layout_height="12dp"
+        android:layout_height="16dp"
         android:layout_marginStart="52dp"
         android:layout_marginTop="343dp"
         android:checked="@string/cb_showPassword"
         android:includeFontPadding="false"
         android:text="@string/label_showPassword"
         android:textColor="@color/colorGrayDark"
-        android:textSize="11sp"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
         android:id="@+id/tv_f_pwd"
         android:layout_width="wrap_content"
-        android:layout_height="12dp"
+        android:layout_height="16dp"
         android:layout_marginTop="343dp"
         android:layout_marginEnd="52dp"
         android:includeFontPadding="false"
         android:text="@string/label_fgPassword"
         android:textColor="@color/colorGrayDark"
-        android:textSize="11sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 

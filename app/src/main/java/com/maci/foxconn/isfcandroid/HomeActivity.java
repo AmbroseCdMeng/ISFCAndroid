@@ -71,6 +71,10 @@ public class HomeActivity extends TitleBarActivity {
         ActivityUtils.jumpToActivity(button, this, AsnRelatedActivity.class);
     }
 
+    private void jumpToShipView(Button button) {
+        ActivityUtils.jumpToActivity(button, this, ShipActivity.class);
+    }
+
     private Beans getMenuResponse() {
         Beans beans = new Beans();
         String url = String.format("%sSys/GetModuleInfo?sysname=%s&userId=%s"
@@ -130,7 +134,7 @@ public class HomeActivity extends TitleBarActivity {
                                 button.setOnClickListener((v) -> jumpToAsnRelatedView(button));
                                 break;
                             case "SHIP":
-                                button.setOnClickListener((v) -> jumpToAsnRelatedView(button));
+                                button.setOnClickListener((v) -> jumpToShipView(button));
                                 break;
                             case "OUTSTOCK":
                                 button.setOnClickListener((v) -> jumpToOutStorageWorkOrderView(button));

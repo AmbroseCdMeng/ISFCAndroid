@@ -7,11 +7,11 @@ import android.content.Intent;
 import android.widget.Button;
 
 public class ActivityUtils {
-    public static void jumpToActivity(Button button, Context context, Class clazz){
-        new Thread(()->{
-            button.setClickable(false);
+    public static void jumpToActivity(Button button, Context context, Class clazz) {
+        new Thread(() -> {
+            if (button != null) button.setClickable(false);
             context.startActivity(new Intent(context, clazz));
-            button.setClickable(true);
+            if (button != null) button.setClickable(true);
         }).start();
     }
 
