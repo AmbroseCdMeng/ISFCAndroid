@@ -186,7 +186,7 @@ public class InStorageDetailInfoActivity_1 extends HoneyWellScannerActivity {
     public void onBarcodeEvent(BarcodeReadEvent event) {
         runOnUiThread(() ->
         {
-            mAcceptCount.setText(new DecimalFormat(".00").format(Double.parseDouble(mAcceptCount.getText().toString()) + (Math.random() * 1000) + ""));
+            mAcceptCount.setText(new DecimalFormat(".00").format(Double.parseDouble(mAcceptCount.getText().toString()) + (Math.random() * 1000)));
             insertTableRows(event.getBarcodeData());
         });
 
