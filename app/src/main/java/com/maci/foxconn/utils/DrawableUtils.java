@@ -52,7 +52,7 @@ public class DrawableUtils {
                         }
 
                         Drawable dRight = ((EditText) mView).getCompoundDrawables()[RIGHT];
-                        if (dRight != null && event.getRawX() >= (mView.getLeft() + dRight.getBounds().width())) {
+                        if (dRight != null && event.getRawX() >= (mView.getLeft() - dRight.getBounds().width())) {
                             listener.onRight(v, dRight);
                             return true;
                         }

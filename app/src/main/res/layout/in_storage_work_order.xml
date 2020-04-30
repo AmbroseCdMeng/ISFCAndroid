@@ -48,10 +48,10 @@
         android:cacheColorHint="#00000000"
         android:divider="@drawable/divider_line"
         android:dividerHeight="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_scan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_search"
-        app:layout_constraintBottom_toTopOf="@+id/btn_scan"></ListView>
+        app:layout_constraintTop_toBottomOf="@+id/et_search"></ListView>
 
     <Button
         android:id="@+id/btn_scan"

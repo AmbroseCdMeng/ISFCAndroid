@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
-    <include layout="@layout/title_bar" android:id="@+id/title" />
+    <include
+        android:id="@+id/title"
+        layout="@layout/title_bar" />
 
     <EditText
         android:id="@+id/et_search"
@@ -12,13 +14,13 @@
         android:layout_height="25dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="11dp"
-        android:lines="1"
         android:background="@drawable/shape_border_green"
         android:drawableRight="@mipmap/clear"
         android:hint="@string/hint_search"
+        android:lines="1"
         android:textColor="@color/colorYellowDark"
-        android:textSize="11sp"
         android:textColorHint="@color/colorGrayDark"
+        android:textSize="11sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
@@ -37,16 +39,16 @@
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <!--<ListView-->
-        <!--android:id="@+id/lv_out_storage_work_order"-->
-        <!--android:layout_width="245dp"-->
-        <!--android:layout_height="393dp"-->
-        <!--android:layout_marginTop="61dp"-->
-        <!--android:cacheColorHint="#00000000"-->
-        <!--android:divider="@drawable/divider_line"-->
-        <!--android:dividerHeight="20dp"-->
-        <!--app:layout_constraintEnd_toEndOf="parent"-->
-        <!--app:layout_constraintStart_toStartOf="parent"-->
-        <!--app:layout_constraintTop_toBottomOf="@+id/title">-->
+    <!--android:id="@+id/lv_out_storage_work_order"-->
+    <!--android:layout_width="245dp"-->
+    <!--android:layout_height="393dp"-->
+    <!--android:layout_marginTop="61dp"-->
+    <!--android:cacheColorHint="#00000000"-->
+    <!--android:divider="@drawable/divider_line"-->
+    <!--android:dividerHeight="20dp"-->
+    <!--app:layout_constraintEnd_toEndOf="parent"-->
+    <!--app:layout_constraintStart_toStartOf="parent"-->
+    <!--app:layout_constraintTop_toBottomOf="@+id/title">-->
     <!--</ListView>-->
 
     <android.support.v7.widget.RecyclerView
@@ -54,10 +56,10 @@
         android:layout_width="245dp"
         android:layout_height="0dp"
         android:layout_marginTop="61dp"
-        app:layout_constraintTop_toBottomOf="@id/title"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_scan"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/btn_scan">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title">
 
     </android.support.v7.widget.RecyclerView>
 
