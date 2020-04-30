@@ -21,6 +21,7 @@ import com.honeywell.aidc.AidcManager;
 import com.honeywell.aidc.BarcodeFailureEvent;
 import com.honeywell.aidc.BarcodeReadEvent;
 import com.honeywell.aidc.BarcodeReader;
+import com.maci.foxconn.utils.StringUtils;
 
 import java.text.DecimalFormat;
 
@@ -28,6 +29,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.maci.foxconn.utils.ActivityUtils.getParamsInfo;
+import static com.maci.foxconn.utils.StringUtils.isNullOrEmpty;
 
 
 /***
@@ -186,7 +188,7 @@ public class InStorageDetailInfoActivity_1 extends HoneyWellScannerActivity {
     public void onBarcodeEvent(BarcodeReadEvent event) {
         runOnUiThread(() ->
         {
-            mAcceptCount.setText(new DecimalFormat(".00").format(Double.parseDouble(mAcceptCount.getText().toString()) + (Math.random() * 1000)));
+            mAcceptCount.setText(new DecimalFormat(".00").format(Double.parseDouble(isNullOrEmpty(mAcceptCount.getText().toString()) ? "0" : mAcceptCount.getText().toString()) + (Math.random() * 1000)));
             insertTableRows(event.getBarcodeData());
         });
 

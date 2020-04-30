@@ -6,23 +6,34 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class UserActivity extends TitleBarActivity {
 
-    private TextView muserno;
-    private TextView musername;
-    private EditText moldPwd;
-    private EditText mnewPwd;
-    private EditText mrePwd;
+    @BindView(R.id.tv_userno)
+    TextView muserno;
 
-    private Button mchangePwd;
-    private Button mlogout;
+    @BindView(R.id.tv_username)
+    TextView musername;
+    @BindView(R.id.et_oldPwd)
+    EditText moldPwd;
+    @BindView(R.id.et_newPwd)
+    EditText mnewPwd;
+    @BindView(R.id.et_rePwd)
+    EditText mrePwd;
+
+    @BindView(R.id.btn_cPwd)
+    Button mchangePwd;
+    @BindView(R.id.btn_logout)
+    Button mlogout;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.user);
-
-        initView();
+        ButterKnife.bind(this);
         intiEvent();
     }
 
@@ -39,20 +50,12 @@ public class UserActivity extends TitleBarActivity {
         Toast.makeText(UserActivity.this, "修改密码", Toast.LENGTH_LONG).show();
     }
 
-    private void initView() {
+    private void showTitleBtn() {
         super.initTitleView();
         showTitle(false);
         showLeft(true, "<首页", v -> finish());
         showRight(false );
 
-        muserno = findViewById(R.id.tv_userno);
-        musername = findViewById(R.id.tv_username);
-        moldPwd = findViewById(R.id.et_oldPwd);
-        mnewPwd = findViewById(R.id.et_newPwd);
-        mrePwd = findViewById(R.id.et_rePwd);
-
-        mchangePwd = findViewById(R.id.btn_cPwd);
-        mlogout = findViewById(R.id.btn_logout);
     }
 
     private String getUserNo(){

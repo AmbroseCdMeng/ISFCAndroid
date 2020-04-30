@@ -42,11 +42,11 @@ public class OutStorageWorkOrderActivity extends TitleBarActivity {
         ButterKnife.bind(this);
 
         initData();
-        initView();
+        showTitleBtn();
         initEvent();
     }
 
-    private void initView() {
+    private void showTitleBtn() {
         super.initTitleView();
         showTitle(false);
         showLeft(true, "<出库信息");

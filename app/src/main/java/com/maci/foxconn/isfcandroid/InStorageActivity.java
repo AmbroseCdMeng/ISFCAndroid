@@ -36,7 +36,7 @@ public class InStorageActivity extends TitleBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.in_storage);
 
-        initView();
+        showTitleBtn();
         initEvent();
 
     }
@@ -47,7 +47,7 @@ public class InStorageActivity extends TitleBarActivity {
     }
 
 
-    private void initView() {
+    private void showTitleBtn() {
         super.initTitleView();
         showTitle(false);
         showLeft(true, "<入库信息查询");

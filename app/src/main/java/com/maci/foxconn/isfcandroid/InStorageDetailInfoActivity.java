@@ -37,6 +37,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 import static com.maci.foxconn.utils.ActivityUtils.getParamsInfo;
 import static com.maci.foxconn.utils.Utils.showMsg;
 
@@ -59,34 +62,49 @@ public class InStorageDetailInfoActivity extends HoneyWellScannerActivity {
     public static final String RETURN_INFO_MATERIALNAME = "COM.MACI.FOXCONN.ISFCANDROID.IN_STORAGE_DETAIL_INFO.RETURN_INFO_MATERIALNAME";
     public static final String RETURN_INFO_INSTORAGECOUNT = "COM.MACI.FOXCONN.ISFCANDROID.IN_STORAGE_DETAIL_INFO.RETURN_INFO_INSTORAGECOUNT";
 
-    private TableLayout mTlInStorage;
-    private TextView mTvIndex;
-    private TextView mTvBarCode;
-    private TextView mTvPkgCount;
-    private TextView mMtlCount;
+    @BindView(R.id.tl_inStorage)
+    TableLayout mTlInStorage;
 
-    private TextView mWorkOrder;
-    private TextView mPayDepartment;
-    private TextView mMaterialNum;
-    private TextView mMaterialName;
-    private TextView mInStorageCount;
-    private TextView mPalletCount;
-    private TextView mPackageCount;
-    private TextView mMaterialCount;
-
-    private TableRow mTrInStorage;
-
-    private ConstraintLayout dialog_confirm;
-    private EditText mLocationCode;
-    private Button mCommit;
-
+    @BindView(R.id.tv_index)
+    TextView mTvIndex;
+    @BindView(R.id.tv_barCode)
+    TextView mTvBarCode;
+    @BindView(R.id.tv_pkgCount)
+    TextView mTvPkgCount;
+    @BindView(R.id.tv_mtlCount)
+    TextView mMtlCount;
+    @BindView(R.id.tv_workOrder)
+    TextView mWorkOrder;
+    @BindView(R.id.tv_payDepartment)
+    TextView mPayDepartment;
+    @BindView(R.id.materialNum)
+    TextView mMaterialNum;
+    @BindView(R.id.materialName)
+    TextView mMaterialName;
+    @BindView(R.id.inStorageCount)
+    TextView mInStorageCount;
+    @BindView(R.id.tv_palletCount)
+    TextView mPalletCount;
+    @BindView(R.id.tv_packageCount)
+    TextView mPackageCount;
+    @BindView(R.id.tv_materialCount)
+    TextView mMaterialCount;
+    @BindView(R.id.tr_inStorage)
+    TableRow mTrInStorage;
+    @BindView(R.id.cl_dialog_confirm)
+    ConstraintLayout dialog_confirm;
+    @BindView(R.id.et_location_code)
+    EditText mLocationCode;
+    @BindView(R.id.btn_commit)
+    Button mCommit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.in_storage_detail_info);
-
-        initView();
+        showTitleBtn();
+        ButterKnife.bind(this);
+        initData();
         initEvent();
         //insertTableRows("Test Code");
     }
@@ -124,33 +142,7 @@ public class InStorageDetailInfoActivity extends HoneyWellScannerActivity {
         startActivity(new Intent(getApplicationContext(), InStorageActivity.class));
     }
 
-    private void initView() {
-        super.initTitleView();
-        showTitle(false);
-        showLeft(true, "<入库信息");
-        showRight(true, "用户名", v -> startActivity(new Intent(getApplicationContext(), UserActivity.class)));
-
-        mTrInStorage = findViewById(R.id.tr_inStorage);
-        mTvIndex = findViewById(R.id.tv_index);
-        mTvBarCode = findViewById(R.id.tv_barCode);
-        mTvPkgCount = findViewById(R.id.tv_pkgCount);
-        mMtlCount = findViewById(R.id.tv_mtlCount);
-
-        mTlInStorage = findViewById(R.id.tl_inStorage);
-
-        dialog_confirm = findViewById(R.id.cl_dialog_confirm);
-        mCommit = findViewById(R.id.btn_commit_inStorage);
-        mLocationCode = findViewById(R.id.et_location_code);
-
-        mWorkOrder = findViewById(R.id.tv_workOrder);
-        mPayDepartment = findViewById(R.id.tv_payDepartment);
-        mMaterialNum = findViewById(R.id.tv_materialNum);
-        mMaterialName = findViewById(R.id.tv_materialName);
-        mInStorageCount = findViewById(R.id.tv_inStorageCount);
-        mPalletCount = findViewById(R.id.tv_palletCount);
-        mPackageCount = findViewById(R.id.tv_packageCount);
-        mMaterialCount = findViewById(R.id.tv_materialCount);
-
+    private void initData() {
 
         mWorkOrder.setText(getParamsInfo(this, RETURN_INFO_WORKORDER));
         mPayDepartment.setText(getParamsInfo(this, RETURN_INFO_PAYDEPARTMENT));
@@ -161,6 +153,13 @@ public class InStorageDetailInfoActivity extends HoneyWellScannerActivity {
         mPackageCount.setText("0");
         mMaterialCount.setText("0");
 
+    }
+
+    private void showTitleBtn() {
+        super.initTitleView();
+        showTitle(false);
+        showLeft(true, "<入库信息");
+        showRight(true, "用户名", v -> startActivity(new Intent(getApplicationContext(), UserActivity.class)));
     }
 
     private boolean insertTableRows(String barCode) {

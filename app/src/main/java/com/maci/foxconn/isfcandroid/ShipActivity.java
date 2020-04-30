@@ -19,6 +19,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 import static com.maci.foxconn.utils.Utils.showMsg;
 
 
@@ -36,11 +39,14 @@ public class ShipActivity extends TitleBarActivity {
     private final String[] mapKeys = {"FORMNO", "DPTNAME", "FORMSTATUSNAME", "MTLNO", "MTLNO", "PLANQTY"};
     private final int[] ids = {R.id.workOrder, R.id.payDepartment, R.id.storageState, R.id.materialNum, R.id.materialName, R.id.inStorageCount};
 
-    private ListView mInStorageWorkOrder;
-    private EditText mEtSearch;
-    private Button mBtnSearch;
-    private Button mBtnScan;
-
+    @BindView(R.id.lv_in_storage_work_order)
+    ListView mInStorageWorkOrder;
+    @BindView(R.id.et_search)
+    EditText mEtSearch;
+    @BindView(R.id.btn_search)
+    Button mBtnSearch;
+    @BindView(R.id.btn_scan)
+    Button mBtnScan;
 
     private List<Map<String, Object>> data = new ArrayList<>();
 
@@ -83,13 +89,10 @@ public class ShipActivity extends TitleBarActivity {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.in_storage_work_order);
 
-        initView();
+        showTitleBtn();
 
-        showLeft(true, "<出货信息", v -> finish());
-        showRight(true, "用户名", v -> startActivity(new Intent(getApplicationContext(), UserActivity.class)));
-
+        ButterKnife.bind(this);
         new WorkThread().start();
-
 
         initEvent();
     }
@@ -201,15 +204,11 @@ public class ShipActivity extends TitleBarActivity {
         ));
     }
 
-    private void initView() {
+    private void showTitleBtn() {
         super.initTitleView();
         showTitle(false);
         showLeft(true, "<入库工令单");
         showRight(true, "用户名", v -> startActivity(new Intent(getApplicationContext(), UserActivity.class)));
-        mInStorageWorkOrder = findViewById(R.id.lv_in_storage_work_order);
-        mEtSearch = findViewById(R.id.et_search);
-        mBtnSearch = findViewById(R.id.btn_search);
-        mBtnScan = findViewById(R.id.btn_scan);
     }
 }
 
