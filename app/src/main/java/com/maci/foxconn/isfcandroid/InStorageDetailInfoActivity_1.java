@@ -22,6 +22,8 @@ import com.honeywell.aidc.BarcodeFailureEvent;
 import com.honeywell.aidc.BarcodeReadEvent;
 import com.honeywell.aidc.BarcodeReader;
 
+import java.text.DecimalFormat;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -38,7 +40,9 @@ import static com.maci.foxconn.utils.ActivityUtils.getParamsInfo;
 public class InStorageDetailInfoActivity_1 extends HoneyWellScannerActivity {
 
     private int index = 1;
-    private View dialogView;
+
+    View dialogView;
+    AlertDialog alertDialog;
 
     public static final String RETURN_INFO_WORKORDER = "COM.MACI.FOXCONN.ISFCANDROID.IN_STORAGE_DETAIL_INFO.RETURN_INFO_WORKORDER";
     public static final String RETURN_INFO_PAYDEPARTMENT = "COM.MACI.FOXCONN.ISFCANDROID.IN_STORAGE_DETAIL_INFO.RETURN_INFO_PAYDEPARTMENT";
@@ -75,7 +79,6 @@ public class InStorageDetailInfoActivity_1 extends HoneyWellScannerActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        dialogView = View.inflate(this, R.layout.in_storage_detail_info_1_1, null);
 
         setContentView(R.layout.in_storage_detail_info_1_0);
 
@@ -83,7 +86,26 @@ public class InStorageDetailInfoActivity_1 extends HoneyWellScannerActivity {
         showTitleBtn();
         initData();
         initEvent();
+        initMoreCodeMsgDialog();
         //insertTableRows("Test Code");
+
+    }
+
+    private void initMoreCodeMsgDialog() {
+        dialogView = View.inflate(this, R.layout.in_storage_detail_info_1_1, null);
+        final AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
+        alertDialog = alertBuilder.setTitle(null).setIcon(null).setView(dialogView).create();
+        alertDialog.show();
+        Window window = alertDialog.getWindow();
+        window.getDecorView().setPadding(0, 0, 0, 0);
+        WindowManager.LayoutParams layoutParams = window.getAttributes();
+        layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
+        layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
+        window.setGravity(Gravity.BOTTOM);
+        window.setAttributes(layoutParams);
+        window.getDecorView().setBackgroundColor(Color.TRANSPARENT);
+
+        alertDialog.hide();
     }
 
     private void initData() {
@@ -106,22 +128,7 @@ public class InStorageDetailInfoActivity_1 extends HoneyWellScannerActivity {
     }
 
     private void showMoreCodeMsgDialog() {
-        final AlertDialog.Builder alertBuilder = new AlertDialog.Builder(this);
-
-        final AlertDialog alertDialog = alertBuilder.setTitle(null).setIcon(null).setView(dialogView).create();
         alertDialog.show();
-
-        Window window = alertDialog.getWindow();
-
-        window.getDecorView().setPadding(0, 0, 0, 0);
-
-        WindowManager.LayoutParams layoutParams = window.getAttributes();
-        layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
-        layoutParams.width = ViewGroup.LayoutParams.MATCH_PARENT;
-        window.setGravity(Gravity.BOTTOM);
-
-        window.setAttributes(layoutParams);       //window.getDecorView().setMinimumWidth(getResources().getDisplayMetrics().widthPixels);
-        window.getDecorView().setBackgroundColor(Color.TRANSPARENT);
     }
 
 
@@ -179,7 +186,7 @@ public class InStorageDetailInfoActivity_1 extends HoneyWellScannerActivity {
     public void onBarcodeEvent(BarcodeReadEvent event) {
         runOnUiThread(() ->
         {
-            mAcceptCount.setText(Double.parseDouble(mAcceptCount.getText().toString()) + (Math.random() * 1000) + "");
+            mAcceptCount.setText(new DecimalFormat(".00").format(Double.parseDouble(mAcceptCount.getText().toString()) + (Math.random() * 1000) + ""));
             insertTableRows(event.getBarcodeData());
         });
 
